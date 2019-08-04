@@ -19,5 +19,20 @@ return array(
         'relate_to' => array(
             'User_Account'
         )
+    ),
+    'TMS_Test' => array(
+        'relate_to' => array(
+            'User_Account',
+            'TMS_Project'
+        ),
+        'relate_to_many' => array(
+            'TMS_Requirement',
+            'TMS_Activity',
+            'TMS_TestRisk',
+            'TMS_TestVariable',
+            'TMS_TestAttachment',
+            'TMS_VirtualUser',
+            'User_Account'
+        )
     )
 );
