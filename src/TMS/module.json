@@ -1,0 +1,16 @@
+{
+	"name": "TMS",
+	"title": "Test Management System",
+	"model": [
+		"TMS_Project",
+		"TMS_Test",
+		"TMS_Requirement"
+	],
+	"init": {
+		
+	},
+	"init_assoc": {
+		
+	}
+}
+
