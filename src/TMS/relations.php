@@ -34,5 +34,18 @@ return array(
             'TMS_VirtualUser',
             'User_Account'
         )
+    ),
+    'TMS_Activity' => array(
+        'relate_to' => array(
+            'User_Account',
+            'TMS_Project',
+            'TMS_Test'
+        ),
+        'relate_to_many' => array(
+            'TMS_ActivityComment',
+            'TMS_ActivityLog',
+            'TMS_ActivityOutput',
+            'User_Account'
+        )
     )
 );

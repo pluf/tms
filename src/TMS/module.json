@@ -4,7 +4,8 @@
 	"model": [
 		"TMS_Project",
 		"TMS_Test",
-		"TMS_Requirement"
+		"TMS_Requirement",
+		"TMS_Activity"
 	],
 	"init": {
 		
