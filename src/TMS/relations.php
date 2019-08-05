@@ -47,5 +47,11 @@ return array(
             'TMS_ActivityOutput',
             'User_Account'
         )
+    ),
+    'TMS_ActivityComment' => array(
+        'relate_to' => array(
+            'User_Account',
+            'TMS_Activity'
+        )
     )
 );

@@ -5,7 +5,8 @@
 		"TMS_Project",
 		"TMS_Test",
 		"TMS_Requirement",
-		"TMS_Activity"
+		"TMS_Activity",
+		"TMS_ActivityComment"
 	],
 	"init": {
 		
