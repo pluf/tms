@@ -35,6 +35,14 @@ return array(
             'User_Account'
         )
     ),
+    'TMS_Requirement' => array(
+        'relate_to' => array(
+            'TMS_Project'
+        ),
+        'relate_to_many' => array(
+            'TMS_Test'
+        )
+    ),
     'TMS_Activity' => array(
         'relate_to' => array(
             'User_Account',
