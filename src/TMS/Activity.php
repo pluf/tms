@@ -9,7 +9,6 @@ class TMS_Activity extends TMS_DocumentedModel
 {
 
     /**
-     * مدل داده‌ای را بارگذاری می‌کند.
      *
      * @see Pluf_Model::init()
      */

@@ -6,7 +6,8 @@
 		"TMS_Test",
 		"TMS_Requirement",
 		"TMS_Activity",
-		"TMS_ActivityComment"
+		"TMS_ActivityComment",
+		"TMS_ActivityLog"
 	],
 	"init": {
 		

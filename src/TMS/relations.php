@@ -53,5 +53,13 @@ return array(
             'User_Account',
             'TMS_Activity'
         )
+    ),
+    'TMS_ActivityLog' => array(
+        'relate_to' => array(
+            'User_Account',
+            'TMS_Project',
+            'TMS_Test',
+            'TMS_Activity'
+        )
     )
 );
