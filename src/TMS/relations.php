@@ -61,5 +61,10 @@ return array(
             'TMS_Test',
             'TMS_Activity'
         )
+    ),
+    'TMS_ActivityOutput' => array(
+        'relate_to' => array(
+            'TMS_Activity'
+        )
     )
 );
