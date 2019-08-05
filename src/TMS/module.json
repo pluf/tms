@@ -10,6 +10,7 @@
 		"TMS_VirtualUser",
 		"TMS_Requirement",
 		"TMS_Activity",
+		"TMS_ActivityStep",
 		"TMS_ActivityComment",
 		"TMS_ActivityLog",
 		"TMS_ActivityOutput"
