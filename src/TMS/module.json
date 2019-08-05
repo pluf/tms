@@ -5,6 +5,7 @@
 		"TMS_Project",
 		"TMS_Test",
 		"TMS_TestRisk",
+		"TMS_TestVariable",
 		"TMS_Requirement",
 		"TMS_Activity",
 		"TMS_ActivityComment",
