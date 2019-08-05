@@ -17,7 +17,7 @@ class TMS_Project extends TMS_DocumentedModel
     {
         parent::init();
         $this->_model = 'TMS_Project';
-        $this->_a['table'] = 'tms_project';
+        $this->_a['table'] = 'tms_projects';
         $this->_a['verbose'] = 'TMS Project';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'logo' => array(

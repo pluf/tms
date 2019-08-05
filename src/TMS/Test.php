@@ -17,7 +17,7 @@ class TMS_Test extends TMS_DocumentedModel
     {
         parent::init();
         $this->_model = 'TMS_Test';
-        $this->_a['table'] = 'tms_test';
+        $this->_a['table'] = 'tms_tests';
         $this->_a['verbose'] = 'TMS Test';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'type' => array(
