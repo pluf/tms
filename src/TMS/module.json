@@ -7,6 +7,7 @@
 		"TMS_TestRisk",
 		"TMS_TestVariable",
 		"TMS_TestAttachment",
+		"TMS_TestAcceptanceCriterion",
 		"TMS_VirtualUser",
 		"TMS_Scenario",
 		"TMS_Requirement",

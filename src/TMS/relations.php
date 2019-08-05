@@ -58,6 +58,11 @@ return array(
             'TMS_Test'
         )
     ),
+    'TMS_TestAcceptanceCriterion' => array(
+        'relate_to' => array(
+            'TMS_Test'
+        )
+    ),
     'TMS_VirtualUser' => array(
         'relate_to' => array(
             'TMS_Test'
