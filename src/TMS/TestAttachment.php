@@ -5,7 +5,7 @@
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
-class TMS_TestRisk extends TMS_DocumentedModelBinary
+class TMS_TestAttachment extends TMS_DocumentedModelBinary
 {
 
     /**

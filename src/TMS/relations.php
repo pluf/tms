@@ -63,6 +63,12 @@ return array(
             'TMS_Test'
         )
     ),
+    'TMS_TestRun' => array(
+        'relate_to' => array(
+            'TMS_Test'
+            // 'JMS_Pipeline'
+        )
+    ),
     'TMS_VirtualUser' => array(
         'relate_to' => array(
             'TMS_Test'
