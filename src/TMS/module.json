@@ -4,6 +4,7 @@
 	"model": [
 		"TMS_Project",
 		"TMS_Test",
+		"TMS_TestRisk",
 		"TMS_Requirement",
 		"TMS_Activity",
 		"TMS_ActivityComment",

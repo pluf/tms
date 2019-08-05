@@ -43,6 +43,11 @@ return array(
             'TMS_Test'
         )
     ),
+    'TMS_TestRisk' => array(
+        'relate_to' => array(
+            'TMS_Test'
+        )
+    ),
     'TMS_Activity' => array(
         'relate_to' => array(
             'User_Account',
