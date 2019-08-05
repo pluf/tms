@@ -53,6 +53,11 @@ return array(
             'TMS_Test'
         )
     ),
+    'TMS_TestAttachment' => array(
+        'relate_to' => array(
+            'TMS_Test'
+        )
+    ),
     'TMS_Activity' => array(
         'relate_to' => array(
             'User_Account',

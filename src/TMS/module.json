@@ -6,6 +6,7 @@
 		"TMS_Test",
 		"TMS_TestRisk",
 		"TMS_TestVariable",
+		"TMS_TestAttachment",
 		"TMS_Requirement",
 		"TMS_Activity",
 		"TMS_ActivityComment",
