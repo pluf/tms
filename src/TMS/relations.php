@@ -63,6 +63,11 @@ return array(
             'TMS_Test'
         )
     ),
+    'TMS_Scenario' => array(
+        'relate_to' => array(
+            'TMS_VirtualUser'
+        )
+    ),
     'TMS_Activity' => array(
         'relate_to' => array(
             'User_Account',

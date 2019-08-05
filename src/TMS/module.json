@@ -8,6 +8,7 @@
 		"TMS_TestVariable",
 		"TMS_TestAttachment",
 		"TMS_VirtualUser",
+		"TMS_Scenario",
 		"TMS_Requirement",
 		"TMS_Activity",
 		"TMS_ActivityStep",
