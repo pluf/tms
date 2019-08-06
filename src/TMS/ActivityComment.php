@@ -51,7 +51,7 @@ class TMS_ActivityComment extends Pluf_Model
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
                 'relate_name' => 'comments',
-                'is_null' => true,
+                'is_null' => false,
                 'editable' => true,
                 'readable' => true
             ),
@@ -59,7 +59,7 @@ class TMS_ActivityComment extends Pluf_Model
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'User_Account',
                 'name' => 'writer',
-                'relate_name' => 'comments',
+                'relate_name' => 'activity_comments',
                 'is_null' => false,
                 'editable' => false,
                 'readable' => true
