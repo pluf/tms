@@ -11,6 +11,7 @@
 		"TMS_TestRun",
 		"TMS_TestRunReport",
 		"TMS_TestRunTemplate",
+		"TMS_TestHistory",
 		"TMS_VirtualUser",
 		"TMS_Scenario",
 		"TMS_Requirement",

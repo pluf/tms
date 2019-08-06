@@ -74,6 +74,12 @@ return array(
             'TMS_Test'
         )
     ),
+    'TMS_TestHistory' => array(
+        'relate_to' => array(
+            'User_Account',
+            'TMS_Test'
+        )
+    ),
     'TMS_VirtualUser' => array(
         'relate_to' => array(
             'TMS_Test'
