@@ -40,13 +40,43 @@ class Basic_ModelTest extends TestCase
      */
     public function testClassInstance ()
     {
-        $c = new CMS_Content();
+        $c = new TMS_Activity();
         $this->assertTrue(isset($c));
-        $c = new CMS_ContentMeta();
+        $c = new TMS_ActivityComment();
         $this->assertTrue(isset($c));
-        $c = new CMS_Term();
+        $c = new TMS_ActivityLog();
         $this->assertTrue(isset($c));
-        $c = new CMS_TermTaxonomy();
+        $c = new TMS_ActivityOutput();
+        $this->assertTrue(isset($c));
+        $c = new TMS_ActivityStep();
+        $this->assertTrue(isset($c));
+        $c = new TMS_Project();
+        $this->assertTrue(isset($c));
+        $c = new TMS_Requirement();
+        $this->assertTrue(isset($c));
+        $c = new TMS_Scenario();
+        $this->assertTrue(isset($c));
+        $c = new TMS_Test();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestAcceptanceCriterion();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestAttachment();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestComment();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestHistory();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestRisk();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestRun();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestRunReport();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestRunTemplate();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestVariable();
+        $this->assertTrue(isset($c));
+        $c = new TMS_VirtualUser();
         $this->assertTrue(isset($c));
     }
 }
