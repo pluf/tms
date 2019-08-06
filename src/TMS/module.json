@@ -23,7 +23,32 @@
 		"TMS_ActivityOutput"
 	],
 	"init": {
-		
+		"User_Role": [
+			{
+				"name": "TMS Administrator",
+				"application": "tms",
+				"code_name": "admin",
+				"description": "Manages the TMS server."
+			},
+			{
+				"name": "TMS Project Manager",
+				"application": "tms",
+				"code_name": "project_manager",
+				"description": "Manages projects."
+			},
+			{
+				"name": "TMS Test Manager",
+				"application": "tms",
+				"code_name": "test_manager",
+				"description": "Manages tests."
+			},
+			{
+				"name": "TMS Tester",
+				"application": "tms",
+				"code_name": "tester",
+				"description": "Do some tests."
+			}
+		]
 	},
 	"init_assoc": {
 		
