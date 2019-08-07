@@ -25,12 +25,6 @@
 	"init": {
 		"User_Role": [
 			{
-				"name": "TMS Administrator",
-				"application": "tms",
-				"code_name": "admin",
-				"description": "Manages the TMS server."
-			},
-			{
 				"name": "TMS Project Manager",
 				"application": "tms",
 				"code_name": "project_manager",
