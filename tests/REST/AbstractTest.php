@@ -40,6 +40,7 @@ abstract class REST_AbstractTest extends TestCase
     const ADMIN_PASS = 'admin';
 
     static $PROJECT_TEST = null;
+    static $TEST_TEST = null;
 
     /**
      *
@@ -48,7 +49,6 @@ abstract class REST_AbstractTest extends TestCase
     public static function installApps()
     {
         $cfg = include __DIR__ . '/../conf/config.php';
-        $cfg['multitenant'] = false;
         Pluf::start($cfg);
         $m = new Pluf_Migration(Pluf::f('installed_apps'));
         $m->install();
@@ -82,6 +82,14 @@ abstract class REST_AbstractTest extends TestCase
         $project->description = 'This is a test project';
         $project->create();
         self::$PROJECT_TEST = $project;
+
+        // TEST
+        $test = new TMS_Test();
+        $test->title = 'title' . rand();
+        $test->description = 'This is a test';
+        $test->project_id = $project;
+        $test->create();
+        self::$TEST_TEST = $test;
     }
 
     /**

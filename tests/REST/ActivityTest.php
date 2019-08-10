@@ -25,7 +25,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
  * @backupGlobals disabled
  * @backupStaticAttributes disabled
  */
-class REST_ProjectTest extends REST_AbstractTest
+class REST_ActivityTest extends REST_AbstractTest
 {
 
     private static function getApiV2()
@@ -51,10 +51,10 @@ class REST_ProjectTest extends REST_AbstractTest
      *
      * @test
      */
-    public function getsSchemaOfAProject()
+    public function getsSchemaOfAObject()
     {
         $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/projects/schema');
+        $response = $client->get('/api/v2/tms/test-activities/schema');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -64,10 +64,10 @@ class REST_ProjectTest extends REST_AbstractTest
      * @test
      * @expectedException Pluf_Exception_Unauthorized
      */
-    public function gettingListOfProjectsTestWithAnonymouse()
+    public function gettingListOfActivitiesTestWithAnonymouse()
     {
         $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/projects');
+        $response = $client->get('/api/v2/tms/test-activities');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -76,7 +76,7 @@ class REST_ProjectTest extends REST_AbstractTest
      *
      * @test
      */
-    public function gettingListOfProjectsTest()
+    public function gettingListOfActivitiesTest()
     {
         $client = new Test_Client(self::getApiV2());
         // 1- Login
@@ -87,7 +87,7 @@ class REST_ProjectTest extends REST_AbstractTest
         Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/projects');
+        $response = $client->get('/api/v2/tms/test-activities');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -96,7 +96,7 @@ class REST_ProjectTest extends REST_AbstractTest
      *
      * @test
      */
-    public function gettingListOfProjectsByGraphQLTest()
+    public function gettingListOfActivitiesByGraphQLTest()
     {
         $client = new Test_Client(self::getApiV2());
         // 1- Login
@@ -107,8 +107,8 @@ class REST_ProjectTest extends REST_AbstractTest
         Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/projects', array(
-            'graphql' => '{items{id}}'
+        $response = $client->get('/api/v2/tms/test-activities', array(
+            'graphql' => '{items{id,project{id},test{id}}}'
         ));
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
@@ -118,7 +118,7 @@ class REST_ProjectTest extends REST_AbstractTest
      *
      * @test
      */
-    public function addingProjectByAdminTest()
+    public function createATestActivityWithAdminTest()
     {
         $client = new Test_Client(self::getApiV2());
         // 1- Login
@@ -130,25 +130,21 @@ class REST_ProjectTest extends REST_AbstractTest
 
         // 2- getting list of projects
         $data = array(
-            'title' => 'title' . rand(),
-            'description' => 'This is a test project',
-            'state' => 'done',
-            'logo' => 'pat/to/logo'
+            'title' => 'test' . rand(),
+            'description' => 'description',
+            'project_id' => self::$TEST_TEST->project_id,
+            'test_id' => self::$TEST_TEST->id,
         );
-        $response = $client->post('/api/v2/tms/projects', $data);
-
+        $response = $client->post('/api/v2/tms/test-activities', $data);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
-
-        // TODO: maso, 2019: check json value with $data
-        // Test_Assert::assertObjectValues($response, $data);
     }
 
     /**
      *
      * @test
      */
-    public function deleteProjectByAdminTest()
+    public function deleteATestWithAdminTest()
     {
         $client = new Test_Client(self::getApiV2());
         // 1- Login
@@ -160,86 +156,34 @@ class REST_ProjectTest extends REST_AbstractTest
 
         // 2- getting list of projects
         $data = array(
-            'title' => 'title' . rand(),
-            'description' => 'This is a test project',
-            'state' => 'done',
-            'logo' => 'pat/to/logo'
+            'title' => 'test' . rand(),
+            'description' => 'description',
+            'project_id' => self::$TEST_TEST->project_id,
+            'test_id' => self::$TEST_TEST->id,
         );
-        $response = $client->post('/api/v2/tms/projects', $data);
-
+        $response = $client->post('/api/v2/tms/test-activities', $data);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
-
-        // TODO: maso, 2019: check json value with $data
-        // Test_Assert::assertObjectValues($response, $data);
 
         // TODO: maso, 2019: getting object value with json path
         // Test_Util::getObjectValue($response, 'id');
         $actual = json_decode($response->content, true);
         $id = $actual['id'];
-        $project = new TMS_Project($id);
-        Test_Assert::assertNotNull($project);
-        Test_Assert::assertFalse($project->isAnonymous());
 
-        // Get the project
-        $response = $client->get('/api/v2/tms/projects/' . $project->id);
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
 
-        // delete the project
-        $response = $client->delete('/api/v2/tms/projects/' . $project->id);
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
-
-        $project = $project->getOne('id=' . $id);
-        Test_Assert::assertNull($project);
-    }
-
-    /**
-     *
-     * @test
-     */
-    public function updateProjectByAdminTest()
-    {
-        $client = new Test_Client(self::getApiV2());
-        // 1- Login
-        $response = $client->post('/api/v2/user/login', array(
-            'login' => self::ADMIN_LOGIN,
-            'password' => self::ADMIN_PASS
+        $response = $client->post('/api/v2/tms/test-activities/' . $id, array(
+            'graphql' => '{id,project{id},test{id},test_id, project_id}'
         ));
-        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
-
-        // 2- getting list of projects
-        $data = array(
-            'title' => 'title' . rand(),
-            'description' => 'This is a test project',
-            'state' => 'done',
-            'logo' => 'pat/to/logo'
-        );
-        $response = $client->post('/api/v2/tms/projects', $data);
-
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
 
-        // TODO: maso, 2019: check json value with $data
-        // Test_Assert::assertObjectValues($response, $data);
-
-        // TODO: maso, 2019: getting object value with json path
-        // Test_Util::getObjectValue($response, 'id');
-        $actual = json_decode($response->content, true);
-        $id = $actual['id'];
-        $project = new TMS_Project($id);
-        Test_Assert::assertNotNull($project);
-        Test_Assert::assertFalse($project->isAnonymous());
-
-        // Get the project
-        $data['title'] = 'test title' . rand();
-        $response = $client->post('/api/v2/tms/projects/' . $project->id, $data);
+        $response = $client->delete('/api/v2/tms/test-activities/' . $id);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
 
-        // TODO: maso, 2019: check json value with $data
-        // Test_Assert::assertObjectValues($response, $data);
+        $test = new TMS_Activity();
+        $test = $test->getOne('id='.$id);
+        Test_Assert::assertNull($test);
     }
 }
 

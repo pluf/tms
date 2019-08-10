@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -59,6 +59,8 @@ class TMS_Activity extends TMS_DocumentedModel
                 'model' => 'TMS_Project',
                 'name' => 'project',
                 'relate_name' => 'activities',
+                'graphql_name' => 'project',
+                'graphql_field' => true,
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
@@ -68,6 +70,8 @@ class TMS_Activity extends TMS_DocumentedModel
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'relate_name' => 'activities',
+                'graphql_name' => 'test',
+                'graphql_field' => true,
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true

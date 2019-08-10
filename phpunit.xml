@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit colors="true">
 	<testsuites>
-<!-- 		<testsuite name="BASIC"> -->
-<!-- 			<directory>tests/Basic/</directory> -->
-<!-- 		</testsuite> -->
+		<testsuite name="BASIC">
+			<directory>tests/Basic/</directory>
+		</testsuite>
 		<testsuite name="REST">
 			<directory>tests/REST/</directory>
 		</testsuite>
