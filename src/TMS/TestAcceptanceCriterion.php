@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -16,7 +16,6 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
     function init()
     {
         parent::init();
-        $this->_model = 'TMS_TestAcceptanceCriterion';
         $this->_a['table'] = 'tms_test_acceptance_criteria';
         $this->_a['verbose'] = 'TMS TestAcceptanceCriterion';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
@@ -77,5 +76,5 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
             )
         ));
     }
-    
+
 }

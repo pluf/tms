@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -15,7 +15,6 @@ class TMS_Requirement extends TMS_DocumentedModel
     function init()
     {
         parent::init();
-        $this->_model = 'TMS_Requirement';
         $this->_a['table'] = 'tms_requirements';
         $this->_a['verbose'] = 'TMS Requirement';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(

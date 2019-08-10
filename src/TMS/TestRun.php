@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -15,7 +15,6 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
     function init()
     {
         parent::init();
-        $this->_model = 'TMS_TestRun';
         $this->_a['table'] = 'tms_test_runs';
         $this->_a['verbose'] = 'TMS Test Run';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
@@ -61,5 +60,5 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
 //             )
         ));
     }
-    
+
 }

@@ -10,12 +10,12 @@ return array(
             'User_Account'
         )
     ),
-//     'TMS_Test' => array(
-//         'relate_to' => array(
-//             'User_Account',
-//             'TMS_Project'
-//         ),
-//         'relate_to_many' => array(
+    'TMS_Test' => array(
+        'relate_to' => array(
+            'User_Account', // TODO: maso, 2019: add a member model in the package
+            'TMS_Project'
+        ),
+        'relate_to_many' => array(
 //             'TMS_Requirement',
 //             'TMS_Activity',
 //             'TMS_TestRisk',
@@ -23,8 +23,8 @@ return array(
 //             'TMS_TestAttachment',
 //             'TMS_VirtualUser',
 //             'User_Account'
-//         )
-//     ),
+        )
+    ),
 //     'TMS_Requirement' => array(
 //         'relate_to' => array(
 //             'TMS_Project'

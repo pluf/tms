@@ -15,7 +15,6 @@ class TMS_Activity extends TMS_DocumentedModel
     function init()
     {
         parent::init();
-        $this->_model = 'TMS_Activity';
         $this->_a['table'] = 'tms_activities';
         $this->_a['verbose'] = 'TMS Activity';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(

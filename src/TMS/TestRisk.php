@@ -15,7 +15,6 @@ class TMS_TestRisk extends TMS_DocumentedModel
     function init()
     {
         parent::init();
-        $this->_model = 'TMS_TestRisk';
         $this->_a['table'] = 'tms_test_risks';
         $this->_a['verbose'] = 'TMS Test Risk';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(

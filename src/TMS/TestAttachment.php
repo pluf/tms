@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -15,7 +15,6 @@ class TMS_TestAttachment extends TMS_DocumentedModelBinary
     function init()
     {
         parent::init();
-        $this->_model = 'TMS_TestAttachment';
         $this->_a['table'] = 'tms_test_attachments';
         $this->_a['verbose'] = 'TMS Test Attachment';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
@@ -33,5 +32,5 @@ class TMS_TestAttachment extends TMS_DocumentedModelBinary
             )
         ));
     }
-    
+
 }

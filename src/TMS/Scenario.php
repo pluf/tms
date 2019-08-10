@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -15,7 +15,6 @@ class TMS_Scenario extends TMS_DocumentedModelBinary
     function init()
     {
         parent::init();
-        $this->_model = 'TMS_Scenario';
         $this->_a['table'] = 'tms_scenarios';
         $this->_a['verbose'] = 'TMS Scenario';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
@@ -41,5 +40,5 @@ class TMS_Scenario extends TMS_DocumentedModelBinary
             )
         ));
     }
-    
+
 }

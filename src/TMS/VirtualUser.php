@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -15,7 +15,6 @@ class TMS_VirtualUser extends TMS_DocumentedModelBinary
     function init()
     {
         parent::init();
-        $this->_model = 'TMS_TestAttachment';
         $this->_a['table'] = 'tms_virtual_users';
         $this->_a['verbose'] = 'TMS Virtual Users';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(

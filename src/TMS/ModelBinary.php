@@ -22,7 +22,7 @@
  * Binary model
  *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
- *        
+ *
  */
 class TMS_ModelBinary extends Pluf_Model
 {
@@ -34,8 +34,6 @@ class TMS_ModelBinary extends Pluf_Model
      */
     function init()
     {
-        // $this->_a['table'] = 'tms_binarymodel';
-        // $this->_a['verbose'] = 'TMS BinaryModel';
         $this->_a['cols'] = array(
             // Identifier
             'id' => array(
