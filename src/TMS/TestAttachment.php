@@ -26,6 +26,8 @@ class TMS_TestAttachment extends TMS_DocumentedModelBinary
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'relate_name' => 'attachments',
+                'graphql_name' => 'test',
+                'graphql_field' => true,
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
