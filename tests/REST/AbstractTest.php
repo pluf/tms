@@ -36,8 +36,10 @@ abstract class REST_AbstractTest extends TestCase
      * Accounts
      */
     const ADMIN_LOGIN = 'admin';
+
     const ADMIN_PASS = 'admin';
 
+    static $PROJECT_TEST = null;
 
     /**
      *
@@ -73,6 +75,13 @@ abstract class REST_AbstractTest extends TestCase
         // CREATE MANAGER
         // CREATE PROJECT_MANAGER
         // CREATE TESTER
+
+        // Project
+        $project = new TMS_Project();
+        $project->title = 'title' . rand();
+        $project->description = 'This is a test project';
+        $project->create();
+        self::$PROJECT_TEST = $project;
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -76,6 +76,8 @@ class TMS_Test extends TMS_DocumentedModel
                 'model' => 'TMS_Project',
                 'name' => 'project',
                 'relate_name' => 'tests',
+                'graphql_name' =>  'project',
+                'graphql_field' => true,
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
