@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -51,6 +51,8 @@ class TMS_TestComment extends Pluf_Model
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'relate_name' => 'comments',
+                'graphql_name' => 'test',
+                'graphql_field' => true,
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
@@ -60,6 +62,8 @@ class TMS_TestComment extends Pluf_Model
                 'model' => 'User_Account',
                 'name' => 'writer',
                 'relate_name' => 'test_comments',
+                'graphql_name' => 'writer',
+                'graphql_field' => true,
                 'is_null' => false,
                 'editable' => false,
                 'readable' => true

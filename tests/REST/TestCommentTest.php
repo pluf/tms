@@ -25,7 +25,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
  * @backupGlobals disabled
  * @backupStaticAttributes disabled
  */
-class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
+class REST_TestCommentTest extends REST_AbstractTest
 {
 
     private static function getApiV2()
@@ -51,10 +51,10 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
      *
      * @test
      */
-    public function getsSchemaOfAObject()
+    public function getsSchemaOfAProject()
     {
         $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/test-acceptance-criteria/schema');
+        $response = $client->get('/api/v2/tms/test-comments/schema');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -64,10 +64,10 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
      * @test
      * @expectedException Pluf_Exception_Unauthorized
      */
-    public function gettingListOfActivitiesTestWithAnonymouse()
+    public function gettingListOfProjectsTestWithAnonymouse()
     {
         $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/test-acceptance-criteria');
+        $response = $client->get('/api/v2/tms/test-comments');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -76,7 +76,7 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
      *
      * @test
      */
-    public function gettingListOfActivitiesTest()
+    public function gettingListOfProjectsTest()
     {
         $client = new Test_Client(self::getApiV2());
         // 1- Login
@@ -87,7 +87,7 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
         Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/test-acceptance-criteria');
+        $response = $client->get('/api/v2/tms/test-comments');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -96,7 +96,7 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
      *
      * @test
      */
-    public function gettingListOfActivitiesByGraphQLTest()
+    public function gettingListOfProjectsByGraphQLTest()
     {
         $client = new Test_Client(self::getApiV2());
         // 1- Login
@@ -107,7 +107,7 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
         Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/test-acceptance-criteria', array(
+        $response = $client->get('/api/v2/tms/test-comments', array(
             'graphql' => '{items{id,test{id},test_id}}'
         ));
         Test_Assert::assertNotNull($response);
@@ -118,7 +118,7 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
      *
      * @test
      */
-    public function createATestActivityWithAdminTest()
+    public function createATestWithAdminTest()
     {
         $client = new Test_Client(self::getApiV2());
         // 1- Login
@@ -132,9 +132,9 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
         $data = array(
             'title' => 'test' . rand(),
             'description' => 'description',
-            'test_id' => self::$TEST_TEST->id,
+            'test_id' => self::$TEST_TEST->id
         );
-        $response = $client->post('/api/v2/tms/test-acceptance-criteria', $data);
+        $response = $client->post('/api/v2/tms/test-comments', $data);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
     }
@@ -157,9 +157,9 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
         $data = array(
             'title' => 'test' . rand(),
             'description' => 'description',
-            'test_id' => self::$TEST_TEST->id,
+            'test_id' => self::$TEST_TEST->id
         );
-        $response = $client->post('/api/v2/tms/test-acceptance-criteria', $data);
+        $response = $client->post('/api/v2/tms/test-comments', $data);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
 
@@ -168,19 +168,18 @@ class REST_TestAcceptanceCriterionTest extends REST_AbstractTest
         $actual = json_decode($response->content, true);
         $id = $actual['id'];
 
-
-        $response = $client->post('/api/v2/tms/test-acceptance-criteria/' . $id, array(
+        $response = $client->post('/api/v2/tms/test-comments/' . $id, array(
             'graphql' => '{id,test{id},test_id}'
         ));
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
 
-        $response = $client->delete('/api/v2/tms/test-acceptance-criteria/' . $id);
+        $response = $client->delete('/api/v2/tms/test-comments/' . $id);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
 
-        $test = new TMS_TestAcceptanceCriterion();
-        $test = $test->getOne('id='.$id);
+        $test = new TMS_TestComment();
+        $test = $test->getOne('id=' . $id);
         Test_Assert::assertNull($test);
     }
 }
