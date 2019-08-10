@@ -3,7 +3,7 @@ return array(
     // ************************************************************* Schema
     array(
         'regex' => '#^/projects/schema$#',
-        'model' => 'Pluf_Views',
+        'model' => 'TMS_Views_Project',
         'method' => 'getSchema',
         'http-method' => 'GET',
         'params' => array(
@@ -73,7 +73,7 @@ return array(
         )
     ),
     // ************************************************************* Test of Project
-    
+
     array( // Read (List)
         'regex' => '#^/projects/(?P<parentlId>\d+)/members$#',
         'model' => 'TMS_Views_Project',
@@ -110,5 +110,5 @@ return array(
             'TMS_Precondition::projectManagerRequired'
         )
     )
-    
+
 );

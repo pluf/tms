@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -32,19 +32,19 @@ class TMS_TestRisk extends TMS_DocumentedModel
                 'editable' => true,
                 'readable' => true
             ),
-            /*
-             * Relations
-             */
-            'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
-                'model' => 'TMS_Test',
-                'name' => 'test',
-                'relate_name' => 'risks',
-                'is_null' => false,
-                'editable' => true,
-                'readable' => true
-            )
+//             /*
+//              * Relations
+//              */
+//             'test_id' => array(
+//                 'type' => 'Pluf_DB_Field_Foreignkey',
+//                 'model' => 'TMS_Test',
+//                 'name' => 'test',
+//                 'relate_name' => 'risks',
+//                 'is_null' => false,
+//                 'editable' => true,
+//                 'readable' => true
+//             )
         ));
     }
-    
+
 }

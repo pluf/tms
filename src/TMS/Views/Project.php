@@ -2,10 +2,10 @@
 
 Pluf::loadFunction('Pluf_Shortcuts_GetObjectOr404');
 
-class TMS_Views_Project
+class TMS_Views_Project extends Pluf_Views
 {
 
-    public static function members($request, $match)
+    public function members($request, $match)
     {
         $project = Pluf_Shortcuts_GetObjectOr404('TMS_Project', $match['parentId']);
         $user = new User_Account();
