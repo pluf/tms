@@ -32,6 +32,13 @@ require_once 'Pluf.php';
 abstract class REST_AbstractTest extends TestCase
 {
 
+    /*
+     * Accounts
+     */
+    const ADMIN_LOGIN = 'admin';
+    const ADMIN_PASS = 'admin';
+
+
     /**
      *
      * @beforeClass
@@ -44,9 +51,9 @@ abstract class REST_AbstractTest extends TestCase
         $m = new Pluf_Migration(Pluf::f('installed_apps'));
         $m->install();
 
-        // Test user
+        // CREATE ADMIN
         $user = new User_Account();
-        $user->login = 'test';
+        $user->login = self::ADMIN_LOGIN;
         $user->is_active = true;
         if (true !== $user->create()) {
             throw new Exception();
@@ -56,13 +63,16 @@ abstract class REST_AbstractTest extends TestCase
         $credit->setFromFormData(array(
             'account_id' => $user->id
         ));
-        $credit->setPassword('test');
+        $credit->setPassword(self::ADMIN_PASS);
         if (true !== $credit->create()) {
             throw new Exception();
         }
-
         $per = User_Role::getFromString('tenant.owner');
         $user->setAssoc($per);
+
+        // CREATE MANAGER
+        // CREATE PROJECT_MANAGER
+        // CREATE TESTER
     }
 
     /**

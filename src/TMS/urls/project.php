@@ -13,7 +13,7 @@ return array(
     // ************************************************************* Category
     array( // Create
         'regex' => '#^/projects$#',
-        'model' => 'Pluf_Views',
+        'model' => 'TMS_Views_Project',
         'method' => 'createObject',
         'http-method' => 'POST',
         'params' => array(
@@ -25,7 +25,7 @@ return array(
     ),
     array( // Read
         'regex' => '#^/projects/(?P<modelId>\d+)$#',
-        'model' => 'Pluf_Views',
+        'model' => 'TMS_Views_Project',
         'method' => 'getObject',
         'http-method' => 'GET',
         'params' => array(
@@ -37,7 +37,7 @@ return array(
     ),
     array( // Read (list)
         'regex' => '#^/projects$#',
-        'model' => 'Pluf_Views',
+        'model' => 'TMS_Views_Project',
         'method' => 'findObject',
         'http-method' => 'GET',
         'params' => array(
@@ -49,12 +49,13 @@ return array(
     ),
     array( // Delete
         'regex' => '#^/projects/(?P<modelId>\d+)$#',
-        'model' => 'Pluf_Views',
+        'model' => 'TMS_Views_Project',
         'method' => 'deleteObject',
         'http-method' => 'DELETE',
         'params' => array(
             'model' => 'TMS_Project',
-            'permanently' => false
+            // TODO: maso, 2019: we need workflow to support delete
+            'permanently' => true
         ),
         'precond' => array(
             'TMS_Precondition::projectManagerRequired'
