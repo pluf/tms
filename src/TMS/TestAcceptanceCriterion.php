@@ -69,7 +69,9 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
-                'relate_name' => 'logs',
+                'graphql_name' => 'test',
+                'graphql_field' => true,
+                'relate_name' => 'acceptanceCriteria',
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
