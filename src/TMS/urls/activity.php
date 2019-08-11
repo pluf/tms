@@ -71,5 +71,89 @@ return array(
         'precond' => array(
             'TMS_Precondition::projectManagerRequired'
         )
-    )
+    ),
+
+    // ************************************************************* comments
+    array( // schema
+        'regex' => '#^/activities/(?P<modelId>\d+)/comments/schema$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'getSchema',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_ActivityComment'
+        )
+    ),
+    array( // list
+        'regex' => '#^/activities/(?P<parentId>\d+)/comments$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'findManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_ActivityComment',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // create
+        'regex' => '#^/activities/(?P<parentId>\d+)/comments$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'createComment',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_ActivityComment',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+
+
+
+    array( // read
+        'regex' => '#^/activities/(?P<parentId>\d+)/comments/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'getManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_ActivityComment',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // update
+        'regex' => '#^/activities/(?P<parentId>\d+)/comments/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'updateComment',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_ActivityComment',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // delete
+        'regex' => '#^/activities/(?P<parentId>\d+)/comments/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'updateComment',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_ActivityComment',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
 );
