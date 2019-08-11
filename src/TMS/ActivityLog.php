@@ -38,6 +38,7 @@ class TMS_ActivityLog extends TMS_DocumentedModel
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_Project',
                 'name' => 'project',
+                'graphql_name' => 'project',
                 'relate_name' => 'logs',
                 'is_null' => false,
                 'editable' => true,
@@ -47,6 +48,7 @@ class TMS_ActivityLog extends TMS_DocumentedModel
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
+                'graphql_name' => 'test',
                 'relate_name' => 'logs',
                 'is_null' => false,
                 'editable' => true,
@@ -56,6 +58,7 @@ class TMS_ActivityLog extends TMS_DocumentedModel
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
+                'graphql_name' => 'activity',
                 'relate_name' => 'logs',
                 'is_null' => false,
                 'editable' => true,
@@ -65,9 +68,10 @@ class TMS_ActivityLog extends TMS_DocumentedModel
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'User_Account',
                 'name' => 'writer',
+                'graphql_name' => 'writer',
                 'relate_name' => 'logs',
                 'is_null' => true,
-                'editable' => true,
+                'editable' => false,
                 'readable' => true
             )
         ));
