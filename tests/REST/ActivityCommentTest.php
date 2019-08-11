@@ -25,7 +25,7 @@ set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
  * @backupGlobals disabled
  * @backupStaticAttributes disabled
  */
-class REST_ActivityTest extends REST_AbstractTest
+class REST_ActivityCommentTest extends REST_AbstractTest
 {
 
     private static function getApiV2()
