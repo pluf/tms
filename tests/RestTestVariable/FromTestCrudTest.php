@@ -25,8 +25,13 @@ set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
  * @backupGlobals disabled
  * @backupStaticAttributes disabled
  */
-class REST_TestVariableTest extends Basic_AbstractAnonymousNotAllowedTest
+class RestTestVariable_FromTestCrudTest extends Basic_AbstractDirectTest
 {
+
+    public function getModelName()
+    {
+        return 'TMS_TestVariable';
+    }
 
     public function createApiV2()
     {
@@ -49,8 +54,20 @@ class REST_TestVariableTest extends Basic_AbstractAnonymousNotAllowedTest
 
     public function getBaseUrl()
     {
-        return '/api/v2/tms/test-variables';
+        return '/api/v2/tms/tests/'.self::$TEST_TEST->id.'/variables';
+    }
+
+    public function getObjectGrapql()
+    {
+        return '{id,test{id},test_id}';
+    }
+
+    public function createRandomItemData()
+    {
+        return array(
+            'key' => 'test' . rand(),
+            'value' => 'description',
+        );
     }
 }
-
 

@@ -65,8 +65,8 @@ class RestTestVariable_DirectCrudTest extends Basic_AbstractDirectTest
     public function createRandomItemData()
     {
         return array(
-            'title' => 'test' . rand(),
-            'description' => 'description',
+            'key' => 'key' . rand(),
+            'value' => 'description',
             'test_id' => self::$TEST_TEST->id
         );
     }
