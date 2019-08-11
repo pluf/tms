@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -51,6 +51,8 @@ class TMS_ActivityComment extends Pluf_Model
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
                 'relate_name' => 'comments',
+                'graphql_field' => true,
+                'graphql_name' => 'activity',
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
@@ -60,6 +62,8 @@ class TMS_ActivityComment extends Pluf_Model
                 'model' => 'User_Account',
                 'name' => 'writer',
                 'relate_name' => 'activity_comments',
+                'graphql_field' => true,
+                'graphql_name' => 'writer',
                 'is_null' => false,
                 'editable' => false,
                 'readable' => true

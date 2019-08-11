@@ -70,12 +70,12 @@ return array(
             'TMS_Test'
         )
     ),
-//     'TMS_TestComment' => array(
-//         'relate_to' => array(
-//             'User_Account',
-//             'TMS_Test'
-//         )
-//     ),
+    'TMS_TestComment' => array(
+        'relate_to' => array(
+            'User_Account', // TODO: maso, 2019: replace with tms member
+            'TMS_Test'
+        )
+    ),
 //     'TMS_VirtualUser' => array(
 //         'relate_to' => array(
 //             'TMS_Test'
@@ -104,12 +104,12 @@ return array(
 //             'TMS_Activity'
 //         )
 //     ),
-//     'TMS_ActivityComment' => array(
-//         'relate_to' => array(
-//             'User_Account',
-//             'TMS_Activity'
-//         )
-//     ),
+    'TMS_ActivityComment' => array(
+        'relate_to' => array(
+            'User_Account', // TODO: maso, 2019: replace with tms member
+            'TMS_Activity'
+        )
+    ),
 //     'TMS_ActivityLog' => array(
 //         'relate_to' => array(
 //             'User_Account',

@@ -41,6 +41,8 @@ abstract class REST_AbstractTest extends TestCase
 
     static $PROJECT_TEST = null;
     static $TEST_TEST = null;
+    static $ACTIVITY_TEST = null;
+    static $ACTIVITY_COMMENT_TEST = null;
 
     /**
      *
@@ -90,6 +92,26 @@ abstract class REST_AbstractTest extends TestCase
         $test->project_id = $project;
         $test->create();
         self::$TEST_TEST = $test;
+
+        // Activity
+        $activity = new TMS_Activity();
+        $activity->title = 'title' . rand();
+        $activity->description = 'This is a test';
+        $activity->state = 'init';
+        $activity->project_id = $project;
+        $activity->test_id = $test;
+        $activity->create();
+        self::$ACTIVITY_TEST= $activity;
+
+        // Activity Comment
+        $activityComment = new TMS_ActivityComment();
+        $activityComment->title = 'title' . rand();
+        $activityComment->description = 'This is a test';
+        $activityComment->state = 'init';
+        $activityComment->project_id = $project;
+        $activityComment->test_id = $test;
+        $activityComment->create();
+        self::$ACTIVITY_COMMENT_TEST= $activityComment;
     }
 
     /**
