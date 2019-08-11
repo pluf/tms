@@ -38,11 +38,11 @@ return array(
 //             'TMS_Test'
 //         )
 //     ),
-//     'TMS_TestVariable' => array(
-//         'relate_to' => array(
-//             'TMS_Test'
-//         )
-//     ),
+    'TMS_TestVariable' => array(
+        'relate_to' => array(
+            'TMS_Test'
+        )
+    ),
     'TMS_TestAttachment' => array(
         'relate_to' => array(
             'TMS_Test'

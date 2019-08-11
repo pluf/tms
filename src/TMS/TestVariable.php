@@ -54,6 +54,8 @@ class TMS_TestVariable extends Pluf_Model
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'relate_name' => 'variables',
+                'graphql_name' => 'test',
+                'graphql_field' => true,
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
