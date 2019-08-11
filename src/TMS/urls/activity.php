@@ -72,7 +72,6 @@ return array(
             'TMS_Precondition::projectManagerRequired'
         )
     ),
-<<<<<<< HEAD
     // ************************************************************* Logs of Activity
 
     array( // Create
@@ -139,9 +138,7 @@ return array(
             'parent' => 'TMS_Activity',
             'parentKey' => 'activity_id'
         )
-    )
-=======
-
+    ),
     // ************************************************************* comments
     array( // schema
         'regex' => '#^/activities/(?P<modelId>\d+)/comments/schema$#',
@@ -224,6 +221,5 @@ return array(
         'precond' => array(
             'User_Precondition::loginRequired'
         )
-    ),
->>>>>>> branch 'develop' of https://github.com/pluf/tms.git
+    )
 );

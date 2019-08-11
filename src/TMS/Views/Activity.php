@@ -2,9 +2,9 @@
 
 class TMS_Views_Activity extends Pluf_Views
 {
-<<<<<<< HEAD
-    
-    public function addLog($request, $match, $p){
+
+    public function addLog($request, $match, $p)
+    {
         $log = $this->createManyToOne($request, $match, $p);
         $activity = $log->get_activity();
         $log->writer_id = $request->user;
@@ -13,8 +13,6 @@ class TMS_Views_Activity extends Pluf_Views
         $log->update();
         return $log;
     }
-    
-=======
 
     public function createComment($request, $match, $params)
     {
@@ -32,5 +30,4 @@ class TMS_Views_Activity extends Pluf_Views
     {
         return parent::deleteManyToOne($request, $match, $params);
     }
->>>>>>> branch 'develop' of https://github.com/pluf/tms.git
 }
