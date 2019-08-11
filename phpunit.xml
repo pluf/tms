@@ -5,10 +5,7 @@
 			<directory>tests/Basic/</directory>
 		</testsuite>
 		<testsuite name="REST">
-<!-- 			<directory>tests/REST/</directory> -->
-			<file>tests/REST/AbstractTest.php</file>
-			<file>tests/REST/ActivityTest.php</file>
-			<file>tests/REST/ActivityLogTest.php</file>
+			<directory>tests/REST/</directory>
 		</testsuite>
 	</testsuites>
 
