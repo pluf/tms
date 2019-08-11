@@ -182,5 +182,47 @@ class REST_TestTest extends REST_AbstractTest
         $test = $test->getOne('id=' . $id);
         Test_Assert::assertNull($test);
     }
+
+
+
+    /**
+     *
+     * @test
+     */
+    public function getATestHistoryWithAdminTest()
+    {
+        $client = new Test_Client(self::getApiV2());
+        // 1- Login
+        $response = $client->post('/api/v2/user/login', array(
+            'login' => self::ADMIN_LOGIN,
+            'password' => self::ADMIN_PASS
+        ));
+        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
+
+        // 2- getting list of projects
+        $data = array(
+            'title' => 'test' . rand(),
+            'description' => 'description',
+            'project_id' => self::$PROJECT_TEST->id
+        );
+        $response = $client->post('/api/v2/tms/tests', $data);
+        Test_Assert::assertNotNull($response);
+        Test_Assert::assertEquals($response->status_code, 200);
+
+        // TODO: maso, 2019: getting object value with json path
+        // Test_Util::getObjectValue($response, 'id');
+        $actual = json_decode($response->content, true);
+        $id = $actual['id'];
+
+        $response = $client->post('/api/v2/tms/tests/' . $id, array(
+            'graphql' => '{id,project{id},histories{id}}'
+        ));
+        Test_Assert::assertNotNull($response);
+        Test_Assert::assertEquals($response->status_code, 200);
+
+        $response = $client->get('/api/v2/tms/tests/' . $id . '/histories');
+        Test_Assert::assertNotNull($response);
+        Test_Assert::assertEquals($response->status_code, 200);
+    }
 }
 

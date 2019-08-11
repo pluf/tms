@@ -43,11 +43,11 @@ return array(
 //             'TMS_Test'
 //         )
 //     ),
-//     'TMS_TestAttachment' => array(
-//         'relate_to' => array(
-//             'TMS_Test'
-//         )
-//     ),
+    'TMS_TestAttachment' => array(
+        'relate_to' => array(
+            'TMS_Test'
+        )
+    ),
 //     'TMS_TestAcceptanceCriterion' => array(
 //         'relate_to' => array(
 //             'TMS_Test'
@@ -64,12 +64,12 @@ return array(
 //             'TMS_Test'
 //         )
 //     ),
-//     'TMS_TestHistory' => array(
-//         'relate_to' => array(
-//             'User_Account',
-//             'TMS_Test'
-//         )
-//     ),
+    'TMS_TestHistory' => array(
+        'relate_to' => array(
+            'User_Account',
+            'TMS_Test'
+        )
+    ),
 //     'TMS_TestComment' => array(
 //         'relate_to' => array(
 //             'User_Account',

@@ -10,7 +10,7 @@ return array(
             'model' => 'TMS_Test'
         )
     ),
-    // ************************************************************* Category
+    // ************************************************************* Main list
     array( // Create
         'regex' => '#^/tests$#',
         'model' => 'TMS_Views_Test',
@@ -72,5 +72,20 @@ return array(
         'precond' => array(
             'TMS_Precondition::projectManagerRequired'
         )
-    )
+    ),
+    // ************************************************************* Histories
+    array( // Update
+        'regex' => '#^/tests/(?P<parentId>\d+)/histories$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'findManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_TestHistory',
+            'parentModel' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
 );

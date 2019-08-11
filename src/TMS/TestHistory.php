@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 
+ *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
  */
@@ -50,6 +50,8 @@ class TMS_TestHistory extends Pluf_Model
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
+                'graphql_name' => 'test',
+                'graphql_field' => true,
                 'relate_name' => 'histories',
                 'is_null' => true,
                 'editable' => true,
@@ -59,6 +61,8 @@ class TMS_TestHistory extends Pluf_Model
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'User_Account',
                 'name' => 'account',
+                'graphql_name' => 'account',
+                'graphql_field' => true,
                 'relate_name' => 'test_histories',
                 'is_null' => false,
                 'editable' => false,
