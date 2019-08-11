@@ -10,7 +10,7 @@ return array(
             'model' => 'TMS_Project'
         )
     ),
-    // ************************************************************* Category
+    // ************************************************************* Project
     array( // Create
         'regex' => '#^/projects$#',
         'model' => 'TMS_Views_Project',
