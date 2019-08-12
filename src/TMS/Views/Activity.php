@@ -13,7 +13,7 @@ class TMS_Views_Activity extends Pluf_Views
         $log->update();
         return $log;
     }
-
+    
     public function createComment($request, $match, $params)
     {
         $request->request['writer_id'] = $request->user->id;

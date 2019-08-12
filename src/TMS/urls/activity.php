@@ -139,6 +139,81 @@ return array(
             'parentKey' => 'activity_id'
         )
     ),
+    // ************************************************************* Output of Activity
+    array( // schema
+        'regex' => '#^/activities/(?P<modelId>\d+)/outputs/schema$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'getSchema',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_ActivityOutput'
+        )
+    ),
+    array( // Create
+        'regex' => '#^/activities/(?P<parentId>\d+)/outputs$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'createManyToOne',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        ),
+        'params' => array(
+            'model' => 'TMS_ActivityOutput',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        )
+    ),
+    array( // Read (List)
+        'regex' => '#^/activities/(?P<parentId>\d+)/outputs$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'findManyToOne',
+        'http-method' => 'GET',
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        ),
+        'params' => array(
+            'model' => 'TMS_ActivityOutput',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        )
+    ),
+    array( // Read
+        'regex' => '#^/activities/(?P<parentId>\d+)/outputs/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'getManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_ActivityOutput',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        )
+    ),
+    array( // Update
+        'regex' => '#^/activities/(?P<parentId>\d+)/outputs/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'updateManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_ActivityOutput',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+            // 'precond' => function($request, $object, $parent) -> {false, true} | throw exception
+        )
+    ),
+    array( // Delete
+        'regex' => '#^/activities/(?P<parentId>\d+)/outputs/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'deleteManyToOne',
+        'http-method' => 'DELETE',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        ),
+        'params' => array(
+            'model' => 'TMS_ActivityOutput',
+            'parent' => 'TMS_Activity',
+            'parentKey' => 'activity_id'
+        )
+    ),
     // ************************************************************* comments
     array( // schema
         'regex' => '#^/activities/(?P<modelId>\d+)/comments/schema$#',
@@ -177,8 +252,6 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
-
-
 
     array( // read
         'regex' => '#^/activities/(?P<parentId>\d+)/comments/(?P<modelId>\d+)$#',

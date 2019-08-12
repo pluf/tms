@@ -26,6 +26,7 @@ class TMS_ActivityOutput extends TMS_DocumentedModel
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
+                'graphql_name' => 'activity',
                 'relate_name' => 'logs',
                 'is_null' => false,
                 'editable' => true,
