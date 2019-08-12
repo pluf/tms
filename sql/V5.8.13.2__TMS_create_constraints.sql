@@ -22,8 +22,8 @@ ALTER TABLE `tms_test_user_account_assoc`
 */
 ALTER TABLE `tms_activities` 
    ADD CONSTRAINT `fk__og7ly066n56jt9dt523wpges6` 
-   FOREIGN KEY (`assign`) 
-   REFERENCES `ums_accounts` (`id`);
+   FOREIGN KEY (`assign_id`) 
+   REFERENCES `user_accounts` (`id`);
 
 
 ALTER TABLE `tms_activities` 
@@ -41,7 +41,7 @@ ALTER TABLE `tms_activities`
 ALTER TABLE `tms_activity_user_account_assoc` 
    ADD CONSTRAINT `fk__jvknee78ba55plotl51nj0qu4` 
    FOREIGN KEY (`account_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
 
 
 ALTER TABLE `tms_activity_user_account_assoc` 
@@ -59,7 +59,7 @@ ALTER TABLE `tms_activity_comments`
 ALTER TABLE `tms_activity_comments` 
    ADD CONSTRAINT `fk__cuyhcl61bou6lb9s1koy4wm7e` 
    FOREIGN KEY (`writer_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
 
 
 ALTER TABLE `tms_activity_logs` 
@@ -83,7 +83,7 @@ ALTER TABLE `tms_activity_logs`
 ALTER TABLE `tms_activity_logs` 
    ADD CONSTRAINT `fk__64e2cpdi6c2uvwfayo2l5w0h1` 
    FOREIGN KEY (`writer_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
 
 
 ALTER TABLE `tms_activity_outputs` 
@@ -100,7 +100,7 @@ ALTER TABLE `tms_activity_steps`
 ALTER TABLE `tms_projects` 
    ADD CONSTRAINT `fk__mq8rbfm4b44ak989oc0mjkmg2` 
    FOREIGN KEY (`manager_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
 
 ALTER TABLE `tms_project_user_account_assoc` 
    ADD CONSTRAINT `fk__othxp8u3q5k7fey8irj0bqqw7` 
@@ -111,7 +111,7 @@ ALTER TABLE `tms_project_user_account_assoc`
 ALTER TABLE `tms_project_user_account_assoc` 
    ADD CONSTRAINT `fk__mruh0lawqnd51vb1v2d5ah112` 
    FOREIGN KEY (`account_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
 
 
 ALTER TABLE `tms_requirements` 
@@ -134,7 +134,7 @@ ALTER TABLE `tms_tests`
 ALTER TABLE `tms_tests` 
    ADD CONSTRAINT `fk__apu43sh7fqk3u1q6c2jc6sxlt` 
    FOREIGN KEY (`responsible_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
 
 
 ALTER TABLE `tms_test_user_account_assoc` 
@@ -146,7 +146,7 @@ ALTER TABLE `tms_test_user_account_assoc`
 ALTER TABLE `tms_test_user_account_assoc` 
    ADD CONSTRAINT `fk__3jb55dp4svrxerknbb6t9d13i` 
    FOREIGN KEY (`account_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
    
 
 ALTER TABLE `tms_test_acceptance_criteria` 
@@ -170,7 +170,7 @@ ALTER TABLE `tms_test_comments`
 ALTER TABLE `tms_test_comments` 
    ADD CONSTRAINT `fk__pklix22imprv4nkc0ww7fm0c4` 
    FOREIGN KEY (`writer_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
 
 
 ALTER TABLE `tms_test_histories` 
@@ -182,7 +182,7 @@ ALTER TABLE `tms_test_histories`
 ALTER TABLE `tms_test_histories` 
    ADD CONSTRAINT `fk__2u4njawdjwd5g19pk6299eopu` 
    FOREIGN KEY (`account_id`) 
-   REFERENCES `ums_accounts` (`id`);
+   REFERENCES `user_accounts` (`id`);
 
 
 ALTER TABLE `tms_requirenment_tms_test_assoc` 
