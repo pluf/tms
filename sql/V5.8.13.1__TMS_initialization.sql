@@ -18,14 +18,18 @@ CREATE TABLE `tms_activities` (
 	`project_id` bigint NOT NULL,
 	`test_id` bigint NOT NULL,
 	`is_archived` bit NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `tms_activity_user_account_assoc` (
 	`id` bigint NOT NULL AUTO_INCREMENT,
 	`activity_id` bigint NOT NULL,
 	`account_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 	
@@ -36,7 +40,9 @@ CREATE TABLE `tms_activity_comments` (
 	`creation_dtime` datetime(6) NOT NULL,
 	`writer_id` bigint NOT NULL,
 	`activity_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -50,7 +56,9 @@ CREATE TABLE `tms_activity_logs` (
 	`project_id` bigint NOT NULL,
 	`activity_id` bigint NOT NULL,
 	`test_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -59,7 +67,9 @@ CREATE TABLE `tms_activity_outputs` (
 	`title` varchar(128),
 	`description` varchar(2048),
 	`activity_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -70,7 +80,9 @@ CREATE TABLE `tms_activity_steps` (
 	`order` integer,
 	`is_checked` bit NOT NULL,
 	`activity_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE `tms_projects` (
@@ -83,7 +95,9 @@ CREATE TABLE `tms_projects` (
 	`end_dtime` datetime(6),
 	`manager_id` bigint,
 	`organization_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -91,7 +105,9 @@ CREATE TABLE `tms_project_user_account_assoc` (
    `id` bigint NOT NULL AUTO_INCREMENT,
 	`project_id` bigint NOT NULL,
 	`account_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -104,7 +120,9 @@ CREATE TABLE `tms_report_template` (
 	`file_path` varchar(255),
 	`file_size` bigint,
 	`modif_dtime` datetime(6),
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -114,7 +132,9 @@ CREATE TABLE `tms_requirements` (
 	`description` varchar(2048),
 	`type` varchar(255),
 	`project_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -129,7 +149,9 @@ CREATE TABLE `tms_scenarios` (
 	`file_size` bigint,
 	`modif_dtime` datetime(6),
 	`virtual_user_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -144,7 +166,9 @@ CREATE TABLE `tms_test_acceptance_criteria` (
 	`duration_type` varchar(255) NOT NULL,
 	`severity` varchar(255) NOT NULL,
 	`test_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -158,7 +182,9 @@ CREATE TABLE `tms_test_attachments` (
 	`file_size` bigint,
 	`modif_dtime` datetime(6),
 	`test_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -169,7 +195,9 @@ CREATE TABLE `tms_test_comments` (
 	`creation_dtime` datetime(6) NOT NULL,
 	`writer_id` bigint NOT NULL,
 	`test_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -180,7 +208,9 @@ CREATE TABLE `tms_test_histories` (
 	`creation_dtime` datetime(6),
 	`account_id` bigint,
 	`test_id` bigint,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -188,7 +218,9 @@ CREATE TABLE `tms_requirenment_tms_test_assoc` (
    `id` bigint NOT NULL AUTO_INCREMENT,
 	`requirenment_id` bigint NOT NULL,
 	`test_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -199,7 +231,9 @@ CREATE TABLE `tms_test_risks` (
 	`effect` varchar(1024),
 	`probability` double precision,
 	`test_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -215,7 +249,9 @@ CREATE TABLE `tms_test_run_reports` (
 	`creation_dtime` datetime(6),
 	`modif_dtime` datetime(6),
 	`test_run_id` bigint,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -233,7 +269,9 @@ CREATE TABLE `tms_test_runs` (
 	`modif_dtime` DATETIME(6) NULL,
 	`test_id` bigint NOT NULL,
 	`pipeline_id` bigint,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -241,7 +279,9 @@ CREATE TABLE `tms_test_user_account_assoc` (
    `id` bigint NOT NULL AUTO_INCREMENT,
 	`test_id` bigint NOT NULL,
 	`account_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -251,7 +291,9 @@ CREATE TABLE `tms_test_variables` (
 	`value` varchar(1024),
 	`description` varchar(1024),
 	`test_id` bigint,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -268,7 +310,9 @@ CREATE TABLE `tms_tests` (
 	`is_accepted` bit,
 	`project_id` bigint NOT NULL,
 	`responsible_id` bigint,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -283,7 +327,9 @@ CREATE TABLE `tms_virtual_users` (
 	`file_size` bigint,
 	`modif_dtime` datetime(6),
 	`test_id` bigint NOT NULL,
-	PRIMARY KEY (`id`)
+	`tenant` mediumint(9) unsigned NOT NULL DEFAULT 0,
+	PRIMARY KEY (`id`),
+	KEY `tenant_foreignkey_idx` (`tenant`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
