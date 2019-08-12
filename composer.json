@@ -1,0 +1,44 @@
+{
+	"name" : "pluf/tms",
+	"description" : "Test management system for pluf",
+	"type" : "library",
+	"authors" : [{
+			"name" : "Mostafa Barmshory",
+			"email" : "mostafa.barmshory@dpq.co.ir",
+			"homepage" : "http://dpq.co.ir",
+			"role" : "developer"
+		}, {
+			"name" : "Mohammad Hadi Mansouri",
+			"email" : "mohammad.hadi.mansouri@dpq.co.ir",
+			"homepage" : "http://dpq.co.ir",
+			"role" : "developer"
+		}
+	],
+	"minimum-stability" : "stable",
+	"require" : {
+		"pluf/core" : "5.8.x",
+		"pluf/user" : "5.8.x",
+		"pluf/monitor" : "5.8.x"
+	},
+	"require-dev" : {
+		"pluf/test" : "5.8.x",
+		"phayes/geophp" : "^1.2"
+	},
+	"include-path" : [
+		"src/"
+	],
+	"homepage" : "https://github.com/pluf/cache",
+	"support" : {
+		"email" : "info@pluf.ir",
+		"issues" : "https://github.com/pluf/tms/issues",
+		"forum" : "https://github.com/pluf/tms",
+		"wiki" : "https://github.com/pluf/tms/wiki",
+		"source" : "https://github.com/pluf/tms"
+	},
+	"keywords" : [
+		"pluf",
+		"php",
+		"tms",
+		"pluf-module"
+	]
+}

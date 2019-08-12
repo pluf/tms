@@ -1,0 +1,51 @@
+{
+	"name": "TMS",
+	"title": "Test Management System",
+	"model": [
+		"TMS_Project",
+		"TMS_Test",
+		"TMS_TestRisk",
+		"TMS_TestVariable",
+		"TMS_TestAcceptanceCriterion",
+		"TMS_TestAttachment",
+		"TMS_TestRun",
+		"TMS_TestRunReport",
+		"TMS_TestRunTemplate",
+		"TMS_TestHistory",
+		"TMS_TestComment",
+		"TMS_VirtualUser",
+		"TMS_Scenario",
+		"TMS_Requirement",
+		"TMS_Activity",
+		"TMS_ActivityStep",
+		"TMS_ActivityComment",
+		"TMS_ActivityLog",
+		"TMS_ActivityOutput"
+	],
+	"init": {
+		"User_Role": [
+			{
+				"name": "TMS Project Manager",
+				"application": "tms",
+				"code_name": "project_manager",
+				"description": "Manages projects."
+			},
+			{
+				"name": "TMS Test Manager",
+				"application": "tms",
+				"code_name": "test_manager",
+				"description": "Manages tests."
+			},
+			{
+				"name": "TMS Tester",
+				"application": "tms",
+				"code_name": "tester",
+				"description": "Do some tests."
+			}
+		]
+	},
+	"init_assoc": {
+		
+	}
+}
+
