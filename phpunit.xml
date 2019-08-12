@@ -7,6 +7,7 @@
 		<testsuite name="REST">
 			<directory>tests/REST/</directory>
 			<directory>tests/RestActivityOutput/</directory>
+			<directory>tests/RestActivityStep/</directory>
 			<directory>tests/RestTestRequirement/</directory>
 			<directory>tests/RestTestRisk/</directory>
 			<directory>tests/RestTestVariable/</directory>

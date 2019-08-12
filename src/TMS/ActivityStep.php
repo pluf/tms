@@ -40,6 +40,8 @@ class TMS_ActivityStep extends TMS_DocumentedModel
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
                 'relate_name' => 'steps',
+                'graphql_name' => 'activity',
+                'graphql_field' =>true,
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true

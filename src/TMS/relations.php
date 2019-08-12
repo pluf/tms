@@ -96,11 +96,11 @@ return array(
 //             'User_Account'
 //         )
 //     ),
-//     'TMS_ActivityStep' => array(
-//         'relate_to' => array(
-//             'TMS_Activity'
-//         )
-//     ),
+    'TMS_ActivityStep' => array(
+        'relate_to' => array(
+            'TMS_Activity'
+        )
+    ),
     'TMS_ActivityComment' => array(
         'relate_to' => array(
             'User_Account', // TODO: maso, 2019: replace with tms member
