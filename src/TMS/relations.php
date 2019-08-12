@@ -16,7 +16,7 @@ return array(
             'TMS_Project'
         ),
         'relate_to_many' => array(
-//             'TMS_Requirement',
+            'TMS_Requirement',
 //             'TMS_Activity',
 //             'TMS_TestRisk',
 //             'TMS_TestVariable',
@@ -25,19 +25,16 @@ return array(
 //             'User_Account'
         )
     ),
-//     'TMS_Requirement' => array(
-//         'relate_to' => array(
-//             'TMS_Project'
-//         ),
-//         'relate_to_many' => array(
-//             'TMS_Test'
-//         )
-//     ),
-//     'TMS_TestRisk' => array(
-//         'relate_to' => array(
-//             'TMS_Test'
-//         )
-//     ),
+    'TMS_Requirement' => array(
+        'relate_to' => array(
+            'TMS_Project'
+        )
+    ),
+    'TMS_TestRisk' => array(
+        'relate_to' => array(
+            'TMS_Test'
+        )
+    ),
     'TMS_TestVariable' => array(
         'relate_to' => array(
             'TMS_Test'

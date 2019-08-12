@@ -34,6 +34,8 @@ class TMS_Requirement extends TMS_DocumentedModel
                 'model' => 'TMS_Project',
                 'name' => 'project',
                 'relate_name' => 'requirements',
+                'graphql_field' => true,
+                'graphql_name' => 'project',
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
