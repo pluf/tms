@@ -14,7 +14,7 @@ CREATE TABLE `tms_activities` (
 	`type` varchar(255),
 	`start_dtime` datetime(6),
 	`end_dtime` datetime(6),
-	`assign` bigint,
+	`assign_id` bigint,
 	`project_id` bigint NOT NULL,
 	`test_id` bigint NOT NULL,
 	`is_archived` bit NOT NULL,
