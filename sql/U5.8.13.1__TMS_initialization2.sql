@@ -1,0 +1,24 @@
+DROP TABLE `tms_activities`;
+DROP TABLE `tms_activity_user_account_assoc`;
+DROP TABLE `tms_activity_comments`;
+DROP TABLE `tms_activity_logs`;
+DROP TABLE `tms_activity_outputs`;
+DROP TABLE `tms_activity_steps`;
+DROP TABLE `tms_projects`;
+DROP TABLE `tms_project_user_account_assoc`;
+DROP TABLE `tms_report_template`;
+DROP TABLE `tms_requirements`;
+DROP TABLE `tms_scenarios`;
+DROP TABLE `tms_test_acceptance_criteria`;
+DROP TABLE `tms_test_attachments`;
+DROP TABLE `tms_test_comments`;
+DROP TABLE `tms_test_histories`;
+DROP TABLE `tms_requirenment_tms_test_assoc`;
+DROP TABLE `tms_test_risks`;
+DROP TABLE `tms_test_run_reports`;
+DROP TABLE `tms_test_runs`;
+DROP TABLE `tms_test_user_account_assoc`;
+DROP TABLE `tms_test_variables`;
+DROP TABLE `tms_tests`;
+DROP TABLE `tms_virtual_users`;
+
