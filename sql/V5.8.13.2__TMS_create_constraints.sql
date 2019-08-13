@@ -1,9 +1,6 @@
-/********************************************************************************
-*                                  TMS                                       
-*********************************************************************************
-*
-* Add indexes
-*/
+/*
+ * Add indexes
+ */
 ALTER TABLE `tms_activity_user_account_assoc` 
    ADD CONSTRAINT `uk__7k6sgj2xk88vkw436bhsyax50` 
    UNIQUE (`activity_id`, `account_id`);
@@ -213,12 +210,6 @@ ALTER TABLE `tms_test_runs`
    ADD CONSTRAINT `fk__qshkrcst8jyrgdu6tobs1m5yh` 
    FOREIGN KEY (`test_id`) 
    REFERENCES `tms_tests` (`id`);
-
-ALTER TABLE `tms_test_runs` 
-   ADD CONSTRAINT `fk__rtikrcst8jyrgdu6tobs1m5zi` 
-   FOREIGN KEY (`pipeline_id`) 
-   REFERENCES `jms_pipelines` (`id`);
-
 
 ALTER TABLE `tms_test_variables` 
    ADD CONSTRAINT `fk__hbldml5x76ht2gvcpicm9l5kx` 
