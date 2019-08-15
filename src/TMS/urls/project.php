@@ -73,7 +73,7 @@ return array(
             'TMS_Precondition::projectManagerRequired'
         )
     ),
-    // ************************************************************* Test of Project
+    // ************************************************************* Members of Project
 
     array( // Read (List)
         'regex' => '#^/projects/(?P<parentlId>\d+)/members$#',
@@ -112,8 +112,7 @@ return array(
         )
     ),
 
-
-    // ************************************************************* Requirement
+    // ************************************************************* Requirements of Project
     array( // schema
         'regex' => '#^/projects/(?P<parentId>\d+)/requirements/schema$#',
         'model' => 'TMS_Views_Project',
@@ -201,6 +200,101 @@ return array(
         'http-method' => 'DELETE',
         'params' => array(
             'model' => 'TMS_Requirement',
+            'parent' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    // ************************************************************* Tests of Project
+    array( // schema
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests/schema$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'getSchema',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_Requirement'
+        )
+    ),
+    array( // get list
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'findManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_Test',
+            'parentModel' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // create
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'createManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_Test',
+            'parent' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // delete
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'clearManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_Test',
+            'parent' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    
+    array( // read
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'getManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_Test',
+            'parent' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // update
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'updateManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_Test',
+            'parent' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // delete
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'deleteManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_Test',
             'parent' => 'TMS_Project',
             'parentKey' => 'project_id'
         ),
