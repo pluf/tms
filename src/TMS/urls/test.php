@@ -61,6 +61,18 @@ return array(
             'TMS_Precondition::projectManagerRequired'
         )
     ),
+    array( // Delete (list)
+        'regex' => '#^/tests$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'deleteObjects',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_Test'
+        ),
+        'precond' => array(
+            'TMS_Precondition::testManagerRequired'
+        )
+    ),
     array( // Update
         'regex' => '#^/tests/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Test',

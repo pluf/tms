@@ -85,6 +85,7 @@ class TMS_Test extends TMS_DocumentedModel
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'User_Account',
                 'name' => 'responsible',
+                'graphql_name' => 'responsible',
                 'relate_name' => 'tests',
                 'is_null' => true,
                 'editable' => true,
