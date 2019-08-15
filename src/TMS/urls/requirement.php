@@ -60,6 +60,18 @@ return array(
             'TMS_Precondition::projectManagerRequired'
         )
     ),
+    array( // Delete (list)
+        'regex' => '#^/requirements$#',
+        'model' => 'TMS_Views_Requirement',
+        'method' => 'deleteObjects',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_Requirement'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
     array( // Update
         'regex' => '#^/requirements/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Requirement',
