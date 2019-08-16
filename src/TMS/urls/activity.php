@@ -14,7 +14,7 @@ return array(
     array( // Create
         'regex' => '#^/activities$#',
         'model' => 'TMS_Views_Activity',
-        'method' => 'createObject',
+        'method' => 'createActivity',
         'http-method' => 'POST',
         'params' => array(
             'model' => 'TMS_Activity'
@@ -68,6 +68,44 @@ return array(
         'params' => array(
             'model' => 'TMS_Activity'
         ),
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    // ************************************************************* Members of Activity
+    
+    array( // Read (List)
+        'regex' => '#^/activities/(?P<parentId>\d+)/members$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'members',
+        'http-method' => 'GET',
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Add member
+        'regex' => '#^/activities/(?P<parentId>\d+)/members$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'addMember',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    array( // Add member
+        'regex' => '#^/activities/(?P<parentId>\d+)/members/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'addMember',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    array( // Delete member
+        'regex' => '#^/activities/(?P<parentId>\d+)/members/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'removeMember',
+        'http-method' => 'DELETE',
         'precond' => array(
             'TMS_Precondition::projectManagerRequired'
         )
