@@ -84,4 +84,41 @@ return array(
             'TMS_Precondition::projectManagerRequired'
         )
     ),
+    // ************************************************************* Test of Requirement
+    array( // Read (List)
+        'regex' => '#^/requirements/(?P<parentId>\d+)/tests$#',
+        'model' => 'TMS_Views_Requirement',
+        'method' => 'tests',
+        'http-method' => 'GET',
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Add test
+        'regex' => '#^/requirements/(?P<parentId>\d+)/tests$#',
+        'model' => 'TMS_Views_Requirement',
+        'method' => 'addTest',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    array( // Add test
+        'regex' => '#^/requirements/(?P<parentId>\d+)/tests/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Requirement',
+        'method' => 'addTest',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    array( // Delete test
+        'regex' => '#^/requirements/(?P<parentId>\d+)/tests/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Requirement',
+        'method' => 'removeTest',
+        'http-method' => 'DELETE',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
 );
