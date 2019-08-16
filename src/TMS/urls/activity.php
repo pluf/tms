@@ -2,7 +2,7 @@
 return array(
     // ************************************************************* Schema
     array(
-        'regex' => '#^/test-activities/schema$#',
+        'regex' => '#^/activities/schema$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'getSchema',
         'http-method' => 'GET',
@@ -12,7 +12,7 @@ return array(
     ),
     // ************************************************************* Activity
     array( // Create
-        'regex' => '#^/test-activities$#',
+        'regex' => '#^/activities$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'createObject',
         'http-method' => 'POST',
@@ -24,7 +24,7 @@ return array(
         )
     ),
     array( // Read
-        'regex' => '#^/test-activities/(?P<modelId>\d+)$#',
+        'regex' => '#^/activities/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'getObject',
         'http-method' => 'GET',
@@ -36,7 +36,7 @@ return array(
         )
     ),
     array( // Read (list)
-        'regex' => '#^/test-activities$#',
+        'regex' => '#^/activities$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'findObject',
         'http-method' => 'GET',
@@ -48,7 +48,7 @@ return array(
         )
     ),
     array( // Delete
-        'regex' => '#^/test-activities/(?P<modelId>\d+)$#',
+        'regex' => '#^/activities/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'deleteObject',
         'http-method' => 'DELETE',
@@ -61,7 +61,7 @@ return array(
         )
     ),
     array( // Update
-        'regex' => '#^/test-activities/(?P<modelId>\d+)$#',
+        'regex' => '#^/activities/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'updateObject',
         'http-method' => 'POST',
