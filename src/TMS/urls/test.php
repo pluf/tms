@@ -296,7 +296,6 @@ return array(
         )
     ),
     // ************************************************************* Members of Test
-    
     array( // Read (List)
         'regex' => '#^/tests/(?P<parentId>\d+)/members$#',
         'model' => 'TMS_Views_Test',
@@ -328,6 +327,43 @@ return array(
         'regex' => '#^/tests/(?P<parentId>\d+)/members/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Test',
         'method' => 'removeMember',
+        'http-method' => 'DELETE',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    // ************************************************************* Requirements of Test
+    array( // Read (List)
+        'regex' => '#^/tests/(?P<parentId>\d+)/requirements$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'requirements',
+        'http-method' => 'GET',
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Add activity
+        'regex' => '#^/tests/(?P<parentId>\d+)/requirements$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'addRequirement',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    array( // Add activity
+        'regex' => '#^/tests/(?P<parentId>\d+)/requirements/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'addRequirement',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    array( // Delete activity
+        'regex' => '#^/tests/(?P<parentId>\d+)/requirements/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'removeRequirement',
         'http-method' => 'DELETE',
         'precond' => array(
             'TMS_Precondition::projectManagerRequired'
