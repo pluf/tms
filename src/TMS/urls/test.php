@@ -195,11 +195,6 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
-
-
-
-
-
     // ************************************************************* Risk
     array( // schema
         'regex' => '#^/tests/(?P<parentId>\d+)/risks/schema$#',
@@ -288,6 +283,101 @@ return array(
         'http-method' => 'DELETE',
         'params' => array(
             'model' => 'TMS_TestRisk',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    // ************************************************************* Activities of Test
+    array( // schema
+        'regex' => '#^/tests/(?P<parentId>\d+)/activities/schema$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'getSchema',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_Activity'
+        )
+    ),
+    array( // get list
+        'regex' => '#^/tests/(?P<parentId>\d+)/activities$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'findManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_Activity',
+            'parentModel' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // create
+        'regex' => '#^/tests/(?P<parentId>\d+)/activities$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'createManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_Activity',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // delete
+        'regex' => '#^/tests/(?P<parentId>\d+)/activities$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'clearManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_Activity',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    
+    array( // read
+        'regex' => '#^/tests/(?P<parentId>\d+)/activities/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'getManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_Activity',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // update
+        'regex' => '#^/tests/(?P<parentId>\d+)/activities/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'updateManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_Activity',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // delete
+        'regex' => '#^/tests/(?P<parentId>\d+)/activities/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Test',
+        'method' => 'deleteManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_Activity',
             'parent' => 'TMS_Test',
             'parentKey' => 'test_id'
         ),
