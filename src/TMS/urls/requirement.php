@@ -10,7 +10,7 @@ return array(
             'model' => 'TMS_Requirement'
         )
     ),
-    // *************************************************************
+    // ************************************************************* Requirements
     array( // Create
         'regex' => '#^/requirements$#',
         'model' => 'TMS_Views_Requirement',
