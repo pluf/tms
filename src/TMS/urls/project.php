@@ -76,7 +76,7 @@ return array(
     // ************************************************************* Members of Project
 
     array( // Read (List)
-        'regex' => '#^/projects/(?P<parentlId>\d+)/members$#',
+        'regex' => '#^/projects/(?P<parentId>\d+)/members$#',
         'model' => 'TMS_Views_Project',
         'method' => 'members',
         'http-method' => 'GET',
@@ -85,7 +85,7 @@ return array(
         )
     ),
     array( // Add member
-        'regex' => '#^/projects/(?P<parentlId>\d+)/members$#',
+        'regex' => '#^/projects/(?P<parentId>\d+)/members$#',
         'model' => 'TMS_Views_Project',
         'method' => 'addMember',
         'http-method' => 'POST',
@@ -94,7 +94,7 @@ return array(
         )
     ),
     array( // Add member
-        'regex' => '#^/projects/(?P<parentlId>\d+)/members/(?P<modelId>\d+)$#',
+        'regex' => '#^/projects/(?P<parentId>\d+)/members/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Project',
         'method' => 'addMember',
         'http-method' => 'POST',
@@ -103,7 +103,7 @@ return array(
         )
     ),
     array( // Delete member
-        'regex' => '#^/projects/(?P<parentlId>\d+)/members/(?P<modelId>\d+)$#',
+        'regex' => '#^/projects/(?P<parentId>\d+)/members/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Project',
         'method' => 'removeMember',
         'http-method' => 'DELETE',
