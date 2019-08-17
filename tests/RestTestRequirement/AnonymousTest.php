@@ -52,7 +52,7 @@ class AnonymousTest extends Basic_AbstractAnonymousNotAllowedTest
 
     public function getBaseUrl()
     {
-        return '/api/v2/tms/test-requirements';
+        return '/api/v2/tms/requirements';
     }
 }
 
