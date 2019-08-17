@@ -9,7 +9,7 @@
 			<directory>tests/RestActivityOutput/</directory>
 			<directory>tests/RestActivityStep/</directory>
 			<directory>tests/RestTest/</directory>
-			<directory>tests/RestTestRequirement/</directory>
+			<directory>tests/RestRequirement/</directory>
 			<directory>tests/RestTestRisk/</directory>
 			<directory>tests/RestTestVariable/</directory>
 		</testsuite>
