@@ -54,7 +54,7 @@ class REST_ActivityTest extends REST_AbstractTest
     public function getsSchemaOfAObject()
     {
         $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/test-activities/schema');
+        $response = $client->get('/api/v2/tms/activities/schema');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -67,7 +67,7 @@ class REST_ActivityTest extends REST_AbstractTest
     public function gettingListOfActivitiesTestWithAnonymouse()
     {
         $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/test-activities');
+        $response = $client->get('/api/v2/tms/activities');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -87,7 +87,7 @@ class REST_ActivityTest extends REST_AbstractTest
         Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/test-activities');
+        $response = $client->get('/api/v2/tms/activities');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -107,7 +107,7 @@ class REST_ActivityTest extends REST_AbstractTest
         Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/test-activities', array(
+        $response = $client->get('/api/v2/tms/activities', array(
             'graphql' => '{items{id,project{id},test{id}}}'
         ));
         Test_Assert::assertNotNull($response);
@@ -135,7 +135,7 @@ class REST_ActivityTest extends REST_AbstractTest
             'project_id' => self::$TEST_TEST->project_id,
             'test_id' => self::$TEST_TEST->id,
         );
-        $response = $client->post('/api/v2/tms/test-activities', $data);
+        $response = $client->post('/api/v2/tms/activities', $data);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
     }
@@ -161,7 +161,7 @@ class REST_ActivityTest extends REST_AbstractTest
             'project_id' => self::$TEST_TEST->project_id,
             'test_id' => self::$TEST_TEST->id,
         );
-        $response = $client->post('/api/v2/tms/test-activities', $data);
+        $response = $client->post('/api/v2/tms/activities', $data);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
 
@@ -171,13 +171,13 @@ class REST_ActivityTest extends REST_AbstractTest
         $id = $actual['id'];
 
 
-        $response = $client->post('/api/v2/tms/test-activities/' . $id, array(
+        $response = $client->post('/api/v2/tms/activities/' . $id, array(
             'graphql' => '{id,project{id},test{id},test_id, project_id}'
         ));
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
 
-        $response = $client->delete('/api/v2/tms/test-activities/' . $id);
+        $response = $client->delete('/api/v2/tms/activities/' . $id);
         Test_Assert::assertNotNull($response);
         Test_Assert::assertEquals($response->status_code, 200);
 

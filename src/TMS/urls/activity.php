@@ -2,7 +2,7 @@
 return array(
     // ************************************************************* Schema
     array(
-        'regex' => '#^/test-activities/schema$#',
+        'regex' => '#^/activities/schema$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'getSchema',
         'http-method' => 'GET',
@@ -12,9 +12,9 @@ return array(
     ),
     // ************************************************************* Activity
     array( // Create
-        'regex' => '#^/test-activities$#',
+        'regex' => '#^/activities$#',
         'model' => 'TMS_Views_Activity',
-        'method' => 'createObject',
+        'method' => 'createActivity',
         'http-method' => 'POST',
         'params' => array(
             'model' => 'TMS_Activity'
@@ -24,7 +24,7 @@ return array(
         )
     ),
     array( // Read
-        'regex' => '#^/test-activities/(?P<modelId>\d+)$#',
+        'regex' => '#^/activities/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'getObject',
         'http-method' => 'GET',
@@ -36,7 +36,7 @@ return array(
         )
     ),
     array( // Read (list)
-        'regex' => '#^/test-activities$#',
+        'regex' => '#^/activities$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'findObject',
         'http-method' => 'GET',
@@ -48,7 +48,7 @@ return array(
         )
     ),
     array( // Delete
-        'regex' => '#^/test-activities/(?P<modelId>\d+)$#',
+        'regex' => '#^/activities/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'deleteObject',
         'http-method' => 'DELETE',
@@ -61,13 +61,51 @@ return array(
         )
     ),
     array( // Update
-        'regex' => '#^/test-activities/(?P<modelId>\d+)$#',
+        'regex' => '#^/activities/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Activity',
         'method' => 'updateObject',
         'http-method' => 'POST',
         'params' => array(
             'model' => 'TMS_Activity'
         ),
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    // ************************************************************* Members of Activity
+    
+    array( // Read (List)
+        'regex' => '#^/activities/(?P<parentId>\d+)/members$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'members',
+        'http-method' => 'GET',
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Add member
+        'regex' => '#^/activities/(?P<parentId>\d+)/members$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'addMember',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    array( // Add member
+        'regex' => '#^/activities/(?P<parentId>\d+)/members/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'addMember',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::projectManagerRequired'
+        )
+    ),
+    array( // Delete member
+        'regex' => '#^/activities/(?P<parentId>\d+)/members/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_Activity',
+        'method' => 'removeMember',
+        'http-method' => 'DELETE',
         'precond' => array(
             'TMS_Precondition::projectManagerRequired'
         )
@@ -322,7 +360,7 @@ return array(
     array( // create
         'regex' => '#^/activities/(?P<parentId>\d+)/steps$#',
         'model' => 'TMS_Views_Activity',
-        'method' => 'createComment',
+        'method' => 'createManyToOne',
         'http-method' => 'POST',
         'params' => array(
             'model' => 'TMS_ActivityStep',
@@ -333,9 +371,6 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
-
-
-
     array( // read
         'regex' => '#^/activities/(?P<parentId>\d+)/steps/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Activity',

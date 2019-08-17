@@ -16,11 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace RestTestRequirement;
+namespace RestTest;
 
-use \Basic_AbstractAnonymousNotAllowedTest;
-
+use Basic_AbstractDirectTest;
 require_once 'Pluf.php';
+
 set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
 
 /**
@@ -28,8 +28,13 @@ set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
  * @backupGlobals disabled
  * @backupStaticAttributes disabled
  */
-class AnonymousTest extends Basic_AbstractAnonymousNotAllowedTest
+class DirectCrudTest extends Basic_AbstractDirectTest
 {
+
+    public function getModelName()
+    {
+        return 'TMS_Test';
+    }
 
     public function createApiV2()
     {
@@ -52,8 +57,22 @@ class AnonymousTest extends Basic_AbstractAnonymousNotAllowedTest
 
     public function getBaseUrl()
     {
-        return '/api/v2/tms/test-risks';
+        return '/api/v2/tms/tests';
+    }
+
+    public function getObjectGrapql()
+    {
+        return '{id,project{id},project_id,responsible{id},responsible_id}';
+    }
+
+    public function createRandomItemData()
+    {
+        return array(
+            'title' => 'title',
+            'description' => 'description',
+            'type' => 'functional',
+            'project_id' => self::$PROJECT_TEST->id
+        );
     }
 }
-
 

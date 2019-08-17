@@ -78,7 +78,8 @@ class TMS_Activity extends TMS_DocumentedModel
             'assign_id' => array(
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'User_Account',
-                'name' => 'responsible',
+                'name' => 'assign',
+                'graphql_name' => 'assign',
                 'relate_name' => 'activities',
                 'is_null' => true,
                 'editable' => true,
