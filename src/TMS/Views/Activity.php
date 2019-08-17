@@ -91,7 +91,7 @@ class TMS_Views_Activity extends Pluf_Views
         $request->REQUEST['writer_id'] = $request->user->id;
         return parent::createManyToOne($request, $match, $params);
     }
-
+    
     public function updateComment($request, $match, $params)
     {
         $request->REQUEST['writer_id'] = $request->user->id;
@@ -102,4 +102,5 @@ class TMS_Views_Activity extends Pluf_Views
     {
         return parent::deleteManyToOne($request, $match, $params);
     }
+
 }

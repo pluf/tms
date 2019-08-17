@@ -26,7 +26,7 @@ return array(
     array( // Create
         'regex' => '#^/activity-steps$#',
         'model' => 'TMS_Views_ActivityStep',
-        'method' => 'createObject',
+        'method' => 'createStep',
         'http-method' => 'POST',
         'params' => array(
             'model' => 'TMS_ActivityStep'

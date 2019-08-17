@@ -360,7 +360,7 @@ return array(
     array( // create
         'regex' => '#^/activities/(?P<parentId>\d+)/steps$#',
         'model' => 'TMS_Views_Activity',
-        'method' => 'createComment',
+        'method' => 'createManyToOne',
         'http-method' => 'POST',
         'params' => array(
             'model' => 'TMS_ActivityStep',
@@ -371,9 +371,6 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
-
-
-
     array( // read
         'regex' => '#^/activities/(?P<parentId>\d+)/steps/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Activity',
