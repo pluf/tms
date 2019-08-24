@@ -459,4 +459,192 @@ return array(
             'TMS_Precondition::projectManagerRequired'
         )
     ),
+    // ************************************************************* Acceptance Creiteria of Test
+    array( // Schema
+        'regex' => '#^/tests/(?P<parentId>\d+)/acceptance-criteria/schema$#',
+        'model' => 'TMS_Views_TestAcceptanceCriterion',
+        'method' => 'getSchema',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_TestAcceptanceCriterion'
+        )
+    ),
+    array( // Create
+        'regex' => '#^/tests/(?P<parentId>\d+)/acceptance-criteria$#',
+        'model' => 'TMS_Views_TestAcceptanceCriterion',
+        'method' => 'createManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_TestAcceptanceCriterion',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Read (list)
+        'regex' => '#^/tests/(?P<parentId>\d+)/acceptance-criteria$#',
+        'model' => 'TMS_Views_TestAcceptanceCriterion',
+        'method' => 'findManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_TestAcceptanceCriterion',
+            'parentModel' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Read
+        'regex' => '#^/tests/(?P<parentId>\d+)/acceptance-criteria/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_TestAcceptanceCriterion',
+        'method' => 'getManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_TestAcceptanceCriterion',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Update
+        'regex' => '#^/tests/(?P<parentId>\d+)/acceptance-criteria/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_TestAcceptanceCriterion',
+        'method' => 'updateManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_TestAcceptanceCriterion',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Delete (list)
+        'regex' => '#^/tests/(?P<parentId>\d+)/acceptance-criteria$#',
+        'model' => 'TMS_Views_TestAcceptanceCriterion',
+        'method' => 'clearManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_TestAcceptanceCriterion',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Delete
+        'regex' => '#^/tests/(?P<parentId>\d+)/acceptance-criteria/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_TestAcceptanceCriterion',
+        'method' => 'deleteManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_TestAcceptanceCriterion',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    // ************************************************************* Virtual User of Test
+    array( // Schema
+        'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users/schema$#',
+        'model' => 'TMS_Views_TestVirtualUser',
+        'method' => 'getSchema',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_TestVirtualUser'
+        )
+    ),
+    array( // Create
+        'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users$#',
+        'model' => 'TMS_Views_TestVirtualUser',
+        'method' => 'createManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_TestVirtualUser',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Read (list)
+        'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users$#',
+        'model' => 'TMS_Views_TestVirtualUser',
+        'method' => 'findManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_TestVirtualUser',
+            'parentModel' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Read
+        'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_TestVirtualUser',
+        'method' => 'getManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_TestVirtualUser',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Update
+        'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_TestVirtualUser',
+        'method' => 'updateManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_TestVirtualUser',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Delete (list)
+        'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users$#',
+        'model' => 'TMS_Views_TestVirtualUser',
+        'method' => 'clearManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_TestVirtualUser',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Delete
+        'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_TestVirtualUser',
+        'method' => 'deleteManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_TestVirtualUser',
+            'parent' => 'TMS_Test',
+            'parentKey' => 'test_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
 );
