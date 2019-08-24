@@ -18,8 +18,8 @@ class TMS_DocumentedModel extends Pluf_Model
             ),
             'title' => array(
                 'type' => 'Pluf_DB_Field_Varchar',
-                'blank' => false,
-                'is_null' => false,
+                'blank' => true,
+                'is_null' => true,
                 'size' => 256,
                 'editable' => true,
                 'readable' => true
