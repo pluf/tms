@@ -10,7 +10,7 @@ return array(
             'model' => 'TMS_TestAttachment'
         )
     ),
-    // ************************************************************* Category
+    // ************************************************************* Test Attachment
     array( // Create
         'regex' => '#^/test-attachments$#',
         'model' => 'TMS_Views_TestAttachment',
