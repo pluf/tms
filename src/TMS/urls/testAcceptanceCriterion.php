@@ -10,7 +10,7 @@ return array(
             'model' => 'TMS_TestAcceptanceCriterion'
         )
     ),
-    // ************************************************************* Category
+    // ************************************************************* Acceptance Criterion
     array( // Create
         'regex' => '#^/test-acceptance-criteria$#',
         'model' => 'TMS_Views_TestAcceptanceCriterion',
