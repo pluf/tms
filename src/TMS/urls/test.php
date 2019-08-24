@@ -556,20 +556,20 @@ return array(
     // ************************************************************* Virtual User of Test
     array( // Schema
         'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users/schema$#',
-        'model' => 'TMS_Views_TestVirtualUser',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'getSchema',
         'http-method' => 'GET',
         'params' => array(
-            'model' => 'TMS_TestVirtualUser'
+            'model' => 'TMS_VirtualUser'
         )
     ),
     array( // Create
         'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users$#',
-        'model' => 'TMS_Views_TestVirtualUser',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'createManyToOne',
         'http-method' => 'POST',
         'params' => array(
-            'model' => 'TMS_TestVirtualUser',
+            'model' => 'TMS_VirtualUser',
             'parent' => 'TMS_Test',
             'parentKey' => 'test_id'
         ),
@@ -579,11 +579,11 @@ return array(
     ),
     array( // Read (list)
         'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users$#',
-        'model' => 'TMS_Views_TestVirtualUser',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'findManyToOne',
         'http-method' => 'GET',
         'params' => array(
-            'model' => 'TMS_TestVirtualUser',
+            'model' => 'TMS_VirtualUser',
             'parentModel' => 'TMS_Test',
             'parentKey' => 'test_id'
         ),
@@ -593,11 +593,11 @@ return array(
     ),
     array( // Read
         'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users/(?P<modelId>\d+)$#',
-        'model' => 'TMS_Views_TestVirtualUser',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'getManyToOne',
         'http-method' => 'GET',
         'params' => array(
-            'model' => 'TMS_TestVirtualUser',
+            'model' => 'TMS_VirtualUser',
             'parent' => 'TMS_Test',
             'parentKey' => 'test_id'
         ),
@@ -607,11 +607,11 @@ return array(
     ),
     array( // Update
         'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users/(?P<modelId>\d+)$#',
-        'model' => 'TMS_Views_TestVirtualUser',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'updateManyToOne',
         'http-method' => 'POST',
         'params' => array(
-            'model' => 'TMS_TestVirtualUser',
+            'model' => 'TMS_VirtualUser',
             'parent' => 'TMS_Test',
             'parentKey' => 'test_id'
         ),
@@ -621,11 +621,11 @@ return array(
     ),
     array( // Delete (list)
         'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users$#',
-        'model' => 'TMS_Views_TestVirtualUser',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'clearManyToOne',
         'http-method' => 'DELETE',
         'params' => array(
-            'model' => 'TMS_TestVirtualUser',
+            'model' => 'TMS_VirtualUser',
             'parent' => 'TMS_Test',
             'parentKey' => 'test_id'
         ),
@@ -635,11 +635,11 @@ return array(
     ),
     array( // Delete
         'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users/(?P<modelId>\d+)$#',
-        'model' => 'TMS_Views_TestVirtualUser',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'deleteManyToOne',
         'http-method' => 'DELETE',
         'params' => array(
-            'model' => 'TMS_TestVirtualUser',
+            'model' => 'TMS_VirtualUser',
             'parent' => 'TMS_Test',
             'parentKey' => 'test_id'
         ),
