@@ -10,7 +10,7 @@ return array(
             'model' => 'TMS_TestRisk'
         )
     ),
-    // ************************************************************* Category
+    // ************************************************************* Risk
     array( // Read (list)
         'regex' => '#^/test-risks$#',
         'model' => 'TMS_Views_TestRisk',
