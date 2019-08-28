@@ -21,12 +21,16 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
             'start_dtime' => array(
                 'type' => 'Pluf_DB_Field_Datetime',
                 'is_null' => true,
+                'blank' => true,
+                'default' => '0000-00-00 00:00:00',
                 'editable' => false,
                 'readable' => true
             ),
             'end_dtime' => array(
                 'type' => 'Pluf_DB_Field_Datetime',
                 'is_null' => true,
+                'blank' => true,
+                'default' => '0000-00-00 00:00:00',
                 'editable' => false,
                 'readable' => true
             ),
@@ -44,7 +48,8 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
-                'relate_name' => 'attachments',
+                'graphql_name' => 'test',
+                'relate_name' => 'runs',
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true

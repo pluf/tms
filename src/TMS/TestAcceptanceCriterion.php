@@ -77,6 +77,8 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
                 'readable' => true
             )
         ));
+        // Make titla as nullable field
+        $this->_a['cols']['title']['is_null'] = true;
     }
 
 }

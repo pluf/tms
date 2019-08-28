@@ -2,74 +2,74 @@
 return array(
     // ************************************************************* Schema
     array(
-        'regex' => '#^/test-attachments/schema$#',
-        'model' => 'TMS_Views_TestAttachment',
+        'regex' => '#^/virtual-users/schema$#',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'getSchema',
         'http-method' => 'GET',
         'params' => array(
-            'model' => 'TMS_TestAttachment'
+            'model' => 'TMS_VirtualUser'
         )
     ),
-    // ************************************************************* Test Attachment
+    // ************************************************************* Virtual-User
     array( // Create
-        'regex' => '#^/test-attachments$#',
-        'model' => 'TMS_Views_TestAttachment',
+        'regex' => '#^/virtual-users$#',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'createObject',
         'http-method' => 'POST',
         'params' => array(
-            'model' => 'TMS_TestAttachment'
+            'model' => 'TMS_VirtualUser'
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::loginRequired'
         )
     ),
     array( // Read
-        'regex' => '#^/test-attachments/(?P<modelId>\d+)$#',
-        'model' => 'TMS_Views_TestAttachment',
+        'regex' => '#^/virtual-users/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'getObject',
         'http-method' => 'GET',
         'params' => array(
-            'model' => 'TMS_TestAttachment'
+            'model' => 'TMS_VirtualUser'
         ),
         'precond' => array(
             'User_Precondition::loginRequired'
         )
     ),
     array( // Read (list)
-        'regex' => '#^/test-attachments$#',
-        'model' => 'TMS_Views_TestAttachment',
+        'regex' => '#^/virtual-users$#',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'findObject',
         'http-method' => 'GET',
         'params' => array(
-            'model' => 'TMS_TestAttachment'
+            'model' => 'TMS_VirtualUser'
         ),
         'precond' => array(
             'User_Precondition::loginRequired'
         )
     ),
     array( // Delete
-        'regex' => '#^/test-attachments/(?P<modelId>\d+)$#',
-        'model' => 'TMS_Views_TestAttachment',
+        'regex' => '#^/virtual-users/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'deleteObject',
         'http-method' => 'DELETE',
         'params' => array(
-            'model' => 'TMS_TestAttachment',
+            'model' => 'TMS_VirtualUser',
             'permanently' => true
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::loginRequired'
         )
     ),
     array( // Update
-        'regex' => '#^/test-attachments/(?P<modelId>\d+)$#',
-        'model' => 'TMS_Views_TestAttachment',
+        'regex' => '#^/virtual-users/(?P<modelId>\d+)$#',
+        'model' => 'TMS_Views_VirtualUser',
         'method' => 'updateObject',
         'http-method' => 'POST',
         'params' => array(
-            'model' => 'TMS_TestAttachment'
+            'model' => 'TMS_VirtualUser'
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::loginRequired'
         )
     )
 );
