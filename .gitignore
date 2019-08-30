@@ -1,11 +1,21 @@
-composer.phar
+# Eclipse
+#.buildpath
+/.settings/
+.phpunit.result.cache
+.buildpath
+
+
+# Examples
+/site/tenant
+
+# Composer
 /vendor/
-/tests/clover.xml
-/tests/tmp/
-/tests/.gitignore
+composer.lock
+composer-setup.php
+composer.phar
 
-
-# Commit your application's lock file https://getcomposer.org/doc/01-basic-usage.md#commit-your-composer-lock-file-to-version-control
-# You may choose to ignore a library lock file http://getcomposer.org/doc/02-libraries.md#lock-file
-# composer.lock
+clover.xml
 /build/
+
+# netbeans
+/nbproject/private/
