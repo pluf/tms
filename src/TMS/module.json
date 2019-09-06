@@ -42,10 +42,37 @@
 				"code_name": "tester",
 				"description": "Do some tests."
 			}
+		],
+		"User_Group": [
+			{
+				"name": "Project Managers",
+				"description": "Group of the managers of the projects"
+			},
+			{
+				"name": "Test Managers",
+				"description": "Group of the managers of the tests."
+			},
+			{
+				"name": "Testers",
+				"description": "Group of the testers."
+			}
 		]
 	},
 	"init_assoc": {
-		
+		"User_Group|User_Role": [
+			{
+				"from": "name='Project Managers'",
+				"to": "code_name='project_manager'"
+			},
+			{
+				"from": "name='Test Managers'",
+				"to": "code_name='test_manager'"
+			},
+			{
+				"from": "name='Testers'",
+				"to": "code_name='tester'"
+			}
+		]
 	}
 }
 
