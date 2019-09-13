@@ -27,7 +27,7 @@ class TMS_ActivityOutput extends TMS_DocumentedModel
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
                 'graphql_name' => 'activity',
-                'relate_name' => 'logs',
+                'relate_name' => 'outputs',
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
