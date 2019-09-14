@@ -31,7 +31,6 @@ class TMS_Test extends TMS_DocumentedModel
                 'type' => 'Pluf_DB_Field_Varchar',
                 'size' => 128,
                 'is_null' => true,
-                'default' => 'jmx',
                 'editable' => true,
                 'readable' => true
             ),
