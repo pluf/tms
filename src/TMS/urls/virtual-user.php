@@ -14,13 +14,10 @@ return array(
     array( // Create
         'regex' => '#^/test-virtual-users$#',
         'model' => 'TMS_Views_VirtualUser',
-        'method' => 'createObject',
+        'method' => 'create',
         'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_VirtualUser'
-        ),
         'precond' => array(
-            'TMS_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Read
@@ -70,6 +67,27 @@ return array(
         ),
         'precond' => array(
             'TMS_Precondition::loginRequired'
+        )
+    ),
+    // --------------------------------------------------------------------
+    // Binary content of virtual user
+    // --------------------------------------------------------------------
+    array( // Read
+        'regex' => '#^/test-virtual-users/(?P<modelId>\d+)/content$#',
+        'model' => 'TMS_Views_VirtualUser',
+        'method' => 'download',
+        'http-method' => 'GET',
+        // Cache apram
+        'cacheable' => false,
+        'max_age' => 25000
+    ),
+    array( // Update
+        'regex' => '#^/test-virtual-users/(?P<modelId>\d+)/content$#',
+        'model' => 'TMS_Views_VirtualUser',
+        'method' => 'updateFile',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::testerRequired'
         )
     ),
     // ************************************************************* Scenario of Vritual User
