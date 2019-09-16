@@ -566,15 +566,10 @@ return array(
     array( // Create
         'regex' => '#^/tests/(?P<parentId>\d+)/virtual-users$#',
         'model' => 'TMS_Views_VirtualUser',
-        'method' => 'createManyToOne',
+        'method' => 'create',
         'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_VirtualUser',
-            'parent' => 'TMS_Test',
-            'parentKey' => 'test_id'
-        ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Read (list)

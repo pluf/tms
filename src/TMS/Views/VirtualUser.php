@@ -20,7 +20,7 @@ Pluf::loadFunction('Pluf_Shortcuts_GetObjectOr404');
 
 class TMS_Views_VirtualUser extends Pluf_Views
 {
-    
+
     /**
      * Creates new content
      *
@@ -33,8 +33,11 @@ class TMS_Views_VirtualUser extends Pluf_Views
     {
         // initial content data
         $extra = array(
-            'model' => new TMS_VirtualUser(),
+            'model' => new TMS_VirtualUser()
         );
+        $testId = array_key_exists('parentId', $match) ? $match['parentId'] : $request->REQUEST['test_id'];
+        $test = Pluf_Shortcuts_GetObjectOr404('TMS_Test', $testId);
+        $request->REQUEST['test_id'] = $test->id;
         // Create content and get its ID
         $form = new TMS_Form_ModelBinaryCreate($request->REQUEST, $extra);
         // Upload content file and extract information about it (by updating
@@ -50,7 +53,7 @@ class TMS_Views_VirtualUser extends Pluf_Views
         }
         return $item;
     }
-    
+
     /**
      * Download a content
      *
@@ -67,7 +70,7 @@ class TMS_Views_VirtualUser extends Pluf_Views
         $response->headers['Content-Disposition'] = sprintf('attachment; filename="%s"', $item->file_name);
         return $response;
     }
-    
+
     /**
      * Upload a file as content
      *
@@ -96,5 +99,4 @@ class TMS_Views_VirtualUser extends Pluf_Views
         }
         return $item;
     }
-    
 }

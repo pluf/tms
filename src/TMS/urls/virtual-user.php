@@ -54,7 +54,7 @@ return array(
             'permanently' => true
         ),
         'precond' => array(
-            'TMS_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Update
@@ -66,14 +66,14 @@ return array(
             'model' => 'TMS_VirtualUser'
         ),
         'precond' => array(
-            'TMS_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     // --------------------------------------------------------------------
     // Binary content of virtual user
     // --------------------------------------------------------------------
     array( // Read
-        'regex' => '#^/test-virtual-users/(?P<modelId>\d+)/content$#',
+        'regex' => '#^/test-virtual-users/(?P<modelId>\d+)/design$#',
         'model' => 'TMS_Views_VirtualUser',
         'method' => 'download',
         'http-method' => 'GET',
@@ -82,7 +82,7 @@ return array(
         'max_age' => 25000
     ),
     array( // Update
-        'regex' => '#^/test-virtual-users/(?P<modelId>\d+)/content$#',
+        'regex' => '#^/test-virtual-users/(?P<modelId>\d+)/design$#',
         'model' => 'TMS_Views_VirtualUser',
         'method' => 'updateFile',
         'http-method' => 'POST',
