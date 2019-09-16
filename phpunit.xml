@@ -12,6 +12,7 @@
 			<directory>tests/RestRequirement/</directory>
 			<directory>tests/RestTestRisk/</directory>
 			<directory>tests/RestTestVariable/</directory>
+			<directory>tests/RestScenario/</directory>
 		</testsuite>
 	</testsuites>
 
