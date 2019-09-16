@@ -14,11 +14,8 @@ return array(
     array( // Create
         'regex' => '#^/scenarios$#',
         'model' => 'TMS_Views_Scenario',
-        'method' => 'createObject',
+        'method' => 'create',
         'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_Scenario'
-        ),
         'precond' => array(
             'TMS_Precondition::testerRequired'
         )
@@ -80,6 +77,27 @@ return array(
         'params' => array(
             'model' => 'TMS_Scenario'
         ),
+        'precond' => array(
+            'TMS_Precondition::testerRequired'
+        )
+    ),
+    // --------------------------------------------------------------------
+    // Binary content of scenario
+    // --------------------------------------------------------------------
+    array( // Read
+        'regex' => '#^/scenarios/(?P<modelId>\d+)/content$#',
+        'model' => 'TMS_Views_Scenario',
+        'method' => 'download',
+        'http-method' => 'GET',
+        // Cache apram
+        'cacheable' => false,
+        'max_age' => 25000
+    ),
+    array( // Update
+        'regex' => '#^/scenarios/(?P<modelId>\d+)/content$#',
+        'model' => 'TMS_Views_Scenario',
+        'method' => 'updateFile',
+        'http-method' => 'POST',
         'precond' => array(
             'TMS_Precondition::testerRequired'
         )
