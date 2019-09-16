@@ -141,12 +141,12 @@ class TMS_ModelBinary extends Pluf_Model
     }
 
     /**
-     * مسیر کامل محتوی را تعیین می‌کند.
+     * مسیر کامل محتوی را تعیین می‌کند. این مسیر حاوی اسم فایل هم هست.
      *
      * @return string
      */
     public function getAbsloutPath()
     {
-        return $this->file_path . '/' . $this->id;
+        return $this->file_path;
     }
 }
