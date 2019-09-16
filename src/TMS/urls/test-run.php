@@ -26,11 +26,8 @@ return array(
     array( // Create
         'regex' => '#^/test-runs$#',
         'model' => 'TMS_Views_TestRun',
-        'method' => 'createObject',
+        'method' => 'create',
         'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_TestRun'
-        ),
         'precond' => array(
             'User_Precondition::loginRequired'
         )
@@ -83,5 +80,26 @@ return array(
         'precond' => array(
             'User_Precondition::loginRequired'
         )
-    )
+    ),
+    // --------------------------------------------------------------------
+    // Binary content of virtual user
+    // --------------------------------------------------------------------
+    array( // Read
+        'regex' => '#^/test-runs/(?P<modelId>\d+)/content$#',
+        'model' => 'TMS_Views_TestRun',
+        'method' => 'download',
+        'http-method' => 'GET',
+        // Cache apram
+        'cacheable' => false,
+        'max_age' => 25000
+    ),
+    array( // Update
+        'regex' => '#^/test-runs/(?P<modelId>\d+)/content$#',
+        'model' => 'TMS_Views_TestRun',
+        'method' => 'updateFile',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::testerRequired'
+        )
+    ),
 );
