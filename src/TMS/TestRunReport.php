@@ -32,11 +32,12 @@ class TMS_TestRunReport extends TMS_DocumentedModelBinary
             /*
              * Relations
              */
-            'test_id' => array(
+            'test_run_id' => array(
                 'type' => 'Pluf_DB_Field_Foreignkey',
-                'model' => 'TMS_Test',
-                'name' => 'test',
-                'relate_name' => 'attachments',
+                'model' => 'TMS_TestRun',
+                'name' => 'test_run',
+                'graphql_name' => 'test_run',
+                'relate_name' => 'reports',
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
@@ -55,6 +56,7 @@ class TMS_TestRunReport extends TMS_DocumentedModelBinary
         if ($this->id == '') {
             $this->creation_dtime = gmdate('Y-m-d H:i:s');
         }
+        parent::preSave($create);
     }
 
 }
