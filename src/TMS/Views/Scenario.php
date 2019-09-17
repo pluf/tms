@@ -35,6 +35,9 @@ class TMS_Views_Scenario extends Pluf_Views
         $extra = array(
             'model' => new TMS_Scenario(),
         );
+        $vuId = array_key_exists('parentId', $match) ? $match['parentId'] : $request->REQUEST['virtual_user_id'];
+        $vu = Pluf_Shortcuts_GetObjectOr404('TMS_VirtualUser', $vuId);
+        $request->REQUEST['virtual_user_id'] = $vu->id;
         // Create content and get its ID
         $form = new TMS_Form_ModelBinaryCreate($request->REQUEST, $extra);
         // Upload content file and extract information about it (by updating

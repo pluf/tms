@@ -103,15 +103,10 @@ return array(
     array( // Create
         'regex' => '#^/test-virtual-users/(?P<parentId>\d+)/scenarios$#',
         'model' => 'TMS_Views_Scenario',
-        'method' => 'createManyToOne',
+        'method' => 'create',
         'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_Scenario',
-            'parent' => 'TMS_VirtualUser',
-            'parentKey' => 'virtual_user_id'
-        ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Read (list)

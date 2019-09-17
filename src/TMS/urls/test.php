@@ -749,15 +749,10 @@ return array(
     array( // Create
         'regex' => '#^/tests/(?P<parentId>\d+)/attachments$#',
         'model' => 'TMS_Views_TestAttachment',
-        'method' => 'createManyToOne',
+        'method' => 'create',
         'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_TestAttachment',
-            'parent' => 'TMS_Test',
-            'parentKey' => 'test_id'
-        ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Read (list)
