@@ -23,6 +23,15 @@
 		"TMS_ActivityOutput"
 	],
 	"init": {
+		"User_Account": [
+			{
+				"login": "manager",
+				"first_name": "System",
+				"last_name": "Manager",
+				"password": "manager",
+				"is_active": "true"
+			}
+		],
 		"User_Role": [
 			{
 				"name": "TMS Project Manager",
@@ -71,6 +80,20 @@
 			{
 				"from": "name='Testers'",
 				"to": "code_name='tester'"
+			}
+		],
+		"User_Group|User_Account": [
+			{
+				"from": "name='Project Managers'",
+				"to": "login='manager'"
+			},
+			{
+				"from": "name='Test Managers'",
+				"to": "login='manager'"
+			},
+			{
+				"from": "name='Testers'",
+				"to": "login='manager'"
 			}
 		]
 	}

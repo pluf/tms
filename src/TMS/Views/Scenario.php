@@ -18,26 +18,26 @@
  */
 Pluf::loadFunction('Pluf_Shortcuts_GetObjectOr404');
 
-class TMS_Views_TestRun extends Pluf_Views
+class TMS_Views_Scenario extends Pluf_Views
 {
-    
+
     /**
      * Creates new content
      *
      * @param Pluf_HTTP_Request $request
      * @param array $match
      * @throws Pluf_Exception
-     * @return TMS_TestRun
+     * @return TMS_Scenario
      */
     public function create($request, $match)
     {
         // initial content data
         $extra = array(
-            'model' => new TMS_TestRun()
+            'model' => new TMS_Scenario(),
         );
-        $testId = array_key_exists('parentId', $match) ? $match['parentId'] : $request->REQUEST['test_id'];
-        $test = Pluf_Shortcuts_GetObjectOr404('TMS_Test', $testId);
-        $request->REQUEST['test_id'] = $test->id;
+        $vuId = array_key_exists('parentId', $match) ? $match['parentId'] : $request->REQUEST['virtual_user_id'];
+        $vu = Pluf_Shortcuts_GetObjectOr404('TMS_VirtualUser', $vuId);
+        $request->REQUEST['virtual_user_id'] = $vu->id;
         // Create content and get its ID
         $form = new TMS_Form_ModelBinaryCreate($request->REQUEST, $extra);
         // Upload content file and extract information about it (by updating
@@ -53,7 +53,7 @@ class TMS_Views_TestRun extends Pluf_Views
         }
         return $item;
     }
-    
+
     /**
      * Download a content
      *
@@ -64,24 +64,24 @@ class TMS_Views_TestRun extends Pluf_Views
     public function download($request, $match)
     {
         // GET data
-        $item = Pluf_Shortcuts_GetObjectOr404('TMS_TestRun', $match['modelId']);
+        $item = Pluf_Shortcuts_GetObjectOr404('TMS_Scenario', $match['modelId']);
         // Do
         $response = new Pluf_HTTP_Response_File($item->getAbsloutPath(), $item->mime_type);
         $response->headers['Content-Disposition'] = sprintf('attachment; filename="%s"', $item->file_name);
         return $response;
     }
-    
+
     /**
      * Upload a file as content
      *
      * @param Pluf_HTTP_Request $request
      * @param array $match
-     * @return TMS_TestRun
+     * @return TMS_Scenario
      */
     public function updateFile($request, $match)
     {
         // Get data
-        $item = Pluf_Shortcuts_GetObjectOr404('TMS_TestRun', $match['modelId']);
+        $item = Pluf_Shortcuts_GetObjectOr404('TMS_Scenario', $match['modelId']);
         // Do action
         if (array_key_exists('file', $request->FILES)) {
             $extra = array(
@@ -99,4 +99,6 @@ class TMS_Views_TestRun extends Pluf_Views
         }
         return $item;
     }
+    
 }
+

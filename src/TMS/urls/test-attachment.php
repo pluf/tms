@@ -14,13 +14,10 @@ return array(
     array( // Create
         'regex' => '#^/test-attachments$#',
         'model' => 'TMS_Views_TestAttachment',
-        'method' => 'createObject',
+        'method' => 'create',
         'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_TestAttachment'
-        ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Read
@@ -71,5 +68,26 @@ return array(
         'precond' => array(
             'TMS_Precondition::projectManagerRequired'
         )
-    )
+    ),
+    // --------------------------------------------------------------------
+    // Binary content of test-attachment
+    // --------------------------------------------------------------------
+    array( // Read
+        'regex' => '#^/test-attachments/(?P<modelId>\d+)/content$#',
+        'model' => 'TMS_Views_TestAttachment',
+        'method' => 'download',
+        'http-method' => 'GET',
+        // Cache apram
+        'cacheable' => false,
+        'max_age' => 25000
+    ),
+    array( // Update
+        'regex' => '#^/test-attachments/(?P<modelId>\d+)/content$#',
+        'model' => 'TMS_Views_TestAttachment',
+        'method' => 'updateFile',
+        'http-method' => 'POST',
+        'precond' => array(
+            'TMS_Precondition::testerRequired'
+        )
+    ),
 );

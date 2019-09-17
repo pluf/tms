@@ -53,8 +53,6 @@ class TMS_ModelBinary extends Pluf_Model
                 'type' => 'Pluf_DB_Field_Varchar',
                 'is_null' => false,
                 'size' => 250,
-                'verbose' => 'File path',
-                'help_text' => 'Content file path',
                 'editable' => false,
                 'readable' => false
             ),
@@ -63,23 +61,16 @@ class TMS_ModelBinary extends Pluf_Model
                 'is_null' => false,
                 'size' => 250,
                 'default' => 'unknown',
-                'verbose' => 'file name',
-                'help_text' => 'Content file name',
                 'editable' => false
             ),
             'file_size' => array(
                 'type' => 'Pluf_DB_Field_Integer',
                 'is_null' => false,
-                'default' => 'no title',
-                'verbose' => 'file size',
-                'help_text' => 'content file size',
                 'editable' => false
             ),
             'modif_dtime' => array(
                 'type' => 'Pluf_DB_Field_Datetime',
                 'blank' => true,
-                'verbose' => 'modification',
-                'help_text' => 'content modification time',
                 'editable' => false
             )
         );
@@ -150,12 +141,12 @@ class TMS_ModelBinary extends Pluf_Model
     }
 
     /**
-     * مسیر کامل محتوی را تعیین می‌کند.
+     * مسیر کامل محتوی را تعیین می‌کند. این مسیر حاوی اسم فایل هم هست.
      *
      * @return string
      */
     public function getAbsloutPath()
     {
-        return $this->file_path . '/' . $this->id;
+        return $this->file_path;
     }
 }

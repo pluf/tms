@@ -33,6 +33,7 @@ class TMS_Scenario extends TMS_DocumentedModelBinary
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_VirtualUser',
                 'name' => 'virtual_user',
+                'graphql_name' => 'virtual_user',
                 'relate_name' => 'scenarios',
                 'is_null' => false,
                 'editable' => true,
