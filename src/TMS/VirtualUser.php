@@ -32,7 +32,8 @@ class TMS_VirtualUser extends TMS_DocumentedModelBinary
                 'type' => 'Pluf_DB_Field_Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
-                'relate_name' => 'attachments',
+                'graphql_name' => 'test',
+                'relate_name' => 'virtual_users',
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
