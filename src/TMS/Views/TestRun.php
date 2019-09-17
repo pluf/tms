@@ -45,12 +45,18 @@ class TMS_Views_TestRun extends Pluf_Views
         $extra['model'] = $form->save();
         $form = new TMS_Form_ModelBinaryUpdate(array_merge($request->REQUEST, $request->FILES), $extra);
         try {
-            $item = $form->save();
+            $item = $form->save(false);
         } catch (Pluf_Exception $e) {
             $item = $extra['model'];
             $item->delete();
             throw $e;
         }
+        // Create Pipline to run the test
+        $pipeline = new Pluf\Jms\Pipeline();
+        // TODO: hadi, provide informations for pipline
+        $pipeline->create();
+        $item->pipeline_id = $pipeline;
+        $item->update();
         return $item;
     }
     

@@ -54,16 +54,16 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
                 'editable' => true,
                 'readable' => true
             ),
-//             'pipeline_id' => array(
-//                 'type' => 'Pluf_DB_Field_Foreignkey',
-//                 'model' => 'JMS_Pipeline',
-//                 'name' => 'pipeline',
-//                 'relate_name' => 'runs',
-//                 'is_null' => false,
-//                 'editable' => true,
-//                 'readable' => true
-//             )
+            'pipeline_id' => array(
+                'type' => 'Pluf_DB_Field_Foreignkey',
+                'model' => 'Pluf\Jms\Pipeline',
+                'name' => 'pipeline',
+                'graphql_name' => 'pipeline',
+                'relate_name' => 'runs',
+                'is_null' => false,
+                'editable' => false,
+                'readable' => true
+            )
         ));
     }
-
 }
