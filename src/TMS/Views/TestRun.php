@@ -20,7 +20,7 @@ Pluf::loadFunction('Pluf_Shortcuts_GetObjectOr404');
 
 class TMS_Views_TestRun extends Pluf_Views
 {
-    
+
     /**
      * Creates new content
      *
@@ -52,14 +52,14 @@ class TMS_Views_TestRun extends Pluf_Views
             throw $e;
         }
         // Create Pipline to run the test
-        $pipeline = new Pluf\Jms\Pipeline();
-        // TODO: hadi, provide informations for pipline
-        $pipeline->create();
-        $item->pipeline_id = $pipeline;
-        $item->update();
+        // $pipeline = new Pluf\Jms\Pipeline();
+        // $item->pipeline_id = $pipeline;
+        // $item->update();
+        // provide informations for pipline
+        TMS_PiplineBuilder::createPipline($item);
         return $item;
     }
-    
+
     /**
      * Download a content
      *
@@ -76,7 +76,7 @@ class TMS_Views_TestRun extends Pluf_Views
         $response->headers['Content-Disposition'] = sprintf('attachment; filename="%s"', $item->file_name);
         return $response;
     }
-    
+
     /**
      * Upload a file as content
      *
