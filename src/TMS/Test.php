@@ -137,4 +137,8 @@ class TMS_Test extends TMS_DocumentedModel
         return $this->get_responsible()->getId() == $user->getId();
     }
 
+    function isDesigned(){
+        return isset($this->design) && !empty($this->design);
+    }
+    
 }

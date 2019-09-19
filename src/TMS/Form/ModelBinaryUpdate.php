@@ -53,7 +53,7 @@ class TMS_Form_ModelBinaryUpdate extends Pluf_Form_Model
      */
     function save($commit = true)
     {
-        $model = parent::save(false);
+        $model = parent::save($commit);
         // update the content
         if (array_key_exists('file', $this->cleaned_data)) {
             // Extract information of file

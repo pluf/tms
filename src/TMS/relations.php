@@ -55,11 +55,11 @@ return array(
             // 'JMS_Pipeline'
         )
     ),
-    // 'TMS_TestRunReport' => array(
-    // 'relate_to' => array(
-    // 'TMS_Test'
-    // )
-    // ),
+    'TMS_TestRunReport' => array(
+        'relate_to' => array(
+            'TMS_TestRun'
+        )
+    ),
     'TMS_TestHistory' => array(
         'relate_to' => array(
             'User_Account',
@@ -72,16 +72,16 @@ return array(
             'TMS_Test'
         )
     ),
-    // 'TMS_VirtualUser' => array(
-    // 'relate_to' => array(
-    // 'TMS_Test'
-    // )
-    // ),
-    // 'TMS_Scenario' => array(
-    // 'relate_to' => array(
-    // 'TMS_VirtualUser'
-    // )
-    // ),
+    'TMS_VirtualUser' => array(
+        'relate_to' => array(
+            'TMS_Test'
+        )
+    ),
+    'TMS_Scenario' => array(
+        'relate_to' => array(
+            'TMS_VirtualUser'
+        )
+    ),
     // 'TMS_Activity' => array(
     // 'relate_to' => array(
     // 'User_Account',

@@ -18,7 +18,7 @@
  */
 Pluf::loadFunction('Pluf_Shortcuts_GetObjectOr404');
 
-class TMS_Views_TestRun extends Pluf_Views
+class TMS_Views_TestRunReport extends Pluf_Views
 {
 
     /**
@@ -27,17 +27,17 @@ class TMS_Views_TestRun extends Pluf_Views
      * @param Pluf_HTTP_Request $request
      * @param array $match
      * @throws Pluf_Exception
-     * @return TMS_TestRun
+     * @return TMS_TestRunReport
      */
     public function create($request, $match)
     {
         // initial content data
         $extra = array(
-            'model' => new TMS_TestRun()
+            'model' => new TMS_TestRunReport()
         );
-        $testId = array_key_exists('parentId', $match) ? $match['parentId'] : $request->REQUEST['test_id'];
-        $test = Pluf_Shortcuts_GetObjectOr404('TMS_Test', $testId);
-        $request->REQUEST['test_id'] = $test->id;
+        $runId = array_key_exists('parentId', $match) ? $match['parentId'] : $request->REQUEST['test_id'];
+        $testRun = Pluf_Shortcuts_GetObjectOr404('TMS_TestRun', $runId);
+        $request->REQUEST['test_run_id'] = $testRun->id;
         // Create content and get its ID
         $form = new TMS_Form_ModelBinaryCreate($request->REQUEST, $extra);
         // Upload content file and extract information about it (by updating
@@ -45,18 +45,12 @@ class TMS_Views_TestRun extends Pluf_Views
         $extra['model'] = $form->save();
         $form = new TMS_Form_ModelBinaryUpdate(array_merge($request->REQUEST, $request->FILES), $extra);
         try {
-            $item = $form->save(false);
+            $item = $form->save();
         } catch (Pluf_Exception $e) {
             $item = $extra['model'];
             $item->delete();
             throw $e;
         }
-        // Create Pipline to run the test
-        // $pipeline = new Pluf\Jms\Pipeline();
-        // $item->pipeline_id = $pipeline;
-        // $item->update();
-        // provide informations for pipline
-        TMS_PiplineBuilder::createPipline($item);
         return $item;
     }
 
@@ -70,7 +64,7 @@ class TMS_Views_TestRun extends Pluf_Views
     public function download($request, $match)
     {
         // GET data
-        $item = Pluf_Shortcuts_GetObjectOr404('TMS_TestRun', $match['modelId']);
+        $item = Pluf_Shortcuts_GetObjectOr404('TMS_TestRunReport', $match['modelId']);
         // Do
         $response = new Pluf_HTTP_Response_File($item->getAbsloutPath(), $item->mime_type);
         $response->headers['Content-Disposition'] = sprintf('attachment; filename="%s"', $item->file_name);
@@ -82,12 +76,12 @@ class TMS_Views_TestRun extends Pluf_Views
      *
      * @param Pluf_HTTP_Request $request
      * @param array $match
-     * @return TMS_TestRun
+     * @return TMS_TestRunReport
      */
     public function updateFile($request, $match)
     {
         // Get data
-        $item = Pluf_Shortcuts_GetObjectOr404('TMS_TestRun', $match['modelId']);
+        $item = Pluf_Shortcuts_GetObjectOr404('TMS_TestRunReport', $match['modelId']);
         // Do action
         if (array_key_exists('file', $request->FILES)) {
             $extra = array(
