@@ -44,14 +44,14 @@ class TMS_PiplineBuilder
 
         // add to the pipeline
         $job->pipeline_id = $pipeline;
-        $job->create();
+        $job->update();
 
         self::attachVariables($job, $test, $testRun);
         self::attachCommands($job, $test);
         self::attachResources($job, $test);
         self::attachLogger($job, $testRun);
 
-        $job->status = Pluf\Jms\JobState::init;
+        $job->status = Pluf\Jms\JobState::wait;
         $job->update();
         return $job;
     }
@@ -102,7 +102,7 @@ class TMS_PiplineBuilder
             // add template
             $command .= '--template templates/gazmeh.jmx ';
             // add virtual users file
-            $vuList = $test->get_vitual_users_list();
+            $vuList = $test->get_virtual_users_list();
             foreach ($vuList as $vu) {
                 $command .= sprintf('--virtual-user vu_file_name_%d ', $vu->id);
             }
@@ -180,7 +180,7 @@ class TMS_PiplineBuilder
      */
     private static function isGazmehDesign($test)
     {
-        return $test->isDesigned() && self::startsWith($test->design, 'gazmeh');
+        return self::startsWith($test->design, 'gazmeh');
     }
 
     /**
