@@ -152,9 +152,8 @@ class TMS_PiplineBuilder
         foreach ($vuList as $vu) {
             $form = new Pluf_Form_ModelBinaryCreate(array('job_id' => $job->id), array('model' => new Pluf\Jms\Attachment()));
             $jmsAttach = $form->save();
-            $jmsAttach->create();
             Pluf_FileUtil::copyFile($vu->getAbsloutPath(), $jmsAttach->getAbsloutPath());
-            $jmsAttach->file_name = $vu->file_name;
+            $jmsAttach->file_name = sprintf('vu_file_name_%d', $vu->id);
             $jmsAttach->mime_type = $vu->mime_type;
             $jmsAttach->file_size = $vu->file_size;
             $jmsAttach->update();
