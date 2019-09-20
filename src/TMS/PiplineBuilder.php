@@ -15,7 +15,7 @@ class TMS_PiplineBuilder
         $pipeline->create();
 
         // Set pipeline of test-run
-        $testRun->pipeline = $pipeline;
+        $testRun->pipeline_id = $pipeline;
         $testRun->update();
 
         // Add Job
@@ -37,11 +37,6 @@ class TMS_PiplineBuilder
             'description' => 'This is a job to run a load test',
             'status' => Pluf\Jms\JobState::init
         );
-        // $job = new Pluf\Jms\Job();
-        // $job->image = 'gazmeh';
-        // $job->name = sprintf('g.%d.%d.%d', $test->project_id, $test->id, $testRun->id);
-        // $job->description = 'This is a job to run a load test';
-        // $job->status = Pluf\Jms\JobState::init;
         $form = new Pluf_Form_ModelBinaryCreate($data, array(
             'model' => new Pluf\Jms\Job()
         ));
@@ -146,8 +141,6 @@ class TMS_PiplineBuilder
         foreach ($attachList as $attach) {
             $form = new Pluf_Form_ModelBinaryCreate(array('job_id' => $job->id), array('model' => new Pluf\Jms\Attachment()));
             $jmsAttach = $form->save();
-//             $jmsAttach->extract = false;
-//             $jmsAttach->create();
             Pluf_FileUtil::copyFile($attach->getAbsloutPath(), $jmsAttach->getAbsloutPath());
             $jmsAttach->file_name = $attach->file_name;
             $jmsAttach->mime_type = $attach->mime_type;
@@ -159,8 +152,6 @@ class TMS_PiplineBuilder
         foreach ($vuList as $vu) {
             $form = new Pluf_Form_ModelBinaryCreate(array('job_id' => $job->id), array('model' => new Pluf\Jms\Attachment()));
             $jmsAttach = $form->save();
-//             $jmsAttach->extract = false;
-//             $jmsAttach->create();
             $jmsAttach->create();
             Pluf_FileUtil::copyFile($vu->getAbsloutPath(), $jmsAttach->getAbsloutPath());
             $jmsAttach->file_name = $vu->file_name;

@@ -12,15 +12,15 @@ class TMS_ScriptBuilder
 
     public function addComment($comment)
     {
-        $str = str_replace('\n', '\n#', $comment);
-        $this->addCommand('#' . $str);
+        $str = str_replace("\n", "\n#", $comment);
+        $this->addCommand('# ' . $str);
     }
 
     public function buildFile($file)
     {
         $fp = fopen($file, 'a');//opens file in append mode
         foreach($this->lines as $line){
-            fwrite($fp, $line . '\n');
+            fwrite($fp, $line . "\n");
         }
         fclose($fp);
     }
@@ -28,7 +28,7 @@ class TMS_ScriptBuilder
     public function buildString(){
         $string = '';
         foreach($this->lines as $line){
-            $string .= $line . '\n';
+            $string .= $line . "\n";
         }
         return $string;
     }
