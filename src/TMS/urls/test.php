@@ -655,13 +655,8 @@ return array(
     array( // Create
         'regex' => '#^/tests/(?P<parentId>\d+)/runs$#',
         'model' => 'TMS_Views_TestRun',
-        'method' => 'createManyToOne',
+        'method' => 'create',
         'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_TestRun',
-            'parent' => 'TMS_Test',
-            'parentKey' => 'test_id'
-        ),
         'precond' => array(
             'User_Precondition::loginRequired'
         )

@@ -22,7 +22,7 @@ class TMS_PiplineBuilder
         self::addGazmehJob($pipeline, $testRun, $test);
 
         // Run pipeline
-        $pipeline->status = Pluf\Jms\PipelineState::STATUS_WAIT;
+        $pipeline->status = Pluf\Jms\PipelineState::wait;
         $pipeline->update();
         $pipeline->run();
 
@@ -31,11 +31,21 @@ class TMS_PiplineBuilder
 
     private static function addGazmehJob($pipeline, $testRun, $test)
     {
-        $job = new Pluf\Jms\Job();
-        $job->image = 'gazmeh';
-        $job->name = sprintf('g.%d.%d.%d', $test->project_id, $test->id, $testRun->id);
-        $job->description = 'This is a job to run a load test';
-        $job->status = Pluf\Jms\JobState::STATUS_INIT;
+        $data = array(
+            'image' => 'gazmeh',
+            'name' => sprintf('g.%d.%d.%d', $test->project_id, $test->id, $testRun->id),
+            'description' => 'This is a job to run a load test',
+            'status' => Pluf\Jms\JobState::init
+        );
+        // $job = new Pluf\Jms\Job();
+        // $job->image = 'gazmeh';
+        // $job->name = sprintf('g.%d.%d.%d', $test->project_id, $test->id, $testRun->id);
+        // $job->description = 'This is a job to run a load test';
+        // $job->status = Pluf\Jms\JobState::init;
+        $form = new Pluf_Form_ModelBinaryCreate($data, array(
+            'model' => new Pluf\Jms\Job()
+        ));
+        $job = $form->save();
 
         // add to the pipeline
         $job->pipeline_id = $pipeline;
@@ -46,7 +56,7 @@ class TMS_PiplineBuilder
         self::attachResources($job, $test);
         self::attachLogger($job, $testRun);
 
-        $job->status = Pluf\Jms\JobState::STATUS_WAIT;
+        $job->status = Pluf\Jms\JobState::init;
         $job->update();
         return $job;
     }
@@ -72,10 +82,10 @@ class TMS_PiplineBuilder
             $attr->value = 'config.jmx';
             $attr->job_id = $job;
             $attr->create();
-        }else{
+        } else {
             $variables = $test->get_variables_list();
             foreach ($variables as $var) {
-                if($var->key === 'test.main.jmx'){
+                if ($var->key === 'test.main.jmx') {
                     // test_main_jmx
                     $attr = new Pluf\Jms\Attribute();
                     $attr->name = 'test_main_jmx';
@@ -86,12 +96,13 @@ class TMS_PiplineBuilder
             }
         }
     }
-    
-    private static function attachCommands($job, $test){
+
+    private static function attachCommands($job, $test)
+    {
         $builder = new TMS_ScriptBuilder();
         $command = '';
         // Create JMX file
-        if(self::isGazmehDesign($test)){
+        if (self::isGazmehDesign($test)) {
             $command .= 'gazmeh-converter --output config.jmx ';
             // add template
             $command .= '--template templates/gazmeh.jmx ';
@@ -107,12 +118,12 @@ class TMS_PiplineBuilder
             }
             $command .= '--variable "run.id=${run_id}" ';
             $command .= '--variable "test.name=${test_name}" ';
-            
+
             $builder->addComment('Convert desinge into a JMX file');
             $builder->addCommand($command);
             $builder->addComment('Run jmeter');
             $builder->addCommand('jmeter -n -t ${test_main_jmx} -l jmeter.log ');
-        }else{
+        } else {
             // create jmeter command
             $command .= 'jmeter -n -t ${test_main_jmx} -l jmeter.log ';
             // add variables
@@ -120,22 +131,23 @@ class TMS_PiplineBuilder
             foreach ($varList as $var) {
                 $command .= sprintf('-J%s="%s" ', $var->key, $var->value);
             }
-            $command.= '-J%s=${run_id} ';
+            $command .= '-J%s=${run_id} ';
             $builder->addComment('Run jmeter');
             $builder->addCommand($command);
         }
         $content = $builder->buildString();
         Pluf\Jms\JobUtils::setContent($job, $content);
     }
-    
-    private static function attachResources($job, $test){
+
+    private static function attachResources($job, $test)
+    {
         // Attachments
         $attachList = $test->get_attachments_list();
-        foreach ($attachList as $attach){
-            $jmsAttach = new Pluf\Jms\Attachment();
-            $jmsAttach->extract = false;
-            $jmsAttach->job_id = $job;
-            $jmsAttach->create();
+        foreach ($attachList as $attach) {
+            $form = new Pluf_Form_ModelBinaryCreate(array('job_id' => $job->id), array('model' => new Pluf\Jms\Attachment()));
+            $jmsAttach = $form->save();
+//             $jmsAttach->extract = false;
+//             $jmsAttach->create();
             Pluf_FileUtil::copyFile($attach->getAbsloutPath(), $jmsAttach->getAbsloutPath());
             $jmsAttach->file_name = $attach->file_name;
             $jmsAttach->mime_type = $attach->mime_type;
@@ -144,10 +156,11 @@ class TMS_PiplineBuilder
         }
         // Virtual Users
         $vuList = $test->get_virtual_users_list();
-        foreach ($vuList as $vu){
-            $jmsAttach = new Pluf\Jms\Attachment();
-            $jmsAttach->extract = false;
-            $jmsAttach->job_id = $job;
+        foreach ($vuList as $vu) {
+            $form = new Pluf_Form_ModelBinaryCreate(array('job_id' => $job->id), array('model' => new Pluf\Jms\Attachment()));
+            $jmsAttach = $form->save();
+//             $jmsAttach->extract = false;
+//             $jmsAttach->create();
             $jmsAttach->create();
             Pluf_FileUtil::copyFile($vu->getAbsloutPath(), $jmsAttach->getAbsloutPath());
             $jmsAttach->file_name = $vu->file_name;
@@ -156,34 +169,39 @@ class TMS_PiplineBuilder
             $jmsAttach->update();
         }
     }
-    
-    private static function attachLogger($job, $testRun){
+
+    private static function attachLogger($job, $testRun)
+    {
         $loggerUrl = 'http://influxdb:8086';
-        $jobLogger = new Pluf\Jms\Logger();
+        $jobLogger = new Pluf\Jms\JobLogger();
         $jobLogger->url = $loggerUrl . '/write?precision=ms&db=test_run_' . $testRun->id;
         $jobLogger->period = 'PT5s';
         $jobLogger->template = 'logs,logger=\"{{logger}}\",level={{level}} message=\"{{message}}\" {{timestamp}}';
         $jobLogger->job_id = $job;
         $jobLogger->create();
     }
-    
+
     /**
      * Checks if the `design` field of the $test is not empty and is started with 'gazmeh'.
+     *
      * @param TMS_Test $test
      * @return boolean
      */
-    private static function isGazmehDesign($test){
+    private static function isGazmehDesign($test)
+    {
         return $test->isDesigned() && self::startsWith($test->design, 'gazmeh');
     }
-    
+
     /**
-     * 
+     *
      * Checks if given $str starts with given $query
+     *
      * @param string $str
      * @param string $query
      * @return boolean
      */
-    private static function startsWith($str, $query){
+    private static function startsWith($str, $query)
+    {
         return substr($str, 0, strlen($query)) === $query;
     }
 }

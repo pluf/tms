@@ -7,7 +7,7 @@ class TMS_ScriptBuilder
 
     public function addCommand($command)
     {
-        $this->lines->push($command);
+        array_push($this->lines,$command);
     }
 
     public function addComment($comment)
