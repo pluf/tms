@@ -39,11 +39,11 @@ class TMS_Views_TestRunReport extends Pluf_Views
         $testRun = Pluf_Shortcuts_GetObjectOr404('TMS_TestRun', $runId);
         $request->REQUEST['test_run_id'] = $testRun->id;
         // Create content and get its ID
-        $form = new TMS_Form_ModelBinaryCreate($request->REQUEST, $extra);
+        $form = new Pluf_Form_ModelBinaryCreate($request->REQUEST, $extra);
         // Upload content file and extract information about it (by updating
         // content)
         $extra['model'] = $form->save();
-        $form = new TMS_Form_ModelBinaryUpdate(array_merge($request->REQUEST, $request->FILES), $extra);
+        $form = new Pluf_Form_ModelBinaryUpdate(array_merge($request->REQUEST, $request->FILES), $extra);
         try {
             $item = $form->save();
         } catch (Pluf_Exception $e) {
@@ -87,7 +87,7 @@ class TMS_Views_TestRunReport extends Pluf_Views
             $extra = array(
                 'model' => $item
             );
-            $form = new TMS_Form_ModelBinaryUpdate(array_merge($request->REQUEST, $request->FILES), $extra);
+            $form = new Pluf_Form_ModelBinaryUpdate(array_merge($request->REQUEST, $request->FILES), $extra);
             $item = $form->save();
             return $item;
         } else {
