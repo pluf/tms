@@ -19,7 +19,8 @@
 		"pluf/core" : "5.11.x",
 		"pluf/user" : "5.11.x",
 		"pluf/monitor" : "5.11.x",
-		"pluf/jms" : "5.11.x"
+		"pluf/jms" : "5.11.x",
+		"influxdb/influxdb-php" : "~1.15"
 	},
 	"require-dev" : {
 		"pluf/test" : "5.11.x",
