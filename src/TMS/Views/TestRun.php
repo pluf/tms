@@ -105,4 +105,55 @@ class TMS_Views_TestRun extends Pluf_Views
         }
         return $item;
     }
+
+    public function query($request, $match)
+    {
+        $run = Pluf_Shortcuts_GetObjectOr404('TMS_TestRun', $match['modelId']);
+        $requestParams = $request->REQUEST;
+        $dbBuilder = new TMS_SampleDbBuilder();
+        $dbParams = $dbBuilder->getDbParameters($run);
+        // Make request to fetch events data
+        $response = $this->fetchEvents($dbParams, $requestParams);
+
+        if ("200" != $response->getStatusCode()) {
+            throw new Pluf_Exception($response->getBody()->getContents());
+        }
+        $contents = $response->getBody()->getContents();
+        return json_decode($contents, true);
+    }
+
+    private function checkQuery($query)
+    {
+        $influxDateFormat = "Y-m-d'T'H:i:s'Z'";
+        $start = time();
+        $end = time();
+        $res = $query;
+        $res = str_replace('${start}', $start * 1000.0, $res);
+        $res = str_replace('${end}', $end * 1000.0, $res);
+        $res = str_replace('${startDateTime}', date($influxDateFormat, $start), $res);
+        $res = str_replace('${startTimeStamp}', $start, $res);
+        $res = str_replace('${endDateTime}', date($influxDateFormat, $end), $res);
+        $res = str_replace('${endTimeStamp}', $end, $res);
+        return $res;
+    }
+
+    private function fetchEvents($dbParams, $requestParams){
+        // Provide request parameters
+        $uri = 'http://' . $dbParams['SAMPLE_DB_HOST'] . ':' . $dbParams['SAMPLE_DB_PORT'] . '/query';
+        $params = array(
+            'db' => $dbParams['SAMPLE_DB_NAME'],
+            'epoch' => 'ms',
+            'q' => $this->checkQuery($requestParams['query']),
+            'pretty' => array_key_exists('pretty', $requestParams) ? $requestParams['pretty'] : true
+        );
+        if (array_key_exists('chunked', $requestParams) && $requestParams['chunked'] > 0) {
+            $params['chunked'] = $requestParams['chunked'];
+        }
+        // Do request
+        $client = new GuzzleHttp\Client();
+        $response = $client->request('GET', $uri, array(
+            'query' => $params
+        ));
+        return $response;
+    }
 }
