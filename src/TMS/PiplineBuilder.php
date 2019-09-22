@@ -7,6 +7,8 @@ class TMS_PiplineBuilder
     {
         $test = $testRun->get_test();
         // TODO: create influx db
+        $dbBuilder = new TMS_SampleDbBuilder();
+        $dbBuilder->create($testRun);
 
         // create new pipline
         $pipeline = new Pluf\Jms\Pipeline();
@@ -28,7 +30,7 @@ class TMS_PiplineBuilder
 
         return $pipeline;
     }
-
+    
     private static function addGazmehJob($pipeline, $testRun, $test)
     {
         $data = array(
