@@ -82,7 +82,7 @@ return array(
         )
     ),
     // --------------------------------------------------------------------
-    // Binary content of virtual user
+    // Binary content of Test Run 
     // --------------------------------------------------------------------
     array( // Read
         'regex' => '#^/test-runs/(?P<modelId>\d+)/content$#',
@@ -101,6 +101,13 @@ return array(
         'precond' => array(
             'TMS_Precondition::testerRequired'
         )
+    ),
+    // ************************************************************* Events
+    array( // Read
+        'regex' => '#^/test-runs/(?P<modelId>\d+)/events$#',
+        'model' => 'TMS_Views_TestRun',
+        'method' => 'query',
+        'http-method' => 'GET'
     ),
     // ************************************************************* Reports of TestRun
     array( // Schema
