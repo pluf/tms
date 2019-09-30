@@ -168,7 +168,7 @@ class TMS_PiplineBuilder
         $jobLogger = new Pluf\Jms\JobLogger();
         $jobLogger->url = $loggerUrl . '/write?precision=ms&db=test_run_' . $testRun->id;
         $jobLogger->period = 'PT5s';
-        $jobLogger->template = 'logs,logger=\"{{logger}}\",level={{level}} message=\"{{message}}\" {{timestamp}}';
+        $jobLogger->template = 'logs,logger="{{logger}}",level={{level}} message="{{message}}" {{timestamp}}';
         $jobLogger->job_id = $job;
         $jobLogger->create();
     }
