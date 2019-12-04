@@ -11,32 +11,20 @@ return array(
         )
     ),
     // ************************************************************* Run
-    array( // Read (list)
-        'regex' => '#^/test-runs$#',
-        'model' => 'TMS_Views_TestRun',
-        'method' => 'findObject',
-        'http-method' => 'GET',
-        'params' => array(
-            'model' => 'TMS_TestRun'
-        ),
-        'precond' => array(
-            'User_Precondition::loginRequired'
-        )
-    ),
     array( // Create
         'regex' => '#^/test-runs$#',
         'model' => 'TMS_Views_TestRun',
         'method' => 'create',
         'http-method' => 'POST',
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
-    array( // delete list
+    array( // Read (list)
         'regex' => '#^/test-runs$#',
         'model' => 'TMS_Views_TestRun',
-        'method' => 'deleteObjects',
-        'http-method' => 'DELETE',
+        'method' => 'findObject',
+        'http-method' => 'GET',
         'params' => array(
             'model' => 'TMS_TestRun'
         ),
@@ -56,6 +44,18 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
+    array( // delete list
+        'regex' => '#^/test-runs$#',
+        'model' => 'TMS_Views_TestRun',
+        'method' => 'deleteObjects',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_TestRun'
+        ),
+        'precond' => array(
+            'TMS_Precondition::testerRequired'
+        )
+    ),
     array( // Delete
         'regex' => '#^/test-runs/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_TestRun',
@@ -66,7 +66,7 @@ return array(
             'permanently' => true
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Update
@@ -78,7 +78,7 @@ return array(
             'model' => 'TMS_TestRun'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     // --------------------------------------------------------------------
@@ -167,7 +167,7 @@ return array(
             'parentKey' => 'test_run_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Delete (list)
@@ -181,7 +181,7 @@ return array(
             'parentKey' => 'test_run_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Delete
@@ -195,7 +195,7 @@ return array(
             'parentKey' => 'test_run_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
 );
