@@ -242,7 +242,7 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testManagerRequired'
         )
     ),
     array( // delete
@@ -256,7 +256,7 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testManagerRequired'
         )
     ),
     
@@ -285,7 +285,7 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testManagerRequired'
         )
     ),
     array( // delete
@@ -299,7 +299,7 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testManagerRequired'
         )
     )
 
