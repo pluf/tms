@@ -7,7 +7,7 @@ class TMS_SampleDbBuilder
     private $dbPort; 
 
     function __construct(){
-        $this->dbHost = Pluf::f('tms.influx.host', 'www.mrfruity.ir');
+        $this->dbHost = Pluf::f('tms.influx.host', 'influxdb');
         $this->dbPort = Pluf::f('tms.influx.port', 8086);
     }
     
