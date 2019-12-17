@@ -49,7 +49,6 @@ class DirectCrudTest extends Basic_AbstractDirectTest
         $vu->test_id = self::$TEST_TEST;
         $vu->create();
         self::$VIRTUAL_USER_TEST = $vu;
-        
     }
     
     public function getModelName()
