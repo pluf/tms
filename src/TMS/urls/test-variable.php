@@ -10,19 +10,7 @@ return array(
             'model' => 'TMS_TestVariable'
         )
     ),
-    // ************************************************************* Category
-    array( // Read (list)
-        'regex' => '#^/test-variables$#',
-        'model' => 'TMS_Views_TestVariable',
-        'method' => 'findObject',
-        'http-method' => 'GET',
-        'params' => array(
-            'model' => 'TMS_TestVariable'
-        ),
-        'precond' => array(
-            'User_Precondition::loginRequired'
-        )
-    ),
+    // ************************************************************* Variables
     array( // Create
         'regex' => '#^/test-variables$#',
         'model' => 'TMS_Views_TestVariable',
@@ -32,14 +20,14 @@ return array(
             'model' => 'TMS_TestVariable'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
-    array( // delete list
+    array( // Read (list)
         'regex' => '#^/test-variables$#',
         'model' => 'TMS_Views_TestVariable',
-        'method' => 'deleteObjects',
-        'http-method' => 'DELETE',
+        'method' => 'findObject',
+        'http-method' => 'GET',
         'params' => array(
             'model' => 'TMS_TestVariable'
         ),
@@ -59,6 +47,18 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
+    array( // delete list
+        'regex' => '#^/test-variables$#',
+        'model' => 'TMS_Views_TestVariable',
+        'method' => 'deleteObjects',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_TestVariable'
+        ),
+        'precond' => array(
+            'TMS_Precondition::testerRequired'
+        )
+    ),
     array( // Delete
         'regex' => '#^/test-variables/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_TestVariable',
@@ -69,7 +69,7 @@ return array(
             'permanently' => true
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Update
@@ -81,7 +81,7 @@ return array(
             'model' => 'TMS_TestVariable'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     )
 );

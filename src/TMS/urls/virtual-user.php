@@ -148,7 +148,7 @@ return array(
             'parentKey' => 'virtual_user_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Delete (list)
@@ -162,7 +162,7 @@ return array(
             'parentKey' => 'virtual_user_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Delete
@@ -176,7 +176,7 @@ return array(
             'parentKey' => 'virtual_user_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
 );

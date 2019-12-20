@@ -54,7 +54,7 @@ return array(
             'permanently' => true
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Update
@@ -66,7 +66,7 @@ return array(
             'model' => 'TMS_TestAttachment'
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     // --------------------------------------------------------------------

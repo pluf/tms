@@ -122,21 +122,7 @@ return array(
             'model' => 'TMS_Requirement'
         )
     ),
-    array( // get list
-        'regex' => '#^/projects/(?P<parentId>\d+)/requirements$#',
-        'model' => 'TMS_Views_Project',
-        'method' => 'findManyToOne',
-        'http-method' => 'GET',
-        'params' => array(
-            'model' => 'TMS_Requirement',
-            'parentModel' => 'TMS_Project',
-            'parentKey' => 'project_id'
-        ),
-        'precond' => array(
-            'User_Precondition::loginRequired'
-        )
-    ),
-    array( // create
+    array( // Create
         'regex' => '#^/projects/(?P<parentId>\d+)/requirements$#',
         'model' => 'TMS_Views_Project',
         'method' => 'createManyToOne',
@@ -147,25 +133,10 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
-    array( // delete
-        'regex' => '#^/projects/(?P<parentId>\d+)/requirements$#',
-        'model' => 'TMS_Views_Project',
-        'method' => 'clearManyToOne',
-        'http-method' => 'DELETE',
-        'params' => array(
-            'model' => 'TMS_Requirement',
-            'parent' => 'TMS_Project',
-            'parentKey' => 'project_id'
-        ),
-        'precond' => array(
-            'User_Precondition::loginRequired'
-        )
-    ),
-
-    array( // read
+    array( // Read
         'regex' => '#^/projects/(?P<parentId>\d+)/requirements/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Project',
         'method' => 'getManyToOne',
@@ -179,7 +150,21 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
-    array( // update
+    array( // Read (list)
+        'regex' => '#^/projects/(?P<parentId>\d+)/requirements$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'findManyToOne',
+        'http-method' => 'GET',
+        'params' => array(
+            'model' => 'TMS_Requirement',
+            'parentModel' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'User_Precondition::loginRequired'
+        )
+    ),
+    array( // Update
         'regex' => '#^/projects/(?P<parentId>\d+)/requirements/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Project',
         'method' => 'updateManyToOne',
@@ -190,10 +175,24 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
-    array( // delete
+    array( // Delete (list)
+        'regex' => '#^/projects/(?P<parentId>\d+)/requirements$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'clearManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_Requirement',
+            'parent' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'TMS_Precondition::testerRequired'
+        )
+    ),
+    array( // Delete
         'regex' => '#^/projects/(?P<parentId>\d+)/requirements/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Project',
         'method' => 'deleteManyToOne',
@@ -204,7 +203,7 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     // ************************************************************* Tests of Project
@@ -217,7 +216,21 @@ return array(
             'model' => 'TMS_Requirement'
         )
     ),
-    array( // get list
+    array( // Create
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'createManyToOne',
+        'http-method' => 'POST',
+        'params' => array(
+            'model' => 'TMS_Test',
+            'parent' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'TMS_Precondition::testManagerRequired'
+        )
+    ),
+    array( // Read (list)
         'regex' => '#^/projects/(?P<parentId>\d+)/tests$#',
         'model' => 'TMS_Views_Project',
         'method' => 'findManyToOne',
@@ -231,36 +244,7 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
-    array( // create
-        'regex' => '#^/projects/(?P<parentId>\d+)/tests$#',
-        'model' => 'TMS_Views_Project',
-        'method' => 'createManyToOne',
-        'http-method' => 'POST',
-        'params' => array(
-            'model' => 'TMS_Test',
-            'parent' => 'TMS_Project',
-            'parentKey' => 'project_id'
-        ),
-        'precond' => array(
-            'User_Precondition::loginRequired'
-        )
-    ),
-    array( // delete
-        'regex' => '#^/projects/(?P<parentId>\d+)/tests$#',
-        'model' => 'TMS_Views_Project',
-        'method' => 'clearManyToOne',
-        'http-method' => 'DELETE',
-        'params' => array(
-            'model' => 'TMS_Test',
-            'parent' => 'TMS_Project',
-            'parentKey' => 'project_id'
-        ),
-        'precond' => array(
-            'User_Precondition::loginRequired'
-        )
-    ),
-    
-    array( // read
+    array( // Read
         'regex' => '#^/projects/(?P<parentId>\d+)/tests/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_Project',
         'method' => 'getManyToOne',
@@ -285,7 +269,21 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testManagerRequired'
+        )
+    ),
+    array( // delete
+        'regex' => '#^/projects/(?P<parentId>\d+)/tests$#',
+        'model' => 'TMS_Views_Project',
+        'method' => 'clearManyToOne',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_Test',
+            'parent' => 'TMS_Project',
+            'parentKey' => 'project_id'
+        ),
+        'precond' => array(
+            'TMS_Precondition::testManagerRequired'
         )
     ),
     array( // delete
@@ -299,7 +297,7 @@ return array(
             'parentKey' => 'project_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testManagerRequired'
         )
     )
 

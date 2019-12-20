@@ -30,7 +30,27 @@ set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
  */
 class DirectCrudTest extends Basic_AbstractDirectTest
 {
+    static $VIRTUAL_USER_TEST = null;
 
+    /**
+     *
+     * @beforeClass
+     */
+    public static function installApps(){
+        
+        parent::installApps();
+
+        // Scenario
+        $vu = new \TMS_VirtualUser();
+        $vu->title = 'title' . rand();
+        $vu->description = 'This is a test';
+        $vu->state = 'init';
+        $vu->type = 'type';
+        $vu->test_id = self::$TEST_TEST;
+        $vu->create();
+        self::$VIRTUAL_USER_TEST = $vu;
+    }
+    
     public function getModelName()
     {
         return 'TMS_Scenario';
@@ -70,7 +90,8 @@ class DirectCrudTest extends Basic_AbstractDirectTest
         return array(
             'title' => 'title',
             'description' => 'description',
-            'type' => 'test'
+            'type' => 'test',
+            'virtual_user_id' => self::$VIRTUAL_USER_TEST->id
         );
     }
 }

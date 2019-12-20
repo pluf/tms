@@ -11,18 +11,6 @@ return array(
         )
     ),
     // ************************************************************* Risk
-    array( // Read (list)
-        'regex' => '#^/test-risks$#',
-        'model' => 'TMS_Views_TestRisk',
-        'method' => 'findObject',
-        'http-method' => 'GET',
-        'params' => array(
-            'model' => 'TMS_TestRisk'
-        ),
-        'precond' => array(
-            'User_Precondition::loginRequired'
-        )
-    ),
     array( // Create
         'regex' => '#^/test-risks$#',
         'model' => 'TMS_Views_TestRisk',
@@ -32,14 +20,14 @@ return array(
             'model' => 'TMS_TestRisk'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
-    array( // delete list
+    array( // Read (list)
         'regex' => '#^/test-risks$#',
         'model' => 'TMS_Views_TestRisk',
-        'method' => 'deleteObjects',
-        'http-method' => 'DELETE',
+        'method' => 'findObject',
+        'http-method' => 'GET',
         'params' => array(
             'model' => 'TMS_TestRisk'
         ),
@@ -59,6 +47,18 @@ return array(
             'User_Precondition::loginRequired'
         )
     ),
+    array( // delete list
+        'regex' => '#^/test-risks$#',
+        'model' => 'TMS_Views_TestRisk',
+        'method' => 'deleteObjects',
+        'http-method' => 'DELETE',
+        'params' => array(
+            'model' => 'TMS_TestRisk'
+        ),
+        'precond' => array(
+            'TMS_Precondition::testerRequired'
+        )
+    ),
     array( // Delete
         'regex' => '#^/test-risks/(?P<modelId>\d+)$#',
         'model' => 'TMS_Views_TestRisk',
@@ -69,7 +69,7 @@ return array(
             'permanently' => true
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Update
@@ -81,7 +81,7 @@ return array(
             'model' => 'TMS_TestRisk'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     )
 );

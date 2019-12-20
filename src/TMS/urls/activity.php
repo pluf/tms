@@ -20,7 +20,7 @@ return array(
             'model' => 'TMS_Activity'
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Read
@@ -57,7 +57,7 @@ return array(
             'permanently' => true
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Update
@@ -69,7 +69,7 @@ return array(
             'model' => 'TMS_Activity'
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     // ************************************************************* Members of Activity
@@ -89,7 +89,7 @@ return array(
         'method' => 'addMember',
         'http-method' => 'POST',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Add member
@@ -98,7 +98,7 @@ return array(
         'method' => 'addMember',
         'http-method' => 'POST',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Delete member
@@ -107,7 +107,7 @@ return array(
         'method' => 'removeMember',
         'http-method' => 'DELETE',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     // ************************************************************* Logs of Activity
@@ -118,7 +118,7 @@ return array(
         'method' => 'addLog',
         'http-method' => 'POST',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         ),
         'params' => array(
             'model' => 'TMS_ActivityLog',
@@ -156,6 +156,10 @@ return array(
         'model' => 'TMS_Views_Activity',
         'method' => 'updateManyToOne',
         'http-method' => 'POST',
+        'precond' => array(
+            // check that only author of log could update it
+            'TMS_Precondition::testerRequired'
+        ),
         'params' => array(
             'model' => 'TMS_ActivityLog',
             'parent' => 'TMS_Activity',
@@ -169,7 +173,7 @@ return array(
         'method' => 'deleteManyToOne',
         'http-method' => 'DELETE',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         ),
         'params' => array(
             'model' => 'TMS_ActivityLog',
@@ -193,7 +197,7 @@ return array(
         'method' => 'createManyToOne',
         'http-method' => 'POST',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         ),
         'params' => array(
             'model' => 'TMS_ActivityOutput',
@@ -244,7 +248,7 @@ return array(
         'method' => 'deleteManyToOne',
         'http-method' => 'DELETE',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         ),
         'params' => array(
             'model' => 'TMS_ActivityOutput',
@@ -368,7 +372,7 @@ return array(
             'parentKey' => 'activity_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // read
@@ -396,7 +400,7 @@ return array(
             'parentKey' => 'activity_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // delete
@@ -410,7 +414,7 @@ return array(
             'parentKey' => 'activity_id'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     )
 );

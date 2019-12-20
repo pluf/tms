@@ -20,7 +20,7 @@ return array(
             'model' => 'TMS_Requirement'
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Read
@@ -57,7 +57,7 @@ return array(
             'permanently' => true
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Delete (list)
@@ -69,7 +69,7 @@ return array(
             'model' => 'TMS_Requirement'
         ),
         'precond' => array(
-            'User_Precondition::loginRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Update
@@ -81,7 +81,7 @@ return array(
             'model' => 'TMS_Requirement'
         ),
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     // ************************************************************* Test of Requirement
@@ -100,7 +100,7 @@ return array(
         'method' => 'addTest',
         'http-method' => 'POST',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Add test
@@ -109,7 +109,7 @@ return array(
         'method' => 'addTest',
         'http-method' => 'POST',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
     array( // Delete test
@@ -118,7 +118,7 @@ return array(
         'method' => 'removeTest',
         'http-method' => 'DELETE',
         'precond' => array(
-            'TMS_Precondition::projectManagerRequired'
+            'TMS_Precondition::testerRequired'
         )
     ),
 );
