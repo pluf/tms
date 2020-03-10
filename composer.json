@@ -16,15 +16,15 @@
 	],
 	"minimum-stability" : "stable",
 	"require" : {
-		"pluf/core" : "5.12.x",
-		"pluf/user" : "5.12.x",
-		"pluf/monitor" : "5.12.x",
-		"pluf/jms" : "5.12.x",
+		"pluf/core" : "5.13.x",
+		"pluf/user" : "5.13.x",
+		"pluf/monitor" : "5.13.x",
+		"pluf/jms" : "5.13.x",
 		"influxdb/influxdb-php" : "~1.15",
 		"guzzlehttp/guzzle" : "^6.2.0"
 	},
 	"require-dev" : {
-		"pluf/test" : "5.12.x",
+		"pluf/test" : "5.13.x",
 		"phayes/geophp" : "^1.2"
 	},
 	"include-path" : [
