@@ -10,7 +10,8 @@ class TMS_TestRisk extends TMS_DocumentedModel
 
     /**
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModel::init()
      */
     function init()
     {
@@ -47,5 +48,4 @@ class TMS_TestRisk extends TMS_DocumentedModel
             )
         ));
     }
-
 }

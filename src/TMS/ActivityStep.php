@@ -9,9 +9,9 @@ class TMS_ActivityStep extends TMS_DocumentedModel
 {
 
     /**
-     * مدل داده‌ای را بارگذاری می‌کند.
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModel::init()
      */
     function init()
     {
@@ -41,12 +41,11 @@ class TMS_ActivityStep extends TMS_DocumentedModel
                 'name' => 'activity',
                 'relate_name' => 'steps',
                 'graphql_name' => 'activity',
-                'graphql_field' =>true,
+                'graphql_field' => true,
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
             )
         ));
     }
-
 }

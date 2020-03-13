@@ -10,7 +10,8 @@ class TMS_TestRunReport extends TMS_DocumentedModelBinary
 
     /**
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModelBinary::init()
      */
     function init()
     {
@@ -46,10 +47,9 @@ class TMS_TestRunReport extends TMS_DocumentedModelBinary
     }
 
     /**
-     * \brief پیش ذخیره را انجام می‌دهد
-     *
-     * @param $create حالت
-     *            ساخت یا به روز رسانی را تعیین می‌کند
+     * 
+     * {@inheritDoc}
+     * @see TMS_ModelBinary::preSave()
      */
     function preSave($create = false)
     {
@@ -58,5 +58,4 @@ class TMS_TestRunReport extends TMS_DocumentedModelBinary
         }
         parent::preSave($create);
     }
-
 }

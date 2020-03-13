@@ -9,9 +9,9 @@ class TMS_Test extends TMS_DocumentedModel
 {
 
     /**
-     * مدل داده‌ای را بارگذاری می‌کند.
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModel::init()
      */
     function init()
     {
@@ -74,7 +74,7 @@ class TMS_Test extends TMS_DocumentedModel
                 'model' => 'TMS_Project',
                 'name' => 'project',
                 'relate_name' => 'tests',
-                'graphql_name' =>  'project',
+                'graphql_name' => 'project',
                 'graphql_field' => true,
                 'is_null' => true,
                 'editable' => true,
@@ -137,8 +137,8 @@ class TMS_Test extends TMS_DocumentedModel
         return $this->get_responsible()->getId() == $user->getId();
     }
 
-    function isDesigned(){
-        return isset($this->design) && !empty($this->design);
+    function isDesigned()
+    {
+        return isset($this->design) && ! empty($this->design);
     }
-    
 }

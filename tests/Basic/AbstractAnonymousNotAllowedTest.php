@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-require_once 'AbstractTest.php';
+namespace Pluf\Test\Basic;
 
 /**
  * It is a basic class for tests which includes common processes for unit tests.
@@ -28,7 +28,7 @@ require_once 'AbstractTest.php';
  * @backupGlobals disabled
  * @backupStaticAttributes disabled
  */
-abstract class Basic_AbstractAnonymousNotAllowedTest extends Basic_AbstractTest
+abstract class AbstractAnonymousNotAllowedTest extends AbstractTest
 {
 
     /**

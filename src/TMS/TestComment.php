@@ -10,6 +10,7 @@ class TMS_TestComment extends Pluf_Model
 
     /**
      *
+     * {@inheritdoc}
      * @see Pluf_Model::init()
      */
     function init()
@@ -72,10 +73,9 @@ class TMS_TestComment extends Pluf_Model
     }
 
     /**
-     * \brief پیش ذخیره را انجام می‌دهد
      *
-     * @param $create حالت
-     *            ساخت یا به روز رسانی را تعیین می‌کند
+     * {@inheritdoc}
+     * @see Pluf_Model::preSave()
      */
     function preSave($create = false)
     {

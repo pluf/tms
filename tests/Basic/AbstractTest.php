@@ -16,20 +16,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\IncompleteTestError;
-require_once 'Pluf.php';
+namespace Pluf\Test\Basic;
+
+use Pluf\Exception;
+use Pluf\Test\Client;
+use Pluf\Test\TestCase;
+use Pluf;
+use Pluf_Migration;
+use TMS_Activity;
+use TMS_ActivityComment;
+use TMS_Project;
+use TMS_Test;
+use User_Account;
+use User_Credential;
+use User_Role;
 
 /**
  * It is a basic class for tests which includes common processes for unit tests.
  * It loads config and create an default tenant, a default account (with username 'test') and a default
  * credential for this account (with password 'test').
  * It also includes uninstall process after finishint tests.
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
  */
-abstract class Basic_AbstractTest extends TestCase
+abstract class AbstractTest extends TestCase
 {
 
     /*
@@ -55,7 +63,7 @@ abstract class Basic_AbstractTest extends TestCase
     {
         $cfg = include __DIR__ . '/../conf/config.php';
         Pluf::start($cfg);
-        $m = new Pluf_Migration(Pluf::f('installed_apps'));
+        $m = new Pluf_Migration();
         $m->install();
 
         // CREATE ADMIN
@@ -123,26 +131,24 @@ abstract class Basic_AbstractTest extends TestCase
      */
     public static function uninstallApps()
     {
-        $m = new Pluf_Migration(Pluf::f('installed_apps'));
+        $m = new Pluf_Migration();
         $m->unInstall();
     }
 
     public function loginWithAdmin($client)
     {
         // 1- Login
-        $response = $client->post('/api/v2/user/login', array(
+        $response = $client->post('/user/login', array(
             'login' => self::ADMIN_LOGIN,
             'password' => self::ADMIN_PASS
         ));
-        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
+        $this->assertResponseStatusCode($response, 200, 'Fail to login');
     }
 
     public function createClient()
     {
-        return new Test_Client($this->createApiV2());
+        return new Client();
     }
-
-    abstract public function createApiV2();
 }
 
 

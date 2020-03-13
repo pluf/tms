@@ -1,5 +1,22 @@
 <?php
 
+/*
+ * This file is part of Pluf Framework, a simple PHP Application Framework.
+ * Copyright (C) 2010-2020 Phoinex Scholars Co. (http://dpq.co.ir)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
+ */
 class TMS_Views_Test extends Pluf_Views
 {
 
@@ -52,8 +69,7 @@ class TMS_Views_Test extends Pluf_Views
         $test->delAssoc($user);
         return $user;
     }
-    
-    
+
     public function requirements($request, $match)
     {
         $test = Pluf_Shortcuts_GetObjectOr404('TMS_Test', $match['parentId']);
@@ -67,17 +83,17 @@ class TMS_Views_Test extends Pluf_Views
             'select' => $requirement->getSelect(),
             'join' => 'LEFT JOIN ' . $assocTable . ' ON ' . $userTable . '.id=' . $assocTable . '.' . $userFk
         );
-        
+
         $testFk = Pluf_Shortcuts_GetForeignKeyName('TMS_Test');
         $builder = new Pluf_Paginator_Builder($requirement);
         return $builder->setWhereClause(new Pluf_SQL($testFk . '=%s', array(
             $test->id
         )))
-        ->setView('myView')
-        ->setRequest($request)
-        ->build();
+            ->setView('myView')
+            ->setRequest($request)
+            ->build();
     }
-    
+
     public static function addRequirement($request, $match)
     {
         $test = Pluf_Shortcuts_GetObjectOr404('TMS_Test', $match['parentId']);
@@ -90,7 +106,7 @@ class TMS_Views_Test extends Pluf_Views
         $test->setAssoc($requirement);
         return $requirement;
     }
-    
+
     public static function removeRequirement($request, $match)
     {
         $test = Pluf_Shortcuts_GetObjectOr404('TMS_Test', $match['parentId']);
@@ -103,6 +119,4 @@ class TMS_Views_Test extends Pluf_Views
         $test->delAssoc($requirement);
         return $requirement;
     }
-    
-    
 }

@@ -16,36 +16,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-require_once 'Pluf.php';
+namespace Pluf\Test\REST;
 
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
+use Pluf\Test\Client;
+use TMS_Activity;
+use TMS_ActivityLog;
+use User_Account;
 
-/**
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class REST_ActivityLogTest extends REST_AbstractTest
+class ActivityLogTest extends AbstractTest
 {
-
-    private static function getApiV2()
-    {
-        $myAPI = array(
-            array(
-                'app' => 'Tenant',
-                'regex' => '#^/api/v2/tms#',
-                'base' => '',
-                'sub' => include 'TMS/urls.php'
-            ),
-            array(
-                'app' => 'User',
-                'regex' => '#^/api/v2/user#',
-                'base' => '',
-                'sub' => include 'User/urls-v2.php'
-            )
-        );
-        return $myAPI;
-    }
 
     /**
      *
@@ -53,8 +32,8 @@ class REST_ActivityLogTest extends REST_AbstractTest
      */
     public function getSchemaOfAnActivityLog()
     {
-        $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/activity-log/schema');
+        $client = new Client();
+        $response = $client->get('/tms/activity-log/schema');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -66,8 +45,8 @@ class REST_ActivityLogTest extends REST_AbstractTest
      */
     public function gettingListOfActivityLogsWithAnonymouse()
     {
-        $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/activity-logs');
+        $client = new Client();
+        $response = $client->get('/tms/activity-logs');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -78,16 +57,16 @@ class REST_ActivityLogTest extends REST_AbstractTest
      */
     public function gettingListOfActivityLogs()
     {
-        $client = new Test_Client(self::getApiV2());
+        $client = new Client();
         // 1- Login
-        $response = $client->post('/api/v2/user/login', array(
+        $response = $client->post('/user/login', array(
             'login' => self::ADMIN_LOGIN,
             'password' => self::ADMIN_PASS
         ));
-        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
+        $this->assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of activity-logs
-        $response = $client->get('/api/v2/tms/activity-logs');
+        $response = $client->get('/tms/activity-logs');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -98,20 +77,20 @@ class REST_ActivityLogTest extends REST_AbstractTest
      */
     public function gettingListOfActivityLogsByGraphQLTest()
     {
-        $client = new Test_Client(self::getApiV2());
+        $client = new Client();
         // 1- Login
-        $response = $client->post('/api/v2/user/login', array(
+        $response = $client->post('/user/login', array(
             'login' => self::ADMIN_LOGIN,
             'password' => self::ADMIN_PASS
         ));
-        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
+        $this->assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/activity-logs', array(
+        $response = $client->get('/tms/activity-logs', array(
             'graphql' => '{items{id,duration,project{id},project_id,test{id},test_id,writer{id},writer_id}}'
         ));
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
     }
 
     /**
@@ -120,13 +99,13 @@ class REST_ActivityLogTest extends REST_AbstractTest
      */
     public function createActivityLogByAdminTest()
     {
-        $client = new Test_Client(self::getApiV2());
+        $client = new Client();
         // 1- Login
-        $response = $client->post('/api/v2/user/login', array(
+        $response = $client->post('/user/login', array(
             'login' => self::ADMIN_LOGIN,
             'password' => self::ADMIN_PASS
         ));
-        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
+        $this->assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- create activity
         $activity = new TMS_Activity();
@@ -135,7 +114,7 @@ class REST_ActivityLogTest extends REST_AbstractTest
         $activity->project_id = self::$PROJECT_TEST;
         $activity->test_id = self::$TEST_TEST;
         $activity->create();
-        
+
         // 3- create activity-log
         $data = array(
             'title' => 'test' . rand(),
@@ -143,14 +122,14 @@ class REST_ActivityLogTest extends REST_AbstractTest
             'activity_id' => $activity->id,
             'duration' => 1.5
         );
-        $response = $client->post('/api/v2/tms/activity-logs', $data);
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $response = $client->post('/tms/activity-logs', $data);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
         $actual = json_decode($response->content, true);
-        Test_Assert::assertEquals($actual['activity_id'], $activity->id);
-        Test_Assert::assertEquals($actual['writer_id'], User_Account::getUser(self::ADMIN_LOGIN)->id);
-        Test_Assert::assertEquals($actual['project_id'], $activity->project_id);
-        Test_Assert::assertEquals($actual['test_id'], $activity->test_id);
+        $this->assertEquals($actual['activity_id'], $activity->id);
+        $this->assertEquals($actual['writer_id'], User_Account::getUser(self::ADMIN_LOGIN)->id);
+        $this->assertEquals($actual['project_id'], $activity->project_id);
+        $this->assertEquals($actual['test_id'], $activity->test_id);
     }
 
     /**
@@ -159,13 +138,13 @@ class REST_ActivityLogTest extends REST_AbstractTest
      */
     public function deleteActivityLogByAdminTest()
     {
-        $client = new Test_Client(self::getApiV2());
+        $client = new Client();
         // 1- Login
-        $response = $client->post('/api/v2/user/login', array(
+        $response = $client->post('/user/login', array(
             'login' => self::ADMIN_LOGIN,
             'password' => self::ADMIN_PASS
         ));
-        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
+        $this->assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- create activity
         $activity = new TMS_Activity();
@@ -174,7 +153,7 @@ class REST_ActivityLogTest extends REST_AbstractTest
         $activity->project_id = self::$PROJECT_TEST;
         $activity->test_id = self::$TEST_TEST;
         $activity->create();
-        
+
         // 3- create activity-log
         $data = array(
             'title' => 'test' . rand(),
@@ -182,22 +161,22 @@ class REST_ActivityLogTest extends REST_AbstractTest
             'activity_id' => $activity->id,
             'duration' => 1.5
         );
-        $response = $client->post('/api/v2/tms/activity-logs', $data);
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $response = $client->post('/tms/activity-logs', $data);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
 
         // TODO: maso, 2019: getting object value with json path
         // Test_Util::getObjectValue($response, 'id');
         $actual = json_decode($response->content, true);
         $id = $actual['id'];
 
-        $response = $client->delete('/api/v2/tms/activity-logs/' . $id);
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $response = $client->delete('/tms/activity-logs/' . $id);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
 
         $test = new TMS_ActivityLog();
         $test = $test->getOne('id=' . $id);
-        Test_Assert::assertNull($test);
+        $this->assertNull($test);
     }
 }
 

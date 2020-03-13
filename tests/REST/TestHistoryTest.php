@@ -16,36 +16,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-require_once 'Pluf.php';
+namespace Pluf\Test\REST;
 
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
+use Pluf\Test\Client;
 
-/**
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class REST_TestHistoryTest extends REST_AbstractTest
+class REST_TestHistoryTest extends AbstractTest
 {
-
-    private static function getApiV2()
-    {
-        $myAPI = array(
-            array(
-                'app' => 'Tenant',
-                'regex' => '#^/api/v2/tms#',
-                'base' => '',
-                'sub' => include 'TMS/urls.php'
-            ),
-            array(
-                'app' => 'User',
-                'regex' => '#^/api/v2/user#',
-                'base' => '',
-                'sub' => include 'User/urls-v2.php'
-            )
-        );
-        return $myAPI;
-    }
 
     /**
      *
@@ -53,8 +29,8 @@ class REST_TestHistoryTest extends REST_AbstractTest
      */
     public function getsSchemaOfAProject()
     {
-        $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/test-histories/schema');
+        $client = new Client();
+        $response = $client->get('/tms/test-histories/schema');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -66,8 +42,8 @@ class REST_TestHistoryTest extends REST_AbstractTest
      */
     public function gettingListOfProjectsTestWithAnonymouse()
     {
-        $client = new Test_Client(self::getApiV2());
-        $response = $client->get('/api/v2/tms/test-histories');
+        $client = new Client();
+        $response = $client->get('/tms/test-histories');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -78,16 +54,16 @@ class REST_TestHistoryTest extends REST_AbstractTest
      */
     public function gettingListOfProjectsTest()
     {
-        $client = new Test_Client(self::getApiV2());
+        $client = new Client();
         // 1- Login
-        $response = $client->post('/api/v2/user/login', array(
+        $response = $client->post('/user/login', array(
             'login' => self::ADMIN_LOGIN,
             'password' => self::ADMIN_PASS
         ));
-        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
+        $this->assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/test-histories');
+        $response = $client->get('/tms/test-histories');
         $this->assertNotNull($response);
         $this->assertEquals($response->status_code, 200);
     }
@@ -98,20 +74,20 @@ class REST_TestHistoryTest extends REST_AbstractTest
      */
     public function gettingListOfProjectsByGraphQLTest()
     {
-        $client = new Test_Client(self::getApiV2());
+        $client = new Client();
         // 1- Login
-        $response = $client->post('/api/v2/user/login', array(
+        $response = $client->post('/user/login', array(
             'login' => self::ADMIN_LOGIN,
             'password' => self::ADMIN_PASS
         ));
-        Test_Assert::assertResponseStatusCode($response, 200, 'Fail to login');
+        $this->assertResponseStatusCode($response, 200, 'Fail to login');
 
         // 2- getting list of projects
-        $response = $client->get('/api/v2/tms/test-histories', array(
+        $response = $client->get('/tms/test-histories', array(
             'graphql' => '{items{id,test{id},test_id}}'
         ));
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
     }
 }
 

@@ -9,9 +9,9 @@ class TMS_ActivityOutput extends TMS_DocumentedModel
 {
 
     /**
-     * مدل داده‌ای را بارگذاری می‌کند.
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModel::init()
      */
     function init()
     {
@@ -34,5 +34,4 @@ class TMS_ActivityOutput extends TMS_DocumentedModel
             )
         ));
     }
-
 }

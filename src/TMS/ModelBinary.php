@@ -22,14 +22,14 @@
  * Binary model
  *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
- *
+ *        
  */
 class TMS_ModelBinary extends Pluf_Model
 {
 
     /**
-     * مدل داده‌ای را بارگذاری می‌کند.
-     *
+     * 
+     * {@inheritDoc}
      * @see Pluf_Model::init()
      */
     function init()
@@ -141,7 +141,8 @@ class TMS_ModelBinary extends Pluf_Model
     }
 
     /**
-     * مسیر کامل محتوی را تعیین می‌کند. این مسیر حاوی اسم فایل هم هست.
+     * مسیر کامل محتوی را تعیین می‌کند.
+     * این مسیر حاوی اسم فایل هم هست.
      *
      * @return string
      */

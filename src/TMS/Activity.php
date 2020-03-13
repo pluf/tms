@@ -10,7 +10,8 @@ class TMS_Activity extends TMS_DocumentedModel
 
     /**
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModel::init()
      */
     function init()
     {
@@ -122,5 +123,4 @@ class TMS_Activity extends TMS_DocumentedModel
     {
         return $this->get_assign()->getId() == $user->getId();
     }
-
 }

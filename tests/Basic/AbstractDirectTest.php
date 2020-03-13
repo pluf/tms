@@ -17,7 +17,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-require_once 'AbstractTest.php';
+namespace Pluf\Test\Basic;
 
 /**
  * It is a basic class for tests which includes common processes for unit tests.
@@ -25,10 +25,8 @@ require_once 'AbstractTest.php';
  * credential for this account (with password 'test').
  * It also includes uninstall process after finishint tests.
  *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
  */
-abstract class Basic_AbstractDirectTest extends Basic_AbstractTest
+abstract class AbstractDirectTest extends AbstractTest
 {
 
     abstract public function getBaseUrl();
@@ -61,8 +59,8 @@ abstract class Basic_AbstractDirectTest extends Basic_AbstractTest
 
         // 2- getting list of projects
         $response = $client->get($this->getBaseUrl());
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
     }
 
     /**
@@ -78,8 +76,8 @@ abstract class Basic_AbstractDirectTest extends Basic_AbstractTest
         $response = $client->get($this->getBaseUrl(), array(
             'graphql' => '{items' . $this->getObjectGrapql() . '}'
         ));
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
     }
 
     /**
@@ -94,8 +92,8 @@ abstract class Basic_AbstractDirectTest extends Basic_AbstractTest
         // 2- getting list of projects
         $data = $this->createRandomItemData();
         $response = $client->post($this->getBaseUrl(), $data);
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
     }
 
     /**
@@ -110,8 +108,8 @@ abstract class Basic_AbstractDirectTest extends Basic_AbstractTest
         // 2- getting list of projects
         $data = $this->createRandomItemData();
         $response = $client->post($this->getBaseUrl(), $data);
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
 
         // TODO: maso, 2019: getting object value with json path
         // Test_Util::getObjectValue($response, 'id');
@@ -121,17 +119,17 @@ abstract class Basic_AbstractDirectTest extends Basic_AbstractTest
         $response = $client->post($this->getBaseUrl() . '/' . $id, array(
             'graphql' => $this->getObjectGrapql()
         ));
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
 
         $response = $client->delete($this->getBaseUrl() . '/' . $id);
-        Test_Assert::assertNotNull($response);
-        Test_Assert::assertEquals($response->status_code, 200);
+        $this->assertNotNull($response);
+        $this->assertEquals($response->status_code, 200);
 
         $modelName = $this->getModelName();
         $test = new $modelName();
         $test = $test->getOne('id=' . $id);
-        Test_Assert::assertNull($test);
+        $this->assertNull($test);
     }
 }
 

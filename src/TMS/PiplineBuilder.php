@@ -30,7 +30,7 @@ class TMS_PiplineBuilder
 
         return $pipeline;
     }
-    
+
     private static function addGazmehJob($pipeline, $testRun, $test)
     {
         $data = array(
@@ -141,7 +141,11 @@ class TMS_PiplineBuilder
         // Attachments
         $attachList = $test->get_attachments_list();
         foreach ($attachList as $attach) {
-            $form = new Pluf_Form_ModelBinaryCreate(array('job_id' => $job->id), array('model' => new Pluf\Jms\Attachment()));
+            $form = new Pluf_Form_ModelBinaryCreate(array(
+                'job_id' => $job->id
+            ), array(
+                'model' => new Pluf\Jms\Attachment()
+            ));
             $jmsAttach = $form->save();
             Pluf_FileUtil::copyFile($attach->getAbsloutPath(), $jmsAttach->getAbsloutPath());
             $jmsAttach->file_name = $attach->file_name;
@@ -152,7 +156,11 @@ class TMS_PiplineBuilder
         // Virtual Users
         $vuList = $test->get_virtual_users_list();
         foreach ($vuList as $vu) {
-            $form = new Pluf_Form_ModelBinaryCreate(array('job_id' => $job->id), array('model' => new Pluf\Jms\Attachment()));
+            $form = new Pluf_Form_ModelBinaryCreate(array(
+                'job_id' => $job->id
+            ), array(
+                'model' => new Pluf\Jms\Attachment()
+            ));
             $jmsAttach = $form->save();
             Pluf_FileUtil::copyFile($vu->getAbsloutPath(), $jmsAttach->getAbsloutPath());
             $jmsAttach->file_name = sprintf('vu_file_name_%d', $vu->id);

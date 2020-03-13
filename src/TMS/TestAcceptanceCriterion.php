@@ -9,9 +9,9 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
 {
 
     /**
-     * مدل داده‌ای را بارگذاری می‌کند.
-     *
-     * @see Pluf_Model::init()
+     * 
+     * {@inheritDoc}
+     * @see TMS_DocumentedModel::init()
      */
     function init()
     {

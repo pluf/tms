@@ -16,20 +16,17 @@
 	],
 	"minimum-stability" : "stable",
 	"require" : {
-		"pluf/core" : "5.13.x",
-		"pluf/user" : "5.13.x",
-		"pluf/monitor" : "5.13.x",
-		"pluf/jms" : "5.13.x",
+		"pluf/core" : "6.x",
+		"pluf/user" : "6.x",
+		"pluf/monitor" : "6.x",
+		"pluf/jms" : "6.x",
 		"influxdb/influxdb-php" : "~1.15",
 		"guzzlehttp/guzzle" : "^6.2.0"
 	},
 	"require-dev" : {
-		"pluf/test" : "5.13.x",
+		"pluf/test" : "6.x",
 		"phayes/geophp" : "^1.2"
 	},
-	"include-path" : [
-		"src/"
-	],
 	"homepage" : "https://github.com/pluf/cache",
 	"support" : {
 		"email" : "info@pluf.ir",
@@ -43,5 +40,65 @@
 		"php",
 		"tms",
 		"pluf-module"
+	],
+	"include-path" : [
+		"src/"
+	],
+	"autoload" : {
+		"psr-4" : {
+			"Pluf\\Tms\\" : "src6"
+		},
+		"psr-0" : {
+			"" : "src"
+		}
+	},
+	"autoload-dev" : {
+		"psr-4" : {
+			"Pluf\\Test\\" : "tests"
+		}
+	},
+	"repositories" : [{
+			"type" : "path",
+			"url" : "../http2",
+			"name" : "pluf/http2",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../core",
+			"name" : "pluf/core",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../test",
+			"name" : "pluf/test",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../user",
+			"name" : "pluf/user",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../monitor",
+			"name" : "pluf/monitor",
+			"options" : {
+				"symlink" : true
+			}
+		}, {
+			"type" : "path",
+			"url" : "../jms",
+			"name" : "pluf/jms",
+			"options" : {
+				"symlink" : true
+			}
+		}
 	]
 }

@@ -16,70 +16,86 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use PHPUnit\Framework\TestCase;
+namespace Pluf\Test\Basic;
 
-require_once 'Pluf.php';
+use Pluf\Test\TestCase;
+use Pluf;
+use TMS_Activity;
+use TMS_ActivityComment;
+use TMS_ActivityLog;
+use TMS_ActivityOutput;
+use TMS_ActivityStep;
+use TMS_Project;
+use TMS_Requirement;
+use TMS_Scenario;
+use TMS_Test;
+use TMS_TestAcceptanceCriterion;
+use TMS_TestAttachment;
+use TMS_TestComment;
+use TMS_TestHistory;
+use TMS_TestRisk;
+use TMS_TestRun;
+use TMS_TestRunReport;
+use TMS_TestRunTemplate;
+use TMS_TestVariable;
+use TMS_VirtualUser;
 
-/**
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class Basic_ModelTest extends TestCase
+class ModelTest extends TestCase
 {
 
     /**
+     *
      * @before
      */
-    public function setUpTest ()
+    public function setUpTest()
     {
-        Pluf::start(__DIR__. '/../conf/config.php');
+        Pluf::start(__DIR__ . '/../conf/config.php');
     }
 
     /**
+     *
      * @test
      */
-    public function testClassInstance ()
+    public function testClassInstance()
     {
         $c = new TMS_Project();
         $this->assertTrue(isset($c));
-
-
-//         $c = new TMS_Activity();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_ActivityComment();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_ActivityLog();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_ActivityOutput();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_ActivityStep();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_Requirement();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_Scenario();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_Test();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestAcceptanceCriterion();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestAttachment();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestComment();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestHistory();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestRisk();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestRun();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestRunReport();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestRunTemplate();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_TestVariable();
-//         $this->assertTrue(isset($c));
-//         $c = new TMS_VirtualUser();
-//         $this->assertTrue(isset($c));
+        $c = new TMS_Activity();
+        $this->assertTrue(isset($c));
+        $c = new TMS_ActivityComment();
+        $this->assertTrue(isset($c));
+        $c = new TMS_ActivityLog();
+        $this->assertTrue(isset($c));
+        $c = new TMS_ActivityOutput();
+        $this->assertTrue(isset($c));
+        $c = new TMS_ActivityStep();
+        $this->assertTrue(isset($c));
+        $c = new TMS_Requirement();
+        $this->assertTrue(isset($c));
+        $c = new TMS_Scenario();
+        $this->assertTrue(isset($c));
+        $c = new TMS_Test();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestAcceptanceCriterion();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestAttachment();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestComment();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestHistory();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestRisk();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestRun();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestRunReport();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestRunTemplate();
+        $this->assertTrue(isset($c));
+        $c = new TMS_TestVariable();
+        $this->assertTrue(isset($c));
+        $c = new TMS_VirtualUser();
+        $this->assertTrue(isset($c));
     }
 }
 

@@ -16,20 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Pluf\Test\RestActivityStep;
 
-namespace RestActivityStep;
+use Pluf\Test\Basic\AbstractDirectTest;
 
-use \Basic_AbstractDirectTest;
-require_once 'Pluf.php';
-
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
-
-/**
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class FromActivityCrudTest extends Basic_AbstractDirectTest
+class FromActivityCrudTest extends AbstractDirectTest
 {
 
     public function getModelName()
@@ -37,28 +28,9 @@ class FromActivityCrudTest extends Basic_AbstractDirectTest
         return 'TMS_ActivityStep';
     }
 
-    public function createApiV2()
-    {
-        $myAPI = array(
-            array(
-                'app' => 'Tenant',
-                'regex' => '#^/api/v2/tms#',
-                'base' => '',
-                'sub' => include 'TMS/urls.php'
-            ),
-            array(
-                'app' => 'User',
-                'regex' => '#^/api/v2/user#',
-                'base' => '',
-                'sub' => include 'User/urls-v2.php'
-            )
-        );
-        return $myAPI;
-    }
-
     public function getBaseUrl()
     {
-        return '/api/v2/tms/activities/'.self::$ACTIVITY_TEST->id.'/steps';
+        return '/tms/activities/' . self::$ACTIVITY_TEST->id . '/steps';
     }
 
     public function getObjectGrapql()
@@ -72,7 +44,7 @@ class FromActivityCrudTest extends Basic_AbstractDirectTest
             'title' => 'title',
             'description' => 'description',
             'order' => 1,
-            'is_checked' => false,
+            'is_checked' => false
         );
     }
 }

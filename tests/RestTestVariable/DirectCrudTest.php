@@ -16,16 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-require_once 'Pluf.php';
+namespace Pluf\Test\RestTestVariable;
 
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
+use Pluf\Test\Basic\AbstractDirectTest;
 
-/**
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class RestTestVariable_DirectCrudTest extends Basic_AbstractDirectTest
+class DirectCrudTest extends AbstractDirectTest
 {
 
     public function getModelName()
@@ -38,13 +33,13 @@ class RestTestVariable_DirectCrudTest extends Basic_AbstractDirectTest
         $myAPI = array(
             array(
                 'app' => 'Tenant',
-                'regex' => '#^/api/v2/tms#',
+                'regex' => '#^/tms#',
                 'base' => '',
                 'sub' => include 'TMS/urls.php'
             ),
             array(
                 'app' => 'User',
-                'regex' => '#^/api/v2/user#',
+                'regex' => '#^/user#',
                 'base' => '',
                 'sub' => include 'User/urls-v2.php'
             )
@@ -54,7 +49,7 @@ class RestTestVariable_DirectCrudTest extends Basic_AbstractDirectTest
 
     public function getBaseUrl()
     {
-        return '/api/v2/tms/test-variables';
+        return '/tms/test-variables';
     }
 
     public function getObjectGrapql()

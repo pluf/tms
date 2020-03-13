@@ -10,7 +10,8 @@ class TMS_Scenario extends TMS_DocumentedModelBinary
 
     /**
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModelBinary::init()
      */
     function init()
     {
@@ -41,5 +42,4 @@ class TMS_Scenario extends TMS_DocumentedModelBinary
             )
         ));
     }
-
 }
