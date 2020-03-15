@@ -5,6 +5,7 @@ class TMS_DocumentedModel extends Pluf_Model
 
     /**
      *
+     * {@inheritdoc}
      * @see Pluf_Model::init()
      */
     function init()
@@ -31,8 +32,7 @@ class TMS_DocumentedModel extends Pluf_Model
                 'size' => 2048,
                 'editable' => true,
                 'readable' => true
-            ),
+            )
         );
-
     }
 }

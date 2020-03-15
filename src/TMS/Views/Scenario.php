@@ -33,7 +33,7 @@ class TMS_Views_Scenario extends Pluf_Views
     {
         // initial content data
         $extra = array(
-            'model' => new TMS_Scenario(),
+            'model' => new TMS_Scenario()
         );
         $vuId = array_key_exists('parentId', $match) ? $match['parentId'] : $request->REQUEST['virtual_user_id'];
         $vu = Pluf_Shortcuts_GetObjectOr404('TMS_VirtualUser', $vuId);
@@ -99,6 +99,5 @@ class TMS_Views_Scenario extends Pluf_Views
         }
         return $item;
     }
-    
 }
 

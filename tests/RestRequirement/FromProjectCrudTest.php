@@ -16,20 +16,11 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Pluf\Test\RestTestRequirement;
 
-namespace RestTestRequirement;
+use Pluf\Test\Basic\AbstractDirectTest;
 
-use \Basic_AbstractDirectTest;
-require_once 'Pluf.php';
-
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
-
-/**
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class FromProjectCrudTest extends Basic_AbstractDirectTest
+class FromProjectCrudTest extends AbstractDirectTest
 {
 
     public function getModelName()
@@ -37,28 +28,9 @@ class FromProjectCrudTest extends Basic_AbstractDirectTest
         return 'TMS_Requirement';
     }
 
-    public function createApiV2()
-    {
-        $myAPI = array(
-            array(
-                'app' => 'Tenant',
-                'regex' => '#^/api/v2/tms#',
-                'base' => '',
-                'sub' => include 'TMS/urls.php'
-            ),
-            array(
-                'app' => 'User',
-                'regex' => '#^/api/v2/user#',
-                'base' => '',
-                'sub' => include 'User/urls-v2.php'
-            )
-        );
-        return $myAPI;
-    }
-
     public function getBaseUrl()
     {
-        return '/api/v2/tms/projects/'.self::$PROJECT_TEST->id.'/requirements';
+        return '/tms/projects/' . self::$PROJECT_TEST->id . '/requirements';
     }
 
     public function getObjectGrapql()
@@ -72,7 +44,7 @@ class FromProjectCrudTest extends Basic_AbstractDirectTest
             'title' => 'title',
             'description' => 'description',
             'probability' => 0.2,
-            'effect' => 'description',
+            'effect' => 'description'
         );
     }
 }

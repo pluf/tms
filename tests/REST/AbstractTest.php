@@ -16,20 +16,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-use PHPUnit\Framework\TestCase;
-use PHPUnit\Framework\IncompleteTestError;
-require_once 'Pluf.php';
+namespace Pluf\Test\REST;
+
+use Pluf\Exception;
+use Pluf\Test\TestCase;
+use Pluf;
+use Pluf_Migration;
+use TMS_Activity;
+use TMS_ActivityComment;
+use TMS_Project;
+use TMS_Test;
+use User_Account;
+use User_Credential;
+use User_Role;
 
 /**
  * It is a basic class for tests which includes common processes for unit tests.
  * It loads config and create an default tenant, a default account (with username 'test') and a default
  * credential for this account (with password 'test').
  * It also includes uninstall process after finishint tests.
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
  */
-abstract class REST_AbstractTest extends TestCase
+abstract class AbstractTest extends TestCase
 {
 
     /*
@@ -40,8 +47,11 @@ abstract class REST_AbstractTest extends TestCase
     const ADMIN_PASS = 'admin';
 
     static $PROJECT_TEST = null;
+
     static $TEST_TEST = null;
+
     static $ACTIVITY_TEST = null;
+
     static $ACTIVITY_COMMENT_TEST = null;
 
     /**
@@ -101,7 +111,7 @@ abstract class REST_AbstractTest extends TestCase
         $activity->project_id = $project;
         $activity->test_id = $test;
         $activity->create();
-        self::$ACTIVITY_TEST= $activity;
+        self::$ACTIVITY_TEST = $activity;
 
         // Activity Comment
         $activityComment = new TMS_ActivityComment();
@@ -111,7 +121,7 @@ abstract class REST_AbstractTest extends TestCase
         $activityComment->project_id = $project;
         $activityComment->test_id = $test;
         $activityComment->create();
-        self::$ACTIVITY_COMMENT_TEST= $activityComment;
+        self::$ACTIVITY_COMMENT_TEST = $activityComment;
     }
 
     /**

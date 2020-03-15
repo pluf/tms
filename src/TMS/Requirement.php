@@ -10,7 +10,8 @@ class TMS_Requirement extends TMS_DocumentedModel
 
     /**
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModel::init()
      */
     function init()
     {
@@ -43,5 +44,4 @@ class TMS_Requirement extends TMS_DocumentedModel
             // Note: Many to many relation with TMS_Test is defined in the TMS_Test class
         ));
     }
-
 }

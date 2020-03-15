@@ -17,66 +17,40 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Pluf\Test\RestScenario;
 
-namespace RestScenario;
+use Pluf\Test\Basic\AbstractDirectTest;
 
-use \Basic_AbstractDirectTest;
-require_once 'Pluf.php';
-
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
-
-/**
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class FromVirtualUserCrudTest extends Basic_AbstractDirectTest
+class FromVirtualUserCrudTest extends AbstractDirectTest
 {
+
     static $VIRTUAL_USER_TEST = null;
 
     /**
      *
      * @beforeClass
      */
-    public static function installApps(){
+    public static function installApps()
+    {
         parent::installApps();
-        
+
         $vu = new \TMS_VirtualUser();
         $vu->title = 'virtual-user-' . rand();
-        $vu->description ='This is a test';
+        $vu->description = 'This is a test';
         $vu->type = 'test';
         $vu->test_id = self::$TEST_TEST;
         $vu->create();
         self::$VIRTUAL_USER_TEST = $vu;
     }
-    
+
     public function getModelName()
     {
         return 'TMS_Scenario';
     }
 
-    public function createApiV2()
-    {
-        $myAPI = array(
-            array(
-                'app' => 'Tenant',
-                'regex' => '#^/api/v2/tms#',
-                'base' => '',
-                'sub' => include 'TMS/urls.php'
-            ),
-            array(
-                'app' => 'User',
-                'regex' => '#^/api/v2/user#',
-                'base' => '',
-                'sub' => include 'User/urls-v2.php'
-            )
-        );
-        return $myAPI;
-    }
-
     public function getBaseUrl()
     {
-        return '/api/v2/tms/test-virtual-users/'.self::$VIRTUAL_USER_TEST->id.'/scenarios';
+        return '/tms/test-virtual-users/' . self::$VIRTUAL_USER_TEST->id . '/scenarios';
     }
 
     public function getObjectGrapql()

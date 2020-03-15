@@ -20,7 +20,7 @@ Pluf::loadFunction('Pluf_Shortcuts_GetObjectOr404');
 
 class TMS_Views_TestAttachment extends Pluf_Views
 {
-    
+
     /**
      * Creates new content
      *
@@ -53,7 +53,7 @@ class TMS_Views_TestAttachment extends Pluf_Views
         }
         return $item;
     }
-    
+
     /**
      * Download a content
      *
@@ -70,7 +70,7 @@ class TMS_Views_TestAttachment extends Pluf_Views
         $response->headers['Content-Disposition'] = sprintf('attachment; filename="%s"', $item->file_name);
         return $response;
     }
-    
+
     /**
      * Upload a file as content
      *

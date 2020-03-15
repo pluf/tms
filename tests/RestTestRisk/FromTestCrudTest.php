@@ -16,50 +16,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+namespace Pluf\Test\RestTestRisk;
 
-namespace RestTestRisk;
+use Pluf\Test\Basic\AbstractDirectTest;
 
-use \Basic_AbstractDirectTest;
-require_once 'Pluf.php';
-
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
-
-/**
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class FromTestCrudTest extends Basic_AbstractDirectTest
+class FromTestCrudTest extends AbstractDirectTest
 {
 
     public function getModelName()
     {
         return 'TMS_TestRisk';
-//         return '\pluf\tms\TestRisk';
-    }
-
-    public function createApiV2()
-    {
-        $myAPI = array(
-            array(
-                'app' => 'Tenant',
-                'regex' => '#^/api/v2/tms#',
-                'base' => '',
-                'sub' => include 'TMS/urls.php'
-            ),
-            array(
-                'app' => 'User',
-                'regex' => '#^/api/v2/user#',
-                'base' => '',
-                'sub' => include 'User/urls-v2.php'
-            )
-        );
-        return $myAPI;
     }
 
     public function getBaseUrl()
     {
-        return '/api/v2/tms/tests/'.self::$TEST_TEST->id.'/risks';
+        return '/tms/tests/' . self::$TEST_TEST->id . '/risks';
     }
 
     public function getObjectGrapql()
@@ -73,7 +44,7 @@ class FromTestCrudTest extends Basic_AbstractDirectTest
             'title' => 'title',
             'description' => 'description',
             'probability' => 0.2,
-            'effect' => 'description',
+            'effect' => 'description'
         );
     }
 }

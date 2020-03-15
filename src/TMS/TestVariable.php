@@ -10,6 +10,7 @@ class TMS_TestVariable extends Pluf_Model
 
     /**
      *
+     * {@inheritdoc}
      * @see Pluf_Model::init()
      */
     function init()
@@ -62,5 +63,4 @@ class TMS_TestVariable extends Pluf_Model
             )
         );
     }
-
 }

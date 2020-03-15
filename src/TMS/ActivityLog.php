@@ -9,9 +9,9 @@ class TMS_ActivityLog extends TMS_DocumentedModel
 {
 
     /**
-     * مدل داده‌ای را بارگذاری می‌کند.
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModel::init()
      */
     function init()
     {
@@ -78,10 +78,9 @@ class TMS_ActivityLog extends TMS_DocumentedModel
     }
 
     /**
-     * \brief پیش ذخیره را انجام می‌دهد
      *
-     * @param $create حالت
-     *            ساخت یا به روز رسانی را تعیین می‌کند
+     * {@inheritdoc}
+     * @see Pluf_Model::preSave()
      */
     function preSave($create = false)
     {
@@ -89,5 +88,4 @@ class TMS_ActivityLog extends TMS_DocumentedModel
             $this->creation_dtime = gmdate('Y-m-d H:i:s');
         }
     }
-
 }

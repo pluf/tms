@@ -18,6 +18,7 @@
  */
 Pluf::loadFunction('Pluf_Shortcuts_GetObjectOr404');
 
+
 class TMS_Views_VirtualUser extends Pluf_Views
 {
 

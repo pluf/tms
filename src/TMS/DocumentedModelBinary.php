@@ -4,8 +4,9 @@ class TMS_DocumentedModelBinary extends TMS_ModelBinary
 {
 
     /**
-     *
-     * @see Pluf_Model::init()
+     * 
+     * {@inheritDoc}
+     * @see TMS_ModelBinary::init()
      */
     function init()
     {
@@ -30,7 +31,5 @@ class TMS_DocumentedModelBinary extends TMS_ModelBinary
                 'readable' => true
             )
         ));
-
     }
-    
 }

@@ -16,43 +16,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-namespace RestTestRisk;
+namespace Pluf\Test\RestTestRisk;
 
-use \Basic_AbstractAnonymousNotAllowedTest;
+use Pluf\Test\Basic\AbstractAnonymousNotAllowedTest;
 
-require_once 'Pluf.php';
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../Base/');
-
-/**
- *
- * @backupGlobals disabled
- * @backupStaticAttributes disabled
- */
-class AnonymousTest extends Basic_AbstractAnonymousNotAllowedTest
+class AnonymousTest extends AbstractAnonymousNotAllowedTest
 {
-
-    public function createApiV2()
-    {
-        $myAPI = array(
-            array(
-                'app' => 'Tenant',
-                'regex' => '#^/api/v2/tms#',
-                'base' => '',
-                'sub' => include 'TMS/urls.php'
-            ),
-            array(
-                'app' => 'User',
-                'regex' => '#^/api/v2/user#',
-                'base' => '',
-                'sub' => include 'User/urls-v2.php'
-            )
-        );
-        return $myAPI;
-    }
 
     public function getBaseUrl()
     {
-        return '/api/v2/tms/test-risks';
+        return '/tms/test-risks';
     }
 }
 

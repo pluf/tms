@@ -137,7 +137,8 @@ class TMS_Views_TestRun extends Pluf_Views
         return $res;
     }
 
-    private function fetchEvents($dbParams, $requestParams){
+    private function fetchEvents($dbParams, $requestParams)
+    {
         // Provide request parameters
         $uri = 'http://' . $dbParams['SAMPLE_DB_HOST'] . ':' . $dbParams['SAMPLE_DB_PORT'] . '/query';
         $params = array(

@@ -10,7 +10,8 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
 
     /**
      *
-     * @see Pluf_Model::init()
+     * {@inheritdoc}
+     * @see TMS_DocumentedModelBinary::init()
      */
     function init()
     {

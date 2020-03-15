@@ -32,7 +32,7 @@ class TMS_Precondition
      * @param Pluf_HTTP_Request $request
      * @throws Pluf_Exception_PermissionDenied
      */
-    static public function projectManagerRequired($request)
+    static public function projectManagerRequired(Pluf_HTTP_Request $request)
     {
         $res = User_Precondition::loginRequired($request);
         if (true !== $res) {
