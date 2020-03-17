@@ -62,7 +62,7 @@ abstract class AbstractTest extends TestCase
     {
         $cfg = include __DIR__ . '/../conf/config.php';
         Pluf::start($cfg);
-        $m = new Pluf_Migration(Pluf::f('installed_apps'));
+        $m = new Pluf_Migration();
         $m->install();
 
         // CREATE ADMIN
@@ -130,7 +130,7 @@ abstract class AbstractTest extends TestCase
      */
     public static function uninstallApps()
     {
-        $m = new Pluf_Migration(Pluf::f('installed_apps'));
+        $m = new Pluf_Migration();
         $m->unInstall();
     }
 }
