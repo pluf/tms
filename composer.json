@@ -47,7 +47,7 @@
 	],
 	"autoload" : {
 		"psr-4" : {
-			"Pluf\\Tms\\" : "src6"
+			"Pluf\\TMS\\" : "src6"
 		},
 		"psr-0" : {
 			"" : "src"
