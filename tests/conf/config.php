@@ -13,7 +13,7 @@ $cfg['installed_apps'] = array(
     'User',
     'Monitor',
     'Jms',
-    'TMS'
+    'Tms'
 );
 $cfg['mimetype'] = 'text/html';
 $cfg['app_base'] = '/testapp';
