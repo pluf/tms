@@ -1,6 +1,9 @@
 <?php
 
 /**
+ * Test Run Template
+ * 
+ * Defines a template for test run results.
  *
  * @author hadi <mohammad.hadi.mansouri@dpq.co.ir>
  *
