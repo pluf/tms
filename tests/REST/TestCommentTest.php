@@ -21,7 +21,7 @@ namespace Pluf\Test\REST;
 use Pluf\Test\Client;
 use TMS_TestComment;
 
-class REST_TestCommentTest extends AbstractTest
+class TestCommentTest extends AbstractTest
 {
 
     /**

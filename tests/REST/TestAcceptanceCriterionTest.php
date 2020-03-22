@@ -21,7 +21,7 @@ namespace Pluf\Test\REST;
 use Pluf\Test\Client;
 use TMS_TestAcceptanceCriterion;
 
-class REST_TestAcceptanceCriterionTest extends AbstractTest
+class TestAcceptanceCriterionTest extends AbstractTest
 {
 
     /**

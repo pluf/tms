@@ -26,7 +26,7 @@ class TMS_Views_TestRunTemplate extends Pluf_Views
      *
      * @param Pluf_HTTP_Request $request
      * @param array $match
-     * @throws Pluf_Exception
+     * @throws \Pluf\Exception
      * @return TMS_TestRunTemplate
      */
     public function create($request, $match)
@@ -43,7 +43,7 @@ class TMS_Views_TestRunTemplate extends Pluf_Views
         $form = new Pluf_Form_ModelBinaryUpdate(array_merge($request->REQUEST, $request->FILES), $extra);
         try {
             $item = $form->save();
-        } catch (Pluf_Exception $e) {
+        } catch (\Pluf\Exception $e) {
             $item = $extra['model'];
             $item->delete();
             throw $e;
