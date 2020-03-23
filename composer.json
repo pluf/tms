@@ -1,6 +1,6 @@
 {
 	"name" : "pluf/tms",
-	"version" : "6.0.6",
+	"version" : "6.0.7",
 	"description" : "Test management system for pluf",
 	"type" : "library",
 	"authors" : [{
