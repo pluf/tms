@@ -1,6 +1,6 @@
 {
 	"name" : "pluf/tms",
-	"version" : "6.0.6",
+	"version" : "6.0.7",
 	"description" : "Test management system for pluf",
 	"type" : "library",
 	"authors" : [{
@@ -58,7 +58,7 @@
 			"Pluf\\Test\\" : "tests"
 		}
 	},
-	"repositories" : [{
+	"repositories~" : [{
 			"type" : "path",
 			"url" : "../http2",
 			"name" : "pluf/http2",

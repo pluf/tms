@@ -21,7 +21,7 @@ namespace Pluf\Test\REST;
 use Pluf\Test\Client;
 use TMS_TestAttachment;
 
-class REST_TestAttachmentTest extends AbstractTest
+class TestAttachmentTest extends AbstractTest
 {
 
 

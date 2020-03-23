@@ -20,7 +20,7 @@ namespace Pluf\Test\REST;
 
 use Pluf\Test\Client;
 
-class REST_TestHistoryTest extends AbstractTest
+class TestHistoryTest extends AbstractTest
 {
 
     /**

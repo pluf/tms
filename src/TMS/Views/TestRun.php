@@ -26,7 +26,7 @@ class TMS_Views_TestRun extends Pluf_Views
      *
      * @param Pluf_HTTP_Request $request
      * @param array $match
-     * @throws Pluf_Exception
+     * @throws \Pluf\Exception
      * @return TMS_TestRun
      */
     public function create($request, $match)
@@ -46,7 +46,7 @@ class TMS_Views_TestRun extends Pluf_Views
         $form = new Pluf_Form_ModelBinaryUpdate(array_merge($request->REQUEST, $request->FILES), $extra);
         try {
             $item = $form->save(false);
-        } catch (Pluf_Exception $e) {
+        } catch (\Pluf\Exception $e) {
             $item = $extra['model'];
             $item->delete();
             throw $e;
@@ -116,7 +116,7 @@ class TMS_Views_TestRun extends Pluf_Views
         $response = $this->fetchEvents($dbParams, $requestParams);
 
         if ("200" != $response->getStatusCode()) {
-            throw new Pluf_Exception($response->getBody()->getContents());
+            throw new \Pluf\Exception($response->getBody()->getContents());
         }
         $contents = $response->getBody()->getContents();
         return json_decode($contents, true);
