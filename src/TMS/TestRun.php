@@ -20,7 +20,7 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
         $this->_a['verbose'] = 'TMS Test Run';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'start_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'is_null' => true,
                 'blank' => true,
                 'default' => '0000-00-00 00:00:00',
@@ -28,7 +28,7 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
                 'readable' => true
             ),
             'end_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'is_null' => true,
                 'blank' => true,
                 'default' => '0000-00-00 00:00:00',
@@ -36,7 +36,7 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
                 'readable' => true
             ),
             'folder_path' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'is_null' => true,
                 'size' => 1024,
                 'editable' => true,
@@ -46,7 +46,7 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
              * Relations
              */
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'graphql_name' => 'test',
@@ -56,7 +56,7 @@ class TMS_TestRun extends TMS_DocumentedModelBinary
                 'readable' => true
             ),
             'pipeline_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'Pluf\Jms\Pipeline',
                 'name' => 'pipeline',
                 'graphql_name' => 'pipeline',

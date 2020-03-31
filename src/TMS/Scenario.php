@@ -20,7 +20,7 @@ class TMS_Scenario extends TMS_DocumentedModelBinary
         $this->_a['verbose'] = 'TMS Scenario';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'type' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 128,
                 'is_null' => false,
                 'default' => '',
@@ -31,7 +31,7 @@ class TMS_Scenario extends TMS_DocumentedModelBinary
              * Relations
              */
             'virtual_user_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_VirtualUser',
                 'name' => 'virtual_user',
                 'graphql_name' => 'virtual_user',

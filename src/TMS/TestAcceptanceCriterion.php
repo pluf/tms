@@ -20,20 +20,20 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
         $this->_a['verbose'] = 'TMS TestAcceptanceCriterion';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'metric' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 64,
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
             ),
             'bound' => array(
-                'type' => 'Pluf_DB_Field_Float',
+                'type' => 'Float',
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
             ),
             'bound_type' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 128,
                 'is_null' => false,
                 'default' => 'upper',
@@ -41,7 +41,7 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
                 'readable' => true
             ),
             'severity' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 64,
                 'is_null' => false,
                 'default' => 'passed',
@@ -49,13 +49,13 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
                 'readable' => true
             ),
             'duration' => array(
-                'type' => 'Pluf_DB_Field_Float',
+                'type' => 'Float',
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
             ),
             'duration_type' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 128,
                 'is_null' => false,
                 'default' => 'second',
@@ -66,7 +66,7 @@ class TMS_TestAcceptanceCriterion extends TMS_DocumentedModel
              * Relations
              */
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'graphql_name' => 'test',

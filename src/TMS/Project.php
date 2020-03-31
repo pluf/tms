@@ -20,27 +20,27 @@ class TMS_Project extends TMS_DocumentedModel
         $this->_a['verbose'] = 'TMS Project';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'logo' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 512,
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
             ),
             'state' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 64,
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
             ),
             'start_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
             ),
             'end_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
@@ -49,7 +49,7 @@ class TMS_Project extends TMS_DocumentedModel
              * Relations
              */
             'manager_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'User_Account',
                 'name' => 'manager',
                 'graphql_name' => 'manager',
@@ -59,7 +59,7 @@ class TMS_Project extends TMS_DocumentedModel
                 'readable' => true
             ),
             'members' => array(
-                'type' => 'Pluf_DB_Field_Manytomany',
+                'type' => 'Manytomany',
                 'model' => 'User_Account',
                 'name' => 'members',
                 'graphql_name' => 'members',

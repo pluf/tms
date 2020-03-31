@@ -29,10 +29,10 @@ class TMS_Views_Test extends Pluf_Views
         $assocTable = $user->_con->pfx . Pluf_Shortcuts_GetAssociationTableName('User_Account', 'TMS_Test');
         Pluf::loadFunction('Pluf_Shortcuts_GetForeignKeyName');
         $userFk = Pluf_Shortcuts_GetForeignKeyName('User_Account');
-        $user->_a['views']['myView'] = array(
+        $user->setView('myView', array(
             'select' => $user->getSelect(),
             'join' => 'LEFT JOIN ' . $assocTable . ' ON ' . $userTable . '.id=' . $assocTable . '.' . $userFk
-        );
+        ));
 
         $testFk = Pluf_Shortcuts_GetForeignKeyName('TMS_Test');
         $builder = new Pluf_Paginator_Builder($user);
@@ -79,10 +79,10 @@ class TMS_Views_Test extends Pluf_Views
         $assocTable = $requirement->_con->pfx . Pluf_Shortcuts_GetAssociationTableName('TMS_Requirement', 'TMS_Test');
         Pluf::loadFunction('Pluf_Shortcuts_GetForeignKeyName');
         $userFk = Pluf_Shortcuts_GetForeignKeyName('TMS_Requirement');
-        $requirement->_a['views']['myView'] = array(
+        $requirement->setView('myView', array(
             'select' => $requirement->getSelect(),
             'join' => 'LEFT JOIN ' . $assocTable . ' ON ' . $userTable . '.id=' . $assocTable . '.' . $userFk
-        );
+        ));
 
         $testFk = Pluf_Shortcuts_GetForeignKeyName('TMS_Test');
         $builder = new Pluf_Paginator_Builder($requirement);

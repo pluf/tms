@@ -19,20 +19,20 @@ class TMS_TestVariable extends Pluf_Model
         $this->_a['verbose'] = 'TMS Test Variable';
         $this->_a['cols'] = array(
             'id' => array(
-                'type' => 'Pluf_DB_Field_Sequence',
+                'type' => 'Sequence',
                 'is_null' => false,
                 'editable' => false,
                 'readable' => true
             ),
             'key' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 128,
                 'is_null' => false,
                 'editable' => true,
                 'readable' => true
             ),
             'value' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 1024,
                 'is_null' => true,
                 'default' => 'empty',
@@ -40,7 +40,7 @@ class TMS_TestVariable extends Pluf_Model
                 'readable' => true
             ),
             'description' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'blank' => true,
                 'is_null' => true,
                 'size' => 1024,
@@ -51,7 +51,7 @@ class TMS_TestVariable extends Pluf_Model
              * Relations
              */
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'graphql_name' => 'test',

@@ -23,7 +23,7 @@ class TMS_ActivityOutput extends TMS_DocumentedModel
              * Relations
              */
             'activity_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
                 'graphql_name' => 'activity',

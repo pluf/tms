@@ -20,13 +20,13 @@ class TMS_ActivityLog extends TMS_DocumentedModel
         $this->_a['verbose'] = 'TMS Activity Log';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'duration' => array(
-                'type' => 'Pluf_DB_Field_Float',
+                'type' => 'Float',
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
             ),
             'creation_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'is_null' => false,
                 'editable' => false,
                 'readable' => true
@@ -35,7 +35,7 @@ class TMS_ActivityLog extends TMS_DocumentedModel
              * Relations
              */
             'project_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Project',
                 'name' => 'project',
                 'graphql_name' => 'project',
@@ -45,7 +45,7 @@ class TMS_ActivityLog extends TMS_DocumentedModel
                 'readable' => true
             ),
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'graphql_name' => 'test',
@@ -55,7 +55,7 @@ class TMS_ActivityLog extends TMS_DocumentedModel
                 'readable' => true
             ),
             'activity_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
                 'graphql_name' => 'activity',
@@ -65,7 +65,7 @@ class TMS_ActivityLog extends TMS_DocumentedModel
                 'readable' => true
             ),
             'writer_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'User_Account',
                 'name' => 'writer',
                 'graphql_name' => 'writer',

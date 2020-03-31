@@ -20,7 +20,7 @@ class TMS_Requirement extends TMS_DocumentedModel
         $this->_a['verbose'] = 'TMS Requirement';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'type' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 128,
                 'is_null' => true,
                 'default' => 'functional',
@@ -31,7 +31,7 @@ class TMS_Requirement extends TMS_DocumentedModel
              * Relations
              */
             'project_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Project',
                 'name' => 'project',
                 'relate_name' => 'requirements',

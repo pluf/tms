@@ -30,10 +30,10 @@ class TMS_Views_Project extends Pluf_Views
         $assocTable = $user->_con->pfx . Pluf_Shortcuts_GetAssociationTableName('User_Account', 'TMS_Project');
         Pluf::loadFunction('Pluf_Shortcuts_GetForeignKeyName');
         $userFk = Pluf_Shortcuts_GetForeignKeyName('User_Account');
-        $user->_a['views']['myView'] = array(
+        $user->setView('myView', array(
             'select' => $user->getSelect(),
             'join' => 'LEFT JOIN ' . $assocTable . ' ON ' . $userTable . '.id=' . $assocTable . '.' . $userFk
-        );
+        ));
 
         $projectFk = Pluf_Shortcuts_GetForeignKeyName('TMS_Project');
         $builder = new Pluf_Paginator_Builder($user);

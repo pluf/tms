@@ -20,14 +20,14 @@ class TMS_TestRisk extends TMS_DocumentedModel
         $this->_a['verbose'] = 'TMS Test Risk';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'effect' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'is_null' => true,
                 'size' => 1024,
                 'editable' => true,
                 'readable' => true
             ),
             'probability' => array(
-                'type' => 'Pluf_DB_Field_Float',
+                'type' => 'Float',
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
@@ -36,7 +36,7 @@ class TMS_TestRisk extends TMS_DocumentedModel
              * Relations
              */
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'relate_name' => 'risks',
