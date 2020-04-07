@@ -20,14 +20,14 @@ class TMS_ActivityStep extends TMS_DocumentedModel
         $this->_a['verbose'] = 'TMS Activity Step';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'order' => array(
-                'type' => 'Pluf_DB_Field_Integer',
+                'type' => 'Integer',
                 'is_null' => false,
                 'default' => 0,
                 'editable' => true,
                 'readable' => true
             ),
             'is_checked' => array(
-                'type' => 'Pluf_DB_Field_Boolean',
+                'type' => 'Boolean',
                 'is_null' => false,
                 'default' => false,
                 'editable' => true
@@ -36,7 +36,7 @@ class TMS_ActivityStep extends TMS_DocumentedModel
              * Relations
              */
             'activity_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Activity',
                 'name' => 'activity',
                 'relate_name' => 'steps',

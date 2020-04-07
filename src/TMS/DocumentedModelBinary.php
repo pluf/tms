@@ -15,7 +15,7 @@ class TMS_DocumentedModelBinary extends TMS_ModelBinary
         // $this->_a['verbose'] = 'TMS_DocumentedModelBinary';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'title' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'blank' => true,
                 'is_null' => true,
                 'size' => 256,
@@ -23,7 +23,7 @@ class TMS_DocumentedModelBinary extends TMS_ModelBinary
                 'readable' => true
             ),
             'description' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'blank' => true,
                 'is_null' => true,
                 'size' => 2048,

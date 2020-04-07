@@ -20,13 +20,13 @@ class TMS_TestRunReport extends TMS_DocumentedModelBinary
         $this->_a['verbose'] = 'TMS Test Run Report';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'downloads' => array(
-                'type' => 'Pluf_DB_Field_Integer',
+                'type' => 'Integer',
                 'is_null' => false,
                 'default' => 0,
                 'editable' => false
             ),
             'creation_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'is_null' => true,
                 'editable' => false
             ),
@@ -34,7 +34,7 @@ class TMS_TestRunReport extends TMS_DocumentedModelBinary
              * Relations
              */
             'test_run_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_TestRun',
                 'name' => 'test_run',
                 'graphql_name' => 'test_run',

@@ -20,7 +20,7 @@ class TMS_VirtualUser extends TMS_DocumentedModelBinary
         $this->_a['verbose'] = 'TMS Virtual Users';
         $this->_a['cols'] = array_merge($this->_a['cols'], array(
             'type' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 128,
                 'is_null' => false,
                 'editable' => true,
@@ -30,7 +30,7 @@ class TMS_VirtualUser extends TMS_DocumentedModelBinary
              * Relations
              */
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'graphql_name' => 'test',

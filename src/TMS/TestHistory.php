@@ -19,27 +19,27 @@ class TMS_TestHistory extends Pluf_Model
         $this->_a['verbose'] = 'TMS Test History';
         $this->_a['cols'] = array(
             'id' => array(
-                'type' => 'Pluf_DB_Field_Sequence',
+                'type' => 'Sequence',
                 'blank' => false,
                 'editable' => false,
                 'readable' => true
             ),
             'title' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'is_null' => false,
                 'size' => 256,
                 'editable' => true,
                 'readable' => true
             ),
             'action' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 64,
                 'is_null' => true,
                 'editable' => false,
                 'readable' => true
             ),
             'creation_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'is_null' => false,
                 'editable' => false,
                 'readable' => true
@@ -48,7 +48,7 @@ class TMS_TestHistory extends Pluf_Model
              * Relations
              */
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'graphql_name' => 'test',
@@ -59,7 +59,7 @@ class TMS_TestHistory extends Pluf_Model
                 'readable' => true
             ),
             'account_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'User_Account',
                 'name' => 'account',
                 'graphql_name' => 'account',

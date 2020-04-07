@@ -29,10 +29,10 @@ class TMS_Views_Requirement extends Pluf_Views
         $assocTable = $test->_con->pfx . Pluf_Shortcuts_GetAssociationTableName('TMS_Test', 'TMS_Requirement');
         Pluf::loadFunction('Pluf_Shortcuts_GetForeignKeyName');
         $testFk = Pluf_Shortcuts_GetForeignKeyName('TMS_Test');
-        $test->_a['views']['myView'] = array(
+        $test->setView('myView', array(
             'select' => $test->getSelect(),
             'join' => 'LEFT JOIN ' . $assocTable . ' ON ' . $testTable . '.id=' . $assocTable . '.' . $testFk
-        );
+        ));
 
         $requirementFk = Pluf_Shortcuts_GetForeignKeyName('TMS_Requirement');
         $builder = new Pluf_Paginator_Builder($test);

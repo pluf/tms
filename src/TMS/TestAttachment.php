@@ -23,7 +23,7 @@ class TMS_TestAttachment extends TMS_DocumentedModelBinary
              * Relations
              */
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'relate_name' => 'attachments',

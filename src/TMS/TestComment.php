@@ -19,27 +19,27 @@ class TMS_TestComment extends Pluf_Model
         $this->_a['verbose'] = 'TMS Test Comment';
         $this->_a['cols'] = array(
             'id' => array(
-                'type' => 'Pluf_DB_Field_Sequence',
+                'type' => 'Sequence',
                 'is_null' => false,
                 'editable' => false,
                 'readable' => true
             ),
             'mime_type' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 128,
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
             ),
             'text' => array(
-                'type' => 'Pluf_DB_Field_Varchar',
+                'type' => 'Varchar',
                 'size' => 2048,
                 'is_null' => true,
                 'editable' => true,
                 'readable' => true
             ),
             'creation_dtime' => array(
-                'type' => 'Pluf_DB_Field_Datetime',
+                'type' => 'Datetime',
                 'is_null' => false,
                 'editable' => false,
                 'readable' => true
@@ -48,7 +48,7 @@ class TMS_TestComment extends Pluf_Model
              * Relations
              */
             'test_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'TMS_Test',
                 'name' => 'test',
                 'relate_name' => 'comments',
@@ -59,7 +59,7 @@ class TMS_TestComment extends Pluf_Model
                 'readable' => true
             ),
             'writer_id' => array(
-                'type' => 'Pluf_DB_Field_Foreignkey',
+                'type' => 'Foreignkey',
                 'model' => 'User_Account',
                 'name' => 'writer',
                 'relate_name' => 'test_comments',
